@@ -14,16 +14,16 @@ import { PanelContainerComponent } from './additions/layout/PanelContainer';
 // import { mode } from "@chakra-ui/theme-tools";
 const colors = {
 	brand: {
-		50: '#FFF3E9',
-		100: '#FFE0C2',
-		200: '#FFCC9C',
-		300: '#FFB975',
-		400: '#FFA54F',
-		500: '#FF8D28',
-		600: '#E6781F',
-		700: '#BF6017',
-		800: '#994A10',
-		900: '#73350A'
+		50: '#E6FFFA',
+		100: '#B2F5EA',
+		200: '#81E6D9',
+		300: '#4FD1C7',
+		400: '#38B2AC',
+		500: '#319795',
+		600: '#2C7A7B',
+		700: '#285E61',
+		800: '#234E52',
+		900: '#1D4044'
 	}
 };
 

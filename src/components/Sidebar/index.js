@@ -48,7 +48,7 @@ function Sidebar(props) {
           borderRadius={sidebarRadius}
         >
           <SidebarContent routes={routes}
-        logoText={"POS MUGHAL SUPPLIERS"}
+        logoText={"Pharma Manager"}
         display="none"
         sidebarVariant={sidebarVariant}
         />

@@ -13,50 +13,10 @@ class LineChart extends React.Component {
   }
 
   componentDidMount() {
-    this.updateChartData();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.data !== this.props.data) {
-      this.updateChartData();
-    }
-  }
-
-  updateChartData = () => {
-    const { data } = this.props;
-    
-    if (data && data.length > 0) {
-      // Process API data for line chart
-      const processedData = [{
-        name: "Revenue",
-        data: data.map(item => item.revenue || item.value || 0)
-      }];
-      
-      const processedOptions = {
-        ...lineChartOptions,
-        xaxis: {
-          ...lineChartOptions.xaxis,
-          categories: data.map(item => item.period || item.date || item.hour || '')
-        }
-      };
-
-      this.setState({
-        chartData: processedData,
-        chartOptions: processedOptions,
-      });
-    } else {
-      // NO FALLBACK DATA - show empty chart
-      this.setState({
-        chartData: [],
-        chartOptions: {
-          ...lineChartOptions,
-          xaxis: {
-            ...lineChartOptions.xaxis,
-            categories: []
-          }
-        },
-      });
-    }
+    this.setState({
+      chartData: lineChartData,
+      chartOptions: lineChartOptions,
+    });
   }
 
   render() {

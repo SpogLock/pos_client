@@ -8,7 +8,7 @@ import { Separator } from "components/Separator/Separator";
 import React from "react";
 
 const PaymentStatistics = ({ icon, title, description, amount }) => {
-  const iconTeal = useColorModeValue("#FF8D28", "#FF8D28");
+  const iconTeal = useColorModeValue("#319795", "#319795");
   const textColor = useColorModeValue("gray.700", "white");
 
   return (
@@ -38,7 +38,7 @@ const PaymentStatistics = ({ icon, title, description, amount }) => {
             <Separator />
           </Flex>
           <Text fontSize='lg' color={textColor} fontWeight='bold'>
-            {`${amount}`}
+            {`%${amount}`}
           </Text>
         </Flex>
       </CardBody>

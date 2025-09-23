@@ -107,7 +107,7 @@ function SidebarResponsive(props) {
                     <Icon>{prop.icon}</Icon>
                   ) : (
                     <IconBox
-                      bg="#FF8D28"
+                      bg="#319795"
                       color="white"
                       h="30px"
                       w="30px"
@@ -158,7 +158,7 @@ function SidebarResponsive(props) {
                   ) : (
                     <IconBox
                       bg={inactiveBg}
-                      color="#FF8D28"
+                      color="#319795"
                       h="30px"
                       w="30px"
                       me="12px"

@@ -90,7 +90,7 @@ export default function Dashboard(props) {
 			<RtlProvider>
 				<Sidebar
 					routes={routes}
-					logoText={'POS MUGHAL SUPPLIERS'}
+					logoText={'PURITY UI DASHBOARD'}
 					display='none'
 					sidebarVariant={sidebarVariant}
 					{...rest}
@@ -104,7 +104,7 @@ export default function Dashboard(props) {
 					<Portal>
 						<AdminNavbar
 							onOpen={onOpen}
-							logoText={'POS MUGHAL SUPPLIERS'}
+							logoText={'PURITY UI DASHBOARD'}
 							brandText={getActiveRoute(routes)}
 							secondary={getActiveNavbar(routes)}
 							fixed={fixed}

@@ -49,7 +49,7 @@ function TablesTableRow(props) {
       </Td>
       <Td>
         <Badge
-          bg={status === "Online" ? "#FF8D28" : bgStatus}
+          bg={status === "Online" ? "#319795" : bgStatus}
           color={status === "Online" ? "white" : colorStatus}
           fontSize="16px"
           p="3px 10px"

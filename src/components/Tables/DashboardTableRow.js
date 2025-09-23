@@ -41,9 +41,24 @@ function DashboardTableRow(props) {
       </Td>
 
       <Td>
-        <Text fontSize="md" color={textColor} fontWeight="bold">
-          {Array.isArray(members) ? members.join(', ') : members}
-        </Text>
+        <AvatarGroup size="sm">
+          {Array.isArray(members) ? members.map((member) => {
+            return (
+              <Avatar
+                name="Ryan Florence"
+                key={member}
+                src={member}
+                _hover={{ zIndex: "3", cursor: "pointer" }}
+              />
+            );
+          }) : (
+            <Text fontSize="md"
+            color={textColor}
+            fontWeight="bold">
+              {members}
+            </Text>
+          )}
+        </AvatarGroup>
       </Td>
       <Td>
         <Text fontSize="md" color={textColor} fontWeight="bold" pb=".5rem">
@@ -54,7 +69,7 @@ function DashboardTableRow(props) {
         <Flex direction="column">
           <Text
             fontSize="md"
-            color="#FF8D28"
+            color="#319795"
             fontWeight="bold"
             pb=".2rem"
           >{`${progression}%`}</Text>

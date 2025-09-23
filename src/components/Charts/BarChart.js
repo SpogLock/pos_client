@@ -13,50 +13,10 @@ class BarChart extends Component {
   }
 
   componentDidMount() {
-    this.updateChartData();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.data !== this.props.data) {
-      this.updateChartData();
-    }
-  }
-
-  updateChartData = () => {
-    const { data } = this.props;
-    
-    if (data && data.length > 0) {
-      // Process API data for bar chart
-      const processedData = [{
-        name: "Revenue",
-        data: data.map(item => item.revenue || item.value || 0)
-      }];
-      
-      const processedOptions = {
-        ...barChartOptions,
-        xaxis: {
-          ...barChartOptions.xaxis,
-          categories: data.map(item => item.period || item.date || item.hour || '')
-        }
-      };
-
-      this.setState({
-        chartData: processedData,
-        chartOptions: processedOptions,
-      });
-    } else {
-      // NO FALLBACK DATA - show empty chart
-      this.setState({
-        chartData: [],
-        chartOptions: {
-          ...barChartOptions,
-          xaxis: {
-            ...barChartOptions.xaxis,
-            categories: []
-          }
-        },
-      });
-    }
+    this.setState({
+      chartData: barChartData,
+      chartOptions: barChartOptions,
+    });
   }
 
   render() {
@@ -65,7 +25,7 @@ class BarChart extends Component {
         py="1rem"
         height={{ sm: "200px" }}
         width="100%"
-        bg="linear-gradient(90deg, #FF8D28 0%, #E4572E 100%)"
+        bg="linear-gradient(90deg, #319795 0%, #2C7A7B 100%)"
         position="relative"
       >
         <Chart

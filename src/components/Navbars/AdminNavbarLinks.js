@@ -14,8 +14,6 @@ import {
   MenuList,
   Text,
   useColorModeValue,
-  Avatar,
-  useToast,
 } from "@chakra-ui/react";
 // Assets
 import avatar1 from "assets/img/avatars/avatar1.png";
@@ -28,20 +26,14 @@ import { ItemContent } from "components/Menu/ItemContent";
 import SidebarResponsive from "components/Sidebar/SidebarResponsive";
 import PropTypes from "prop-types";
 import React from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import routes from "routes.js";
-import authService from "services/authService";
 
 export default function HeaderLinks(props) {
   const { variant, children, fixed, secondary, onOpen, ...rest } = props;
-  const history = useHistory();
-  const toast = useToast();
-  
-  // Get user from localStorage directly
-  const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 
   // Chakra Color Mode
-  let mainTeal = useColorModeValue("#FF8D28", "#FF8D28");
+  let mainTeal = useColorModeValue("#319795", "#319795");
   let inputBg = useColorModeValue("white", "gray.800");
   let mainText = useColorModeValue("gray.700", "gray.200");
   let navbarIcon = useColorModeValue("gray.500", "gray.200");
@@ -51,29 +43,6 @@ export default function HeaderLinks(props) {
     navbarIcon = "white";
     mainText = "white";
   }
-
-  const handleLogout = async () => {
-    try {
-      await authService.logout();
-      toast({
-        title: "Logged Out",
-        description: "You have been successfully logged out.",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      });
-      history.push("/auth/signin");
-    } catch (error) {
-      toast({
-        title: "Logout Failed",
-        description: "An error occurred while logging out.",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-    }
-  };
-
   const settingsRef = React.useRef();
   return (
     <Flex
@@ -124,81 +93,31 @@ export default function HeaderLinks(props) {
           borderRadius="inherit"
         />
       </InputGroup>
-      
-      {/* User Menu */}
-      {user ? (
-        <Menu>
-          <MenuButton
-            as={Button}
-            variant="ghost"
-            ms="0px"
-            px="0px"
-            me={{ sm: "2px", md: "16px" }}
-            color={navbarIcon}
-            rightIcon={
-              document.documentElement.dir ? (
-                ""
-              ) : (
-                <Avatar size="sm" name={user.name} src={avatar1} />
-              )
-            }
-            leftIcon={
-              document.documentElement.dir ? (
-                <Avatar size="sm" name={user.name} src={avatar1} />
-              ) : (
-                ""
-              )
-            }
-          >
-            <Text display={{ sm: "none", md: "flex" }}>{user.name}</Text>
-          </MenuButton>
-          <MenuList>
-            <MenuItem>
-              <Flex direction="column" align="start">
-                <Text fontWeight="bold">{user.name}</Text>
-                <Text fontSize="sm" color="gray.500">{user.email}</Text>
-                <Text fontSize="xs" color="gray.400" textTransform="capitalize">
-                  Role: {user.user_role}
-                </Text>
-              </Flex>
-            </MenuItem>
-            <MenuItem onClick={() => history.push("/admin/profile")}>
-              <ProfileIcon color={navbarIcon} w="18px" h="18px" me="8px" />
-              Profile
-            </MenuItem>
-            <MenuItem onClick={handleLogout}>
-              <Text color="red.500">Logout</Text>
-            </MenuItem>
-          </MenuList>
-        </Menu>
-      ) : (
-        <NavLink to="/auth/signin">
-          <Button
-            ms="0px"
-            px="0px"
-            me={{ sm: "2px", md: "16px" }}
-            color={navbarIcon}
-            variant="transparent-with-icon"
-            rightIcon={
-              document.documentElement.dir ? (
-                ""
-              ) : (
-                <ProfileIcon color={navbarIcon} w="22px" h="22px" me="0px" />
-              )
-            }
-            leftIcon={
-              document.documentElement.dir ? (
-                <ProfileIcon color={navbarIcon} w="22px" h="22px" me="0px" />
-              ) : (
-                ""
-              )
-            }
-          >
-            <Text display={{ sm: "none", md: "flex" }}>Sign In</Text>
-          </Button>
-        </NavLink>
-      )}
-
+      <NavLink to="/auth/signin">
+        <Button
+          ms="0px"
+          px="0px"
+          me={{ sm: "2px", md: "16px" }}
+          color={navbarIcon}
+          variant="transparent-with-icon"
+          rightIcon={
+            document.documentElement.dir ? (
+              ""
+            ) : (
+              <ProfileIcon color={navbarIcon} w="22px" h="22px" me="0px" />
+            )
+          }
+          leftIcon={
+            document.documentElement.dir ? (
+              <ProfileIcon color={navbarIcon} w="22px" h="22px" me="0px" />
+            ) : (
+              ""
+            )
+          }
+        >
+          <Text display={{ sm: "none", md: "flex" }}>Sign In</Text>
+        </Button>
+      </NavLink>
       <SidebarResponsive
         logoText={props.logoText}
         secondary={props.secondary}

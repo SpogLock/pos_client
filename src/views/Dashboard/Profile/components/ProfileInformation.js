@@ -69,26 +69,26 @@ const ProfileInformation = ({
             <Flex>
               <Link
                 href='#'
-                color='#FF8D28'
+                color='#319795'
                 fontSize='lg'
                 me='10px'
-                _hover={{ color: "#FF8D28" }}>
+                _hover={{ color: "#319795" }}>
                 <Icon as={FaFacebook} />
               </Link>
               <Link
                 href='#'
-                color='#FF8D28'
+                color='#319795'
                 fontSize='lg'
                 me='10px'
-                _hover={{ color: "#FF8D28" }}>
+                _hover={{ color: "#319795" }}>
                 <Icon as={FaInstagram} />
               </Link>
               <Link
                 href='#'
-                color='#FF8D28'
+                color='#319795'
                 fontSize='lg'
                 me='10px'
-                _hover={{ color: "#FF8D28" }}>
+                _hover={{ color: "#319795" }}>
                 <Icon as={FaTwitter} />
               </Link>
             </Flex>

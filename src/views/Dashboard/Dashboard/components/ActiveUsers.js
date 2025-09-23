@@ -14,7 +14,7 @@ import {
 import React from "react";
 import ChartStatistics from "./ChartStatistics";
 
-const ActiveUsers = ({ title, percentage, chart, dashboardData, isLoading }) => {
+const ActiveUsers = ({ title, percentage, chart }) => {
   const iconBoxInside = useColorModeValue("white", "white");
   const textColor = useColorModeValue("gray.700", "white");
   return (
@@ -38,7 +38,7 @@ const ActiveUsers = ({ title, percentage, chart, dashboardData, isLoading }) => 
             >
               <Text
                 as='span'
-                color={percentage > 0 ? "#FF8D28" : "red.400"}
+                color={percentage > 0 ? "#319795" : "red.400"}
                 fontWeight='bold'>
                 {percentage > 0 ? `+${percentage}%` : `-${percentage}%`}
               </Text>{" "}
@@ -81,32 +81,32 @@ const ActiveUsers = ({ title, percentage, chart, dashboardData, isLoading }) => 
             >
             <ChartStatistics
               title={"Top Product"}
-              amount={isLoading ? "Loading..." : dashboardData && dashboardData.best_selling_products && dashboardData.best_selling_products.length > 0 ? `PKR. ${dashboardData.best_selling_products[0].total_revenue.toLocaleString()}` : "PKR. 0"}
+              amount={"PKR. 82,984"}
               percentage={20}
-              category={isLoading ? "Loading..." : dashboardData && dashboardData.best_selling_products && dashboardData.best_selling_products.length > 0 ? dashboardData.best_selling_products[0].product_name : "No data"}
-              icon={<WalletIcon h={{ base: "12px", sm: "13px", md: "15px", lg: "16px" }} w={{ base: "12px", sm: "13px", md: "15px", lg: "16px" }} color={iconBoxInside} />}
+              category={"Electric Drill"}
+                             icon={<WalletIcon h={{ base: "12px", sm: "13px", md: "15px", lg: "16px" }} w={{ base: "12px", sm: "13px", md: "15px", lg: "16px" }} color={iconBoxInside} />}
              />
              <ChartStatistics
                title={"Top Category"}
-               amount={isLoading ? "Loading..." : dashboardData && dashboardData.charts.category_breakdown && dashboardData.charts.category_breakdown.length > 0 ? `PKR. ${dashboardData.charts.category_breakdown[0].revenue.toLocaleString()}` : "PKR. 0"}
+               amount={"PKR. 100,000"}
                percentage={20}
-               category={isLoading ? "Loading..." : dashboardData && dashboardData.charts.category_breakdown && dashboardData.charts.category_breakdown.length > 0 ? dashboardData.charts.category_breakdown[0].category : "No data"}
+               category={"Construction Materials"}
                icon={<RocketIcon h={{ base: "12px", sm: "13px", md: "15px", lg: "16px" }} w={{ base: "12px", sm: "13px", md: "15px", lg: "16px" }} color={iconBoxInside} />}
              />
              <ChartStatistics
-               title={"Total Revenue"}
-               amount={isLoading ? "Loading..." : dashboardData ? `PKR. ${dashboardData.kpis.gross_revenue.value.toLocaleString()}` : "PKR. 0"}
+               title={"Total Profit"}
+               amount={"PKR.320,000"}
                percentage={20}
-               changeIndicator={dashboardData ? `(${dashboardData.kpis.gross_revenue.change > 0 ? '+' : ''}${dashboardData.kpis.gross_revenue.change}) than last week` : "(0) than last week"}
-               changeType={dashboardData && dashboardData.kpis.gross_revenue.change > 0 ? "positive" : "negative"}
+               changeIndicator={"(+23) than last week"}
+               changeType={"positive"}
                icon={<CartIcon h={{ base: "12px", sm: "13px", md: "15px", lg: "16px" }} w={{ base: "12px", sm: "13px", md: "15px", lg: "16px" }} color={iconBoxInside} />}
              />
              <ChartStatistics
-               title={"Avg Order Value"}
-               amount={isLoading ? "Loading..." : dashboardData ? `PKR. ${dashboardData.kpis.avg_order_value.value.toLocaleString()}` : "PKR. 0"}
+               title={"Total Loss"}
+               amount={"PKR.44,000"}
                percentage={20}
-               changeIndicator={dashboardData ? `(${dashboardData.kpis.avg_order_value.change > 0 ? '+' : ''}${dashboardData.kpis.avg_order_value.change}) than last week` : "(0) than last week"}
-               changeType={dashboardData && dashboardData.kpis.avg_order_value.change > 0 ? "positive" : "negative"}
+               changeIndicator={"(-10) than last week"}
+               changeType={"negative"}
                icon={<StatsIcon h={{ base: "12px", sm: "13px", md: "15px", lg: "16px" }} w={{ base: "12px", sm: "13px", md: "15px", lg: "16px" }} color={iconBoxInside} />}
             />
           </SimpleGrid>

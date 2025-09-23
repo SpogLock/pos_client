@@ -5,11 +5,8 @@ import Billing from "views/Dashboard/Billing";
 import RTLPage from "views/Dashboard/RTL";
 import Profile from "views/Dashboard/Profile";
 import InProgress from "views/Dashboard/InProgress";
-import SalesAnalytics from "views/Dashboard/SalesAnalytics";
-import CustomerManagement from "views/Dashboard/CustomerManagement";
 import SignIn from "views/Auth/SignIn.js";
 import SignUp from "views/Auth/SignUp.js";
-import RentalManagement from "views/Dashboard/RentalManagement";
 
 import {
   HomeIcon,
@@ -31,36 +28,20 @@ var dashRoutes = [
     component: Dashboard,
     layout: "/admin",
   },
-  {
-    path: "/sales-analytics",
-    name: "Sales & Analytics",
-    rtlName: "لوحة القيادة",
-    icon: <StatsIcon color="inherit" />,
-    component: SalesAnalytics,
-    layout: "/admin",
-  },
-  {
-    path: "/stock-management",
-    name: "Stock Management",
-    rtlName: "لوحة القيادة",
-    icon: <SettingsIcon color="inherit" />,
-    component: Tables,
-    layout: "/admin",
-  },
-  {
-    path: "/rental-management",
-    name: "Rental Management",
-    rtlName: "لوحة القيادة",
-    icon: <SupportIcon color="inherit" />,
-    component: RentalManagement,
-    layout: "/admin",
-  },
+  // {
+  //   path: "/sales-analytics",
+  //   name: "Sales & Analytics",
+  //   rtlName: "لوحة القيادة",
+  //   icon: <StatsIcon color="inherit" />,
+  //   component: InProgress,
+  //   layout: "/admin",
+  // },
   {
     path: "/customer-management",
     name: "Customer Management",
     rtlName: "لوحة القيادة",
-    icon: <PersonIcon color="inherit" />,
-    component: CustomerManagement,
+    icon: <SettingsIcon color="inherit" />,
+    component: Tables,
     layout: "/admin",
   },
   {
@@ -78,15 +59,15 @@ var dashRoutes = [
     rtlName: "صفحات",
     state: "pageCollapse",
     views: [
-      // {
-      //   path: "/profile",
-      //   name: "Profile",
-      //   rtlName: "لوحة القيادة",
-      //   icon: <PersonIcon color="inherit" />,
-      //   secondaryNavbar: true,
-      //   component: InProgress,
-      //   layout: "/admin",
-      // },
+      {
+        path: "/profile",
+        name: "Profile",
+        rtlName: "لوحة القيادة",
+        icon: <PersonIcon color="inherit" />,
+        secondaryNavbar: true,
+        component: InProgress,
+        layout: "/admin",
+      },
       {
         path: "/signin",
         name: "Sign In",

@@ -257,7 +257,7 @@ export const tablesTableData = [
 export const tablesProjectData = [
   {
     logo: AdobexdLogo,
-    name: "POS Mughal",
+    name: "Purity UI Version",
     budget: "$14,000",
     status: "Working",
     progression: 60,
@@ -296,35 +296,35 @@ export const invoicesData = [
   {
     date: "March, 01, 2020",
     code: "#MS-415646",
-    price: "PKR. 1800",
+    price: "$180",
     logo: FaFilePdf,
     format: "PDF",
   },
   {
     date: "February, 10, 2020",
     code: "#RV-126749",
-    price: "PKR. 2500",
+    price: "$250",
     logo: FaFilePdf,
     format: "PDF",
   },
   {
     date: "April, 05, 2020",
     code: "#FB-212562",
-    price: "PKR. 5600",
+    price: "$560",
     logo: FaFilePdf,
     format: "PDF",
   },
   {
     date: "June, 25, 2019",
     code: "#QW-103578",
-    price: "PKR. 1200",
+    price: "$120",
     logo: FaFilePdf,
     format: "PDF",
   },
   {
     date: "March, 01, 2019",
     code: "#AR-803481",
-    price: "PKR. 3000",
+    price: "$300",
     logo: FaFilePdf,
     format: "PDF",
   },
@@ -332,63 +332,63 @@ export const invoicesData = [
 
 export const billingData = [
   {
-    name: "Electricity Bill",
-    company: "Electricity Board",
-    email: "electricity@board.com",
+    name: "Oliver Liam",
+    company: "Viking Burrito",
+    email: "oliver@burrito.com",
     number: "FRB1235476",
   },
   {
-    name: "Internet Bill",
-    company: "Internet Board",
-    email: "internet@board.com",
+    name: "Lucas Harper",
+    company: "Stone Tech Zone",
+    email: "lucas@stone-tech.com",
     number: "FRB1235476",
   },
   {
-    name: "Daily Investment",
-    company: "Daily Investment Board",
-    email: "daily@investment.com",
+    name: "Ethan James",
+    company: "Fiber Notion",
+    email: "ethan@fiber.com",
     number: "FRB1235476",
   },
 ];
 
 export const newestTransactions = [
   {
-    name: "Store Maintenance",
+    name: "Netflix",
     date: "27 March 2021, at 12:30 PM",
-    price: "- PKR. 2,500",
+    price: "- $2,500",
     logo: FaArrowDown,
   },
   {
-    name: "Daily Investment",
+    name: "Apple",
     date: "27 March 2021, at 12:30 PM",
-    price: "+ PKR. 2,500",
+    price: "+ $2,500",
     logo: FaArrowUp,
   },
 ];
 
 export const olderTransactions = [
   {
-    name: "Inventory Investment",
+    name: "Stripe",
     date: "26 March 2021, at 13:45 PM",
-    price: "+ PKR. 800",
+    price: "+ $800",
     logo: FaArrowUp,
   },
   {
     name: "HubSpot",
     date: "26 March 2021, at 12:30 PM",
-    price: "+ PKR. 1,700",
+    price: "+ $1,700",
     logo: FaArrowUp,
   },
   {
-    name: "Electricity Bill",
+    name: "Webflow",
     date: "26 March 2021, at 05:00 PM",
     price: "Pending",
     logo: AiOutlineExclamation,
   },
   {
-    name: "Internet Bill",
+    name: "Microsoft",
     date: "25 March 2021, at 16:30 PM",
-    price: "- PKR. 987",
+    price: "- $987",
     logo: FaArrowDown,
   },
 ];

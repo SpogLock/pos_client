@@ -19,50 +19,9 @@ import CardHeader from "components/Card/CardHeader.js";
 import DashboardTableRow from "components/Tables/DashboardTableRow";
 import React from "react";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
-import logo from "assets/img/avatars/placeholder.png";
 
-const Projects = ({ title, amount, captions, data, isLoading }) => {
+const Projects = ({ title, amount, captions, data }) => {
   const textColor = useColorModeValue("gray.700", "white");
-  const [stockData, setStockData] = React.useState([]);
-  const [stockLoading, setStockLoading] = React.useState(true);
-
-  // Fetch stock data
-  const fetchStockData = async () => {
-    try {
-      setStockLoading(true);
-      const token = localStorage.getItem('token');
-      const response = await fetch(`${process.env.REACT_APP_API_URL || 'https://server.mughalsupplier.com/api'}/core/stock`, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Accept': 'application/json',
-        },
-      });
-
-      if (response.ok) {
-        const stockItems = await response.json();
-        // Transform stock data to match the expected format
-        const transformedData = stockItems.slice(0, 5).map((item, index) => ({
-          name: item.item_name,
-          logo: logo,
-          members: [`${item.total_sold || 0} sold`],
-          budget: `PKR. ${parseFloat(item.stock_value || 0).toLocaleString()}`,
-          progression: Math.round((parseFloat(item.quantity_per_unit) / (parseFloat(item.quantity_per_unit) + (item.total_sold || 0))) * 100) || 0
-        }));
-        setStockData(transformedData);
-      } else {
-        setStockData([]);
-      }
-    } catch (error) {
-      console.error('Failed to fetch stock data:', error);
-      setStockData([]);
-    } finally {
-      setStockLoading(false);
-    }
-  };
-
-  React.useEffect(() => {
-    fetchStockData();
-  }, []);
 
   return (
     <Card p='16px' overflowX={{ sm: "scroll", xl: "hidden" }}>
@@ -81,7 +40,7 @@ const Projects = ({ title, amount, captions, data, isLoading }) => {
             />
             <Text fontSize='sm' color='gray.400' fontWeight='normal'>
               <Text fontWeight='bold' as='span'>
-                {stockLoading ? "Loading..." : stockData.length} Products
+                {amount} Products
               </Text>{" "}
               Stocked this month.
             </Text>
@@ -101,32 +60,18 @@ const Projects = ({ title, amount, captions, data, isLoading }) => {
           </Tr>
         </Thead>
         <Tbody>
-          {stockLoading ? (
-            <tr>
-              <td colSpan={4} style={{ textAlign: 'center', padding: '20px' }}>
-                <Text color="gray.500" fontSize="sm">Loading stock data...</Text>
-              </td>
-            </tr>
-          ) : stockData.length > 0 ? (
-            stockData.map((row) => {
-              return (
-                <DashboardTableRow
-                  key={row.name}
-                  name={row.name}
-                  logo={row.logo}
-                  members={row.members}
-                  budget={row.budget}
-                  progression={row.progression}
-                />
-              );
-            })
-          ) : (
-            <tr>
-              <td colSpan={4} style={{ textAlign: 'center', padding: '20px' }}>
-                <Text color="gray.500" fontSize="sm">No stock data available</Text>
-              </td>
-            </tr>
-          )}
+          {data.map((row) => {
+            return (
+              <DashboardTableRow
+                key={row.name}
+                name={row.name}
+                logo={row.logo}
+                members={row.members}
+                budget={row.budget}
+                progression={row.progression}
+              />
+            );
+          })}
         </Tbody>
       </Table>
       <Flex align='center'>

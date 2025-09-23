@@ -9,8 +9,8 @@ function Tables() {
   return (
     <Flex direction='column' pt={{ base: "120px", md: "75px" }}>
       <Authors
-        title={"Stock Management"}
-        captions={["Products", "Quantity Per Unit", "Category", "Status", "Stock Value",""]}
+        title={"Customer Management"}
+        captions={["Name", "Email", "Phone", "Address", "City", "Package", "Discount", "Discount Provider"]}
         data={tablesTableData}
       />
       {/* <Projects

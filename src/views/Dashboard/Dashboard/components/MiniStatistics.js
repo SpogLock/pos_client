@@ -14,7 +14,7 @@ import IconBox from "components/Icons/IconBox";
 import React from "react";
 
 const MiniStatistics = ({ title, amount, percentage, icon }) => {
-  const iconTeal = useColorModeValue("#FF8D28", "#FF8D28");
+  const iconTeal = useColorModeValue("#319795", "#319795");
   const textColor = useColorModeValue("gray.700", "white");
 
   return (
@@ -37,7 +37,7 @@ const MiniStatistics = ({ title, amount, percentage, icon }) => {
                 alignSelf='flex-end'
                 justifySelf='flex-end'
                 m='0px'
-                color={percentage > 0 ? "#FF8D28" : "red.400"}
+                color={percentage > 0 ? "#319795" : "red.400"}
                 fontWeight='bold'
                 ps='3px'
                 fontSize='md'>

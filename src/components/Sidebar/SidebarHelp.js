@@ -20,7 +20,7 @@ export function SidebarHelp(props) {
       w="100%"
     >
       <IconBox width="35px" h="35px" bg="white" mb="auto">
-        <QuestionIcon color="#FF8D28" h="18px" w="18px" />
+        <QuestionIcon color="#319795" h="18px" w="18px" />
       </IconBox>
       <Text fontSize="sm" color="white" fontWeight="bold">
         Need help?
@@ -30,7 +30,7 @@ export function SidebarHelp(props) {
       </Text>
       <Link
         w="100%"
-        href="#"
+        href="https://demos.creative-tim.com/docs-purity-ui-dashboard/"
       >
         <Button
           fontSize="10px"
