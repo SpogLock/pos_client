@@ -9,12 +9,12 @@ gulp.task("licenses", async function () {
       gap.prependText(`/*!
 
       =========================================================
-      * Purity UI Dashboard - v1.0.1
+      * Spoglock Orbit - v1.0.1
       =========================================================
       
-      * Product Page: https://www.creative-tim.com/product/purity-ui-dashboard
+      * Product Page: https://www.creative-tim.com/product/spoglock-orbit
       * Copyright 2021 Creative Tim (https://www.creative-tim.com)
-      * Licensed under MIT (https://github.com/creativetimofficial/purity-ui-dashboard/blob/master/LICENSE.md)
+      * Licensed under MIT (https://github.com/creativetimofficial/spoglock-orbit/blob/master/LICENSE.md)
       
       * Design by Creative Tim & Coded by Simmmple
       
@@ -34,12 +34,12 @@ gulp.task("licenses", async function () {
       /*!
       
       =========================================================
-      * Purity UI Dashboard - v1.0.1
+      * Spoglock Orbit - v1.0.1
       =========================================================
       
-      * Product Page: https://www.creative-tim.com/product/purity-ui-dashboard
+      * Product Page: https://www.creative-tim.com/product/spoglock-orbit
       * Copyright 2021 Creative Tim (https://www.creative-tim.com)
-      * Licensed under MIT (https://github.com/creativetimofficial/purity-ui-dashboard/blob/master/LICENSE.md)
+      * Licensed under MIT (https://github.com/creativetimofficial/spoglock-orbit/blob/master/LICENSE.md)
       
       * Design by Creative Tim & Coded by Simmmple
       
@@ -59,12 +59,12 @@ gulp.task("licenses", async function () {
       gap.prependText(`/*!
 
       =========================================================
-      * Purity UI Dashboard - v1.0.1
+      * Spoglock Orbit - v1.0.1
       =========================================================
       
-      * Product Page: https://www.creative-tim.com/product/purity-ui-dashboard
+      * Product Page: https://www.creative-tim.com/product/spoglock-orbit
       * Copyright 2021 Creative Tim (https://www.creative-tim.com)
-      * Licensed under MIT (https://github.com/creativetimofficial/purity-ui-dashboard/blob/master/LICENSE.md)
+      * Licensed under MIT (https://github.com/creativetimofficial/spoglock-orbit/blob/master/LICENSE.md)
       
       * Design by Creative Tim & Coded by Simmmple
       

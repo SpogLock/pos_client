@@ -1,40 +1,40 @@
-# [Purity UI Dashboard](https://demos.creative-tim.com/purity-ui-dashboard) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fpurity-ui-dashboard%2F&text=Check%20Purity%20UI%20Dashboard%20made%20by%20%40CreativeTim%20%26%20%40simmmple_web)
+# [Spoglock Orbit](https://demos.creative-tim.com/spoglock-orbit) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fspoglock-orbit%2F&text=Check%20Purity%20UI%20Dashboard%20made%20by%20%40CreativeTim%20%26%20%40simmmple_web)
 
-![version](https://img.shields.io/badge/version-1.0.1-blue.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/purity-ui-dashboard.svg?maxAge=2592000)](https://github.com/creativetimofficial/purity-ui-dashboard/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/purity-ui-dashboard.svg?maxAge=2592000)](https://github.com/creativetimofficial/purity-ui-dashboard/issues?q=is%3Aissue+is%3Aclosed)
+![version](https://img.shields.io/badge/version-1.0.1-blue.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/spoglock-orbit.svg?maxAge=2592000)](https://github.com/creativetimofficial/spoglock-orbit/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/spoglock-orbit.svg?maxAge=2592000)](https://github.com/creativetimofficial/spoglock-orbit/issues?q=is%3Aissue+is%3Aclosed)
 
 ![Product Gif](https://i.ibb.co/7NXMZQS/Cover-Purity-Chakra-FREE-Thumbnail.png)
 
 Most trendiest, complex and innovative Dashboard Made by [Creative Tim](https://creative-tim.com/?ref=readme-pud) & [Simmmple](https://simmmple.com?ref=readme-pud). Check our latest Free ReactJS Dashboard based on Chakra UI.
 
-Designed for those who like modern UI elements and beautiful websites. Made of hundred of elements, designed blocks and fully coded pages, Purity UI Dashboard is ready to help you create stunning websites and webapps.
+Designed for those who like modern UI elements and beautiful websites. Made of hundred of elements, designed blocks and fully coded pages, Spoglock Orbit is ready to help you create stunning websites and webapps.
 
 We created many examples for pages like Sign In, Profile and so on. Just choose between a Basic Design, an illustration or a cover and you are good to go!
 
 **Fully Coded Elements**
 
-Purity UI Dashboard is built with over 70 frontend individual elements, like buttons, inputs, navbars, navtabs, cards or alerts, giving you the freedom of choosing and combining. All components can take variations in colour, that you can easily modify using Chakra's style props.
+Spoglock Orbit is built with over 70 frontend individual elements, like buttons, inputs, navbars, navtabs, cards or alerts, giving you the freedom of choosing and combining. All components can take variations in colour, that you can easily modify using Chakra's style props.
 
 You will save a lot of time going from prototyping to full-functional code, because all elements are implemented.
 This Free Chakra UI Dashboard is coming with prebuilt design blocks, so the development process is seamless,
 switching from our pages to the real website is very easy to be done.
 
-Check all components <a href="https://demos.creative-tim.com/docs-purity-ui-dashboard/?ref=readme-pud" target="_blank">here</a>.
+Check all components <a href="https://demos.creative-tim.com/docs-spoglock-orbit/?ref=readme-pud" target="_blank">here</a>.
 
 **Documentation built by Developers**
 
 Each element is well presented in a very complex documentation.
-You can read more about the <a href="https://demos.creative-tim.com/docs-purity-ui-dashboard/?ref=readme-pud" target="_blank">documentation here</a>.
+You can read more about the <a href="https://demos.creative-tim.com/docs-spoglock-orbit/?ref=readme-pud" target="_blank">documentation here</a>.
 
 **Example Pages**
 
 If you want to get inspiration or just show something directly to your clients,
 you can jump start your development with our pre-built example pages. You will be able
 to quickly set up the basic structure for your web project.
-View <a href="https://demos.creative-tim.com/purity-ui-dashboard/#/admin/dashboard?ref=readme-pud" target="_blank">example pages here</a>.
+View <a href="https://demos.creative-tim.com/spoglock-orbit/#/admin/dashboard?ref=readme-pud" target="_blank">example pages here</a>.
 
 **HELPFUL LINKS**
 
-- View <a href="https://github.com/creativetimofficial/purity-ui-dashboard" target="_blank">Github Repository</a>
+- View <a href="https://github.com/creativetimofficial/spoglock-orbit" target="_blank">Github Repository</a>
 
 - Check <a href="https://www.creative-tim.com/knowledge-center?ref=readme-pud" target="_blank">FAQ Page</a>
 
@@ -50,7 +50,7 @@ Let us know your thoughts below. And good luck with development!
 
 ## Table of Contents
 
-- [Purity UI Dashboard](https://demos.creative-tim.com/purity-ui-dashboard/#/admin/dashboard?ref=readme-pud)
+- [Spoglock Orbit](https://demos.creative-tim.com/spoglock-orbit/#/admin/dashboard?ref=readme-pud)
 - [Table of Contents](#table-of-contents)
 - [Versions](#versions)
 - [Demo](#demo)
@@ -67,44 +67,44 @@ Let us know your thoughts below. And good luck with development!
 
 ## Versions
 
-[<img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/react-logo.jpg?raw=true" width="60" height="60" />](https://www.creative-tim.com/product/purity-ui-dashboard?ref=readme-pud)[<img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/figma-logo.jpg?raw=true" width="60" height="60" />](https://www.creative-tim.com/product/purity-ui-dashboard?ref=readme-pud)
+[<img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/react-logo.jpg?raw=true" width="60" height="60" />](https://www.creative-tim.com/product/spoglock-orbit?ref=readme-pud)[<img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/figma-logo.jpg?raw=true" width="60" height="60" />](https://www.creative-tim.com/product/spoglock-orbit?ref=readme-pud)
 
 | React                                                                                                                                                                                        | Figma                                                                                                                                                                                   |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [![Purity Free ReactJS Chakra Dashboard](https://i.ibb.co/Ct9RvRZ/Cover-Purity-Chakra-FREE-Thumbnail-React-JS.png)](https://www.creative-tim.com/product/purity-ui-dashboard?ref=readme-pud) | [![Purity Free Figma Chakra Dashboard](https://i.ibb.co/wRK0jbK/Cover-Purity-Chakra-FREE-Thumbnail-Figma.png)](https://www.creative-tim.com/product/purity-ui-dashboard?ref=readme-pud) |
+| [![Purity Free ReactJS Chakra Dashboard](https://i.ibb.co/Ct9RvRZ/Cover-Purity-Chakra-FREE-Thumbnail-React-JS.png)](https://www.creative-tim.com/product/spoglock-orbit?ref=readme-pud) | [![Purity Free Figma Chakra Dashboard](https://i.ibb.co/wRK0jbK/Cover-Purity-Chakra-FREE-Thumbnail-Figma.png)](https://www.creative-tim.com/product/spoglock-orbit?ref=readme-pud) |
 
 ## Demo
 
-- [Dashboard](https://demos.creative-tim.com/purity-ui-dashboard/#/admin/dashboard?ref=readme-pud)
-- [Tables page](https://demos.creative-tim.com/purity-ui-dashboard/#/admin/tables?ref=readme-pud)
-- [Billing page](https://demos.creative-tim.com/purity-ui-dashboard/#/admin/billing?ref=readme-pud)
-- [Profile page](http://demos.creative-tim.com/purity-ui-dashboard/#/admin/profile?ref=readme-pud)
-- [Sign in page](https://demos.creative-tim.com/purity-ui-dashboard/#/auth/signin?ref=readme-pud)
-- [Sign up page](https://demos.creative-tim.com/purity-ui-dashboard/#/auth/signup?ref=readme-pud)
+- [Dashboard](https://demos.creative-tim.com/spoglock-orbit/#/admin/dashboard?ref=readme-pud)
+- [Tables page](https://demos.creative-tim.com/spoglock-orbit/#/admin/tables?ref=readme-pud)
+- [Billing page](https://demos.creative-tim.com/spoglock-orbit/#/admin/billing?ref=readme-pud)
+- [Profile page](http://demos.creative-tim.com/spoglock-orbit/#/admin/profile?ref=readme-pud)
+- [Sign in page](https://demos.creative-tim.com/spoglock-orbit/#/auth/signin?ref=readme-pud)
+- [Sign up page](https://demos.creative-tim.com/spoglock-orbit/#/auth/signup?ref=readme-pud)
 
-[View More](https://demos.creative-tim.com/purity-ui-dashboard/#/admin/dashboard?ref=readme-pud).
+[View More](https://demos.creative-tim.com/spoglock-orbit/#/admin/dashboard?ref=readme-pud).
 
 ## Quick Start
 
-- Clone the repo: `git clone https://github.com/creativetimofficial/purity-ui-dashboard.git`.
-- `cd purity-ui-dashboard`
+- Clone the repo: `git clone https://github.com/creativetimofficial/spoglock-orbit.git`.
+- `cd spoglock-orbit`
 - `npm install`
 - `npm start`
-- [Download from Github](https://github.com/creativetimofficial/purity-ui-dashboard/archive/main.zip).
-- [Download from Creative Tim](https://www.creative-tim.com/product/purity-ui-dashboard).
+- [Download from Github](https://github.com/creativetimofficial/spoglock-orbit/archive/main.zip).
+- [Download from Creative Tim](https://www.creative-tim.com/product/spoglock-orbit).
 
 ## Deploy
 
 :rocket: You can deploy your own version of the template to Genezio with one click:
 
-[![Deploy to Genezio](https://raw.githubusercontent.com/Genez-io/graphics/main/svg/deploy-button.svg)](https://app.genez.io/start/deploy?repository=https://github.com/creativetimofficial/purity-ui-dashboard&utm_source=github&utm_medium=referral&utm_campaign=github-creativetim&utm_term=deploy-project&utm_content=button-head)
+[![Deploy to Genezio](https://raw.githubusercontent.com/Genez-io/graphics/main/svg/deploy-button.svg)](https://app.genez.io/start/deploy?repository=https://github.com/creativetimofficial/spoglock-orbit&utm_source=github&utm_medium=referral&utm_campaign=github-creativetim&utm_term=deploy-project&utm_content=button-head)
 
 ## File Structure
 
 Within the download you'll find the following directories and files:
 
 ```
-purity-ui-dashboard/
+spoglock-orbit/
 ├── .gitattributes
 ├── .gitigonore
 ├── CHANGELOG.md
@@ -221,17 +221,17 @@ At present, we officially aim to support the last two versions of the following 
 
 ## Resources
 
-- Demo: <https://demos.creative-tim.com/purity-ui-dashboard/#/admin/dashboard?ref=readme-pud>
-- Download Page: <https://www.creative-tim.com/product/purity-ui-dashboard?ref=readme-pud>
+- Demo: <https://demos.creative-tim.com/spoglock-orbit/#/admin/dashboard?ref=readme-pud>
+- Download Page: <https://www.creative-tim.com/product/spoglock-orbit?ref=readme-pud>
 - License Agreement: <https://www.creative-tim.com/license?ref=readme-pud>
 - Support: <https://www.creative-tim.com/contact-us?ref=readme-pud>
-- Issues: [Github Issues Page](https://github.com/creativetimofficial/purity-ui-dashboard/issues)
+- Issues: [Github Issues Page](https://github.com/creativetimofficial/spoglock-orbit/issues)
 
 ## Reporting Issues
 
-We use GitHub Issues as the official bug tracker for the Purity UI Dashboard. Here are some advices for our users that want to report an issue:
+We use GitHub Issues as the official bug tracker for the Spoglock Orbit. Here are some advices for our users that want to report an issue:
 
-1. Make sure that you are using the latest version of the Purity UI Dashbaord. Check the CHANGELOG from your dashboard on our [CHANGE LOG File](https://github.com/creativetimofficial/purity-ui-dashboard/blob/main/CHANGELOG.md?ref=readme-pud).
+1. Make sure that you are using the latest version of the Purity UI Dashbaord. Check the CHANGELOG from your dashboard on our [CHANGE LOG File](https://github.com/creativetimofficial/spoglock-orbit/blob/main/CHANGELOG.md?ref=readme-pud).
 2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
 3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
 
