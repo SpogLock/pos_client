@@ -48,7 +48,7 @@ function Sidebar(props) {
           borderRadius={sidebarRadius}
         >
           <SidebarContent routes={routes}
-        logoText={"Pharma Manager"}
+        logoText={"SpogLock Orbit"}
         display="none"
         sidebarVariant={sidebarVariant}
         />
