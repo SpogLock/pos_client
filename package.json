@@ -2,7 +2,7 @@
 	"name": "spoglock-orbit",
 	"version": "1.0.0",
 	"private": true,
-	"homepage": "https://demos.creative-tim.com/spoglock/",
+	"homepage": "https://demos.creative-tim.com/pos-dashboard/#/",
 	"dependencies": {
 		"@chakra-ui/icons": "^1.1.5",
 		"@chakra-ui/react": "1.8.8",
@@ -45,7 +45,7 @@
 	},
 	"scripts": {
 		"start": "react-scripts start",
-		"build": "cross-env CI=false cross-env PUBLIC_URL=/spoglock/ react-scripts build && gulp licenses",
+		"build": "cross-env CI=false react-scripts build && gulp licenses",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
 		"deploy": "npm run build",
