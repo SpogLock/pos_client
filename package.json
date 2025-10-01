@@ -2,7 +2,7 @@
 	"name": "spoglock-orbit",
 	"version": "1.0.0",
 	"private": true,
-	"homepage": "https://demos.creative-tim.com/pos-dashboard/#/",
+	"homepage": ".",
 	"dependencies": {
 		"@chakra-ui/icons": "^1.1.5",
 		"@chakra-ui/react": "1.8.8",
