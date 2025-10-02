@@ -361,9 +361,6 @@ const Authors = ({ title, captions, data }) => {
               <Text fontSize="md" color={cardLabelColor} textAlign="center" fontWeight="medium">
                 {hoveredCustomer.customerPlan} Plan
               </Text>
-              <Text fontSize="sm" color={cardLabelColor} textAlign="center">
-                {hoveredCustomer.customerAge} years • {hoveredCustomer.customerWeight}
-              </Text>
             </VStack>
           </VStack>
         </Box>
@@ -500,14 +497,6 @@ const Authors = ({ title, captions, data }) => {
         <Box display="grid" gridTemplateColumns="1fr 1fr" gap={3}>
           <VStack align="start" spacing={1}>
             <Text fontSize="xs" color={cardIconColor} fontWeight="medium" textTransform="uppercase">
-              Registration Date
-            </Text>
-            <Text fontSize="sm" fontWeight="bold" color={cardTextColor}>
-              {customer.registrationDate}
-            </Text>
-          </VStack>
-          <VStack align="start" spacing={1}>
-            <Text fontSize="xs" color={cardIconColor} fontWeight="medium" textTransform="uppercase">
               Customer Plan
             </Text>
             <Text fontSize="sm" fontWeight="bold" color={cardTextColor}>
@@ -522,29 +511,13 @@ const Authors = ({ title, captions, data }) => {
               {customer.trainerRequired}
             </Text>
           </VStack>
-          <VStack align="start" spacing={1}>
-            <Text fontSize="xs" color={cardIconColor} fontWeight="medium" textTransform="uppercase">
-              Age
-            </Text>
-            <Text fontSize="sm" fontWeight="bold" color={cardTextColor}>
-              {customer.customerAge} years
-            </Text>
-          </VStack>
-          <VStack align="start" spacing={1}>
-            <Text fontSize="xs" color={cardIconColor} fontWeight="medium" textTransform="uppercase">
-              Weight
-            </Text>
-            <Text fontSize="sm" fontWeight="bold" color={cardTextColor}>
-              {customer.customerWeight}
-            </Text>
-          </VStack>
         </Box>
       </Box>
     </Box>
   );
 
   // Customer management captions
-  const stockCaptions = ["Picture", "Member Name", "Member Type", "Mobile No", "Email", "Address", "Registered on", "Membership", "Trainer", "Customer Plan", "Weight", "Age", "Monthly Fee", "Fee Status", "Actions"];
+  const stockCaptions = ["Picture", "Member Name", "Member Type", "Mobile No", "Email", "Address", "Membership", "Trainer", "Customer Plan", "Fee Status", "Actions"];
 
   return (
     <Card overflowX={{ sm: "scroll", xl: "hidden" }}>
@@ -678,14 +651,9 @@ const Authors = ({ title, captions, data }) => {
                             <Text fontSize="xs" color={cardLabelColor}>
                               {customer.customerPlan}
                             </Text>
-                            <HStack spacing={1}>
-                              <Text fontSize="xs" color="gray.500">
-                                {customer.monthlyFee}
-                              </Text>
-                              {isFeeOverdue(customer.nextDueDate) && (
-                                <Box color="red.500" fontSize="xs">⚠️</Box>
-                              )}
-                            </HStack>
+                            {isFeeOverdue(customer.nextDueDate) && (
+                              <Box color="red.500" fontSize="xs">⚠️</Box>
+                            )}
                           </VStack>
                  </Flex>
                </Box>
@@ -791,22 +759,16 @@ const Authors = ({ title, captions, data }) => {
                         <Divider mb={3} />
 
                         {/* Fee Status */}
-                        <Flex justifyContent="space-between" alignItems="center" mb={3}>
-                          <HStack spacing={2}>
-                            <Text fontSize="sm" color={cardLabelColor}>Monthly Fee:</Text>
-                            <Text fontSize="sm" fontWeight="bold" color={textColor}>
-                              {customer.monthlyFee}
-                            </Text>
-                          </HStack>
-                          {isFeeOverdue(customer.nextDueDate) && (
+                        {isFeeOverdue(customer.nextDueDate) && (
+                          <Flex justifyContent="flex-end" alignItems="center" mb={3}>
                             <HStack spacing={1}>
                               <Box color="red.500" fontSize="sm">⚠️</Box>
                               <Text fontSize="xs" color="red.500" fontWeight="semibold">
                                 OVERDUE
                               </Text>
                             </HStack>
-                          )}
-                        </Flex>
+                          </Flex>
+                        )}
 
                         <Divider mb={3} />
 
@@ -857,14 +819,6 @@ const Authors = ({ title, captions, data }) => {
                    <Box display="grid" gridTemplateColumns="1fr 1fr" gap={3}>
                      <VStack align="start" spacing={1}>
                        <Text fontSize="xs" color={cardIconColor} fontWeight="medium" textTransform="uppercase">
-                         Registration Date
-                       </Text>
-                       <Text fontSize="sm" fontWeight="bold" color={textColor}>
-                         {customer.registrationDate}
-                       </Text>
-                     </VStack>
-                     <VStack align="start" spacing={1}>
-                       <Text fontSize="xs" color={cardIconColor} fontWeight="medium" textTransform="uppercase">
                          Customer Plan
                        </Text>
                        <Badge
@@ -897,14 +851,6 @@ const Authors = ({ title, captions, data }) => {
                          </Text>
                        </HStack>
                      </VStack>
-                     <VStack align="start" spacing={1}>
-                       <Text fontSize="xs" color={cardIconColor} fontWeight="medium" textTransform="uppercase">
-                         Age & Weight
-                       </Text>
-                       <Text fontSize="sm" fontWeight="bold" color={textColor}>
-                         {customer.customerAge} years • {customer.customerWeight}
-                       </Text>
-                     </VStack>
                    </Box>
                  </Box>
                </Box>
@@ -912,23 +858,34 @@ const Authors = ({ title, captions, data }) => {
           </VStack>
         ) : (
           // Desktop Table View
-           <Table variant='simple' color={textColor} size="md">
+           <Table 
+             variant='simple' 
+             color={textColor} 
+             size="md"
+             border="1px solid"
+             borderColor={borderColor}
+             borderRadius="12px"
+             overflow="hidden"
+             boxShadow="0px 4px 12px rgba(0, 0, 0, 0.1)"
+           >
             <Thead>
                <Tr bg={useColorModeValue("gray.50", "gray.700")} borderBottom="2px solid" borderColor={borderColor}>
                 {stockCaptions.map((caption, idx) => {
-                          const widths = ["4%", "8%", "6%", "7%", "9%", "10%", "7%", "6%", "6%", "6%", "5%", "5%", "6%", "8%", "7%"];
+                          const widths = ["8%", "18%", "8%", "14%", "16%", "20%", "8%", "8%", "10%", "10%", "8%"];
                   return (
                      <Th 
                        color='gray.600' 
                        key={idx} 
                        width={widths[idx]} 
-                       ps={idx === 0 ? "0px" : null} 
                        px="12px"
                        py="16px"
                        fontWeight="semibold"
                        fontSize="sm"
                        textTransform="none"
                        letterSpacing="normal"
+                       textAlign={idx === 0 ? "center" : "left"}
+                       borderLeft={idx === 0 ? "none" : "1px solid"}
+                       borderLeftColor={borderColor}
                      >
                       {caption}
                     </Th>

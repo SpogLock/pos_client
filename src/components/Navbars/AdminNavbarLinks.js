@@ -1,5 +1,5 @@
 // Chakra Icons
-import { BellIcon, SearchIcon, SettingsIcon, CloseIcon } from "@chakra-ui/icons";
+import { BellIcon, SearchIcon, SettingsIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 // Chakra Imports
 import {
   Button,
@@ -14,6 +14,7 @@ import {
   MenuList,
   Text,
   useColorModeValue,
+  useColorMode,
   Box,
   VStack,
   HStack,
@@ -48,6 +49,7 @@ export default function HeaderLinks(props) {
   const { variant, children, fixed, secondary, onOpen, ...rest } = props;
   const location = useLocation();
   const { searchQuery, filters, updateSearchQuery, updateFilters, clearFilters, resetSearch } = useSearch();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   // Chakra Color Mode
   let mainTeal = useColorModeValue("#319795", "#319795");
@@ -57,8 +59,8 @@ export default function HeaderLinks(props) {
   let searchIcon = useColorModeValue("gray.700", "gray.200");
 
   if (secondary) {
-    navbarIcon = "white";
-    mainText = "white";
+    navbarIcon = useColorModeValue("gray.700", "gray.100");
+    mainText = useColorModeValue("gray.800", "gray.100");
   }
   const settingsRef = React.useRef();
 
@@ -96,25 +98,59 @@ export default function HeaderLinks(props) {
   };
   return (
     <Flex
-      pe={{ sm: "0px", md: "16px" }}
+      pe={{ sm: "0px", md: "0px" }}
       w={{ sm: "100%", md: "auto" }}
       alignItems="center"
       flexDirection="row"
+      gap="12px"
     >
-      <HStack spacing={2} me={{ sm: "auto", md: "20px" }}>
+      <HStack spacing={3} me={{ sm: "auto", md: "20px" }}>
         <InputGroup
           cursor="pointer"
-          bg={inputBg}
-          borderRadius="15px"
+          bg={useColorModeValue("rgba(255, 255, 255, 0.15)", "rgba(26, 32, 44, 0.15)")}
+          backdropFilter="blur(30px) saturate(180%)"
+          borderRadius="16px"
+          border="1px solid"
+          borderColor={useColorModeValue("rgba(255, 255, 255, 0.3)", "rgba(255, 255, 255, 0.2)")}
+          boxShadow={useColorModeValue(
+            "0px 8px 32px rgba(0, 0, 0, 0.06), 0px 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
+            "0px 8px 32px rgba(0, 0, 0, 0.2), 0px 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+          )}
           w={{
-            sm: "128px",
-            md: "250px",
+            sm: "200px",
+            md: "300px",
           }}
           _focus={{
-            borderColor: { mainTeal },
+            borderColor: mainTeal,
+            boxShadow: `0 0 0 1px ${mainTeal}, 0px 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3)`,
+            bg: useColorModeValue("rgba(255, 255, 255, 0.2)", "rgba(26, 32, 44, 0.2)"),
           }}
           _active={{
-            borderColor: { mainTeal },
+            borderColor: mainTeal,
+          }}
+          _hover={{
+            bg: useColorModeValue("rgba(255, 255, 255, 0.25)", "rgba(26, 32, 44, 0.25)"),
+            boxShadow: useColorModeValue(
+              "0px 12px 40px rgba(0, 0, 0, 0.08), 0px 4px 12px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
+              "0px 12px 40px rgba(0, 0, 0, 0.25), 0px 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15)"
+            )
+          }}
+          transition="all 0.3s ease"
+          position="relative"
+          _before={{
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            borderRadius: "16px",
+            background: useColorModeValue(
+              "linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%)",
+              "linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%)"
+            ),
+            pointerEvents: "none",
+            zIndex: -1
           }}
         >
           <InputLeftElement
@@ -312,19 +348,91 @@ export default function HeaderLinks(props) {
         // logo={logo}
         {...rest}
       />
-      <SettingsIcon
-        cursor="pointer"
-        ms={{ base: "16px", xl: "0px" }}
-        me="16px"
-        ref={settingsRef}
-        onClick={props.onOpen}
+      <IconButton
+        aria-label="Toggle color mode"
+        icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+        onClick={toggleColorMode}
+        variant="ghost"
         color={navbarIcon}
-        w="18px"
-        h="18px"
+        size="sm"
+        borderRadius="16px"
+        bg={useColorModeValue("rgba(255, 255, 255, 0.2)", "rgba(26, 32, 44, 0.2)")}
+        backdropFilter="blur(30px) saturate(180%)"
+        border="1px solid"
+        borderColor={useColorModeValue("rgba(255, 255, 255, 0.3)", "rgba(255, 255, 255, 0.2)")}
+        boxShadow={useColorModeValue(
+          "0px 8px 24px rgba(0, 0, 0, 0.08), 0px 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
+          "0px 8px 24px rgba(0, 0, 0, 0.2), 0px 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+        )}
+        _hover={{ 
+          bg: useColorModeValue("rgba(255, 255, 255, 0.3)", "rgba(26, 32, 44, 0.3)"),
+          transform: "scale(1.08)",
+          boxShadow: useColorModeValue(
+            "0px 12px 32px rgba(0, 0, 0, 0.12), 0px 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
+            "0px 12px 32px rgba(0, 0, 0, 0.3), 0px 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15)"
+          )
+        }}
+        transition="all 0.3s ease"
+        position="relative"
+        _before={{
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          borderRadius: "16px",
+          background: useColorModeValue(
+            "linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%)",
+            "linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%)"
+          ),
+          pointerEvents: "none",
+          zIndex: -1
+        }}
       />
       <Menu>
         <MenuButton>
-          <BellIcon color={navbarIcon} w="18px" h="18px" />
+          <IconButton
+            aria-label="Notifications"
+            icon={<BellIcon />}
+            variant="ghost"
+            color={navbarIcon}
+            size="sm"
+            borderRadius="16px"
+            bg={useColorModeValue("rgba(255, 255, 255, 0.2)", "rgba(26, 32, 44, 0.2)")}
+            backdropFilter="blur(30px) saturate(180%)"
+            border="1px solid"
+            borderColor={useColorModeValue("rgba(255, 255, 255, 0.3)", "rgba(255, 255, 255, 0.2)")}
+            boxShadow={useColorModeValue(
+              "0px 8px 24px rgba(0, 0, 0, 0.08), 0px 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
+              "0px 8px 24px rgba(0, 0, 0, 0.2), 0px 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+            )}
+            _hover={{ 
+              bg: useColorModeValue("rgba(255, 255, 255, 0.3)", "rgba(26, 32, 44, 0.3)"),
+              transform: "scale(1.08)",
+              boxShadow: useColorModeValue(
+                "0px 12px 32px rgba(0, 0, 0, 0.12), 0px 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
+                "0px 12px 32px rgba(0, 0, 0, 0.3), 0px 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15)"
+              )
+            }}
+            transition="all 0.3s ease"
+            position="relative"
+            _before={{
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              borderRadius: "16px",
+              background: useColorModeValue(
+                "linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%)",
+                "linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%)"
+              ),
+              pointerEvents: "none",
+              zIndex: -1
+            }}
+          />
         </MenuButton>
         <MenuList p="16px 8px">
           <Flex flexDirection="column">

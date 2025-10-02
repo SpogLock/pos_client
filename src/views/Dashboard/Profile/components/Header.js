@@ -6,8 +6,12 @@ import {
   Flex,
   Text,
   useColorModeValue,
+  HStack,
+  Icon,
+  VStack,
 } from "@chakra-ui/react";
 import React from "react";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 const Header = ({
   backgroundHeader,
@@ -16,6 +20,8 @@ const Header = ({
   name,
   email,
   tabs,
+  activeTab,
+  onTabChange,
 }) => {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
@@ -94,65 +100,66 @@ const Header = ({
           </Flex>
           <Flex
             direction={{ sm: "column", lg: "row" }}
-            w={{ sm: "100%", md: "50%", lg: "auto" }}>
-            <Button p='0px' bg='transparent' _hover={{ bg: "none" }}>
-              <Flex
-                align='center'
-                w={{ sm: "100%", lg: "135px" }}
-                bg='hsla(0,0%,100%,.3)'
-                borderRadius='15px'
-                justifyContent='center'
-                py='10px'
-                boxShadow='inset 0 0 1px 1px hsl(0deg 0% 100% / 90%), 0 20px 27px 0 rgb(0 0 0 / 5%)'
-                border='1px solid gray.200'
-                cursor='pointer'>
-                {tabs[0].icon}
-                <Text
-                  fontSize='xs'
-                  color={textColor}
-                  fontWeight='bold'
-                  ms='6px'>
-                  {tabs[0].name}
-                </Text>
-              </Flex>
-            </Button>
-            <Button p='0px' bg='transparent' _hover={{ bg: "none" }}>
-              <Flex
-                align='center'
-                w={{ lg: "135px" }}
-                borderRadius='15px'
-                justifyContent='center'
-                py='10px'
-                mx={{ lg: "1rem" }}
-                cursor='pointer'>
-                {tabs[1].icon}
-                <Text
-                  fontSize='xs'
-                  color={textColor}
-                  fontWeight='bold'
-                  ms='6px'>
-                  {tabs[1].name}
-                </Text>
-              </Flex>
-            </Button>
-            <Button p='0px' bg='transparent' _hover={{ bg: "none" }}>
-              <Flex
-                align='center'
-                w={{ lg: "135px" }}
-                borderRadius='15px'
-                justifyContent='center'
-                py='10px'
-                cursor='pointer'>
-                {tabs[2].icon}
-                <Text
-                  fontSize='xs'
-                  color={textColor}
-                  fontWeight='bold'
-                  ms='6px'>
-                  {tabs[2].name}
-                </Text>
-              </Flex>
-            </Button>
+            w={{ sm: "100%", md: "50%", lg: "auto" }}
+            gap={4}>
+            {/* Quick Action Buttons */}
+            <HStack spacing={2} mr={4}>
+              <Button
+                size="sm"
+                colorScheme="teal"
+                variant="outline"
+                leftIcon={<FaEdit />}
+                onClick={() => console.log("Edit profile")}
+              >
+                Edit
+              </Button>
+              <Button
+                size="sm"
+                colorScheme="red"
+                variant="outline"
+                leftIcon={<FaTrash />}
+                onClick={() => console.log("Delete customer")}
+              >
+                Delete
+              </Button>
+            </HStack>
+
+            {/* Tab Buttons */}
+            {tabs.map((tab, index) => (
+              <Button 
+                key={index}
+                p='0px' 
+                bg='transparent' 
+                _hover={{ bg: "none" }}
+                onClick={() => onTabChange(tab.name)}
+              >
+                <Flex
+                  align='center'
+                  w={{ sm: "100%", lg: "135px" }}
+                  bg={activeTab === tab.name ? 'hsla(0,0%,100%,.5)' : 'hsla(0,0%,100%,.3)'}
+                  borderRadius='15px'
+                  justifyContent='center'
+                  py='10px'
+                  mx={{ lg: index > 0 ? "1rem" : "0" }}
+                  boxShadow={activeTab === tab.name ? 'inset 0 0 1px 1px hsl(0deg 0% 100% / 90%), 0 20px 27px 0 rgb(0 0 0 / 5%)' : 'none'}
+                  border={activeTab === tab.name ? '1px solid gray.200' : 'none'}
+                  cursor='pointer'
+                  transition='all 0.2s ease-in-out'
+                  _hover={{
+                    bg: 'hsla(0,0%,100%,.4)',
+                    transform: 'translateY(-2px)'
+                  }}>
+                  {tab.icon}
+                  <Text
+                    fontSize='xs'
+                    color={textColor}
+                    fontWeight='bold'
+                    ms='6px'>
+                    {tab.name}
+                  </Text>
+                </Flex>
+              </Button>
+            ))}
           </Flex>
         </Flex>
       </Box>

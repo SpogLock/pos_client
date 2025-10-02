@@ -1,6 +1,5 @@
 // Chakra imports
 import { ChakraProvider, Portal, useDisclosure } from '@chakra-ui/react';
-import Configurator from 'components/Configurator/Configurator';
 import Footer from 'components/Footer/Footer.js';
 // Layout components
 import AdminNavbar from 'components/Navbars/AdminNavbar.js';
@@ -13,7 +12,6 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 // Custom Chakra theme
 import theme from 'theme/theme.js';
-import FixedPlugin from '../components/FixedPlugin/FixedPlugin';
 // Custom components
 import MainPanel from '../components/Layout/MainPanel';
 import PanelContainer from '../components/Layout/PanelContainer';
@@ -84,7 +82,6 @@ export default function Dashboard(props) {
 			}
 		});
 	};
-	const { isOpen, onOpen, onClose } = useDisclosure();
 	document.documentElement.dir = 'ltr';
 	// Chakra Color Mode
 	return (
@@ -104,7 +101,6 @@ export default function Dashboard(props) {
 					}}>
 					<Portal>
 						<AdminNavbar
-							onOpen={onOpen}
 							logoText={'Spoglock Orbit'}
 							brandText={getActiveRoute(routes)}
 							secondary={getActiveNavbar(routes)}
@@ -123,20 +119,6 @@ export default function Dashboard(props) {
 						</PanelContent>
 					) : null}
 					<Footer />
-					<Portal>
-						<FixedPlugin secondary={getActiveNavbar(routes)} fixed={fixed} onOpen={onOpen} />
-					</Portal>
-					<Configurator
-						secondary={getActiveNavbar(routes)}
-						isOpen={isOpen}
-						onClose={onClose}
-						isChecked={fixed}
-						onSwitch={(value) => {
-							setFixed(value);
-						}}
-						onOpaque={() => setSidebarVariant('opaque')}
-						onTransparent={() => setSidebarVariant('transparent')}
-					/>
 				</MainPanel>
 			</SearchProvider>
 		</ChakraProvider>
