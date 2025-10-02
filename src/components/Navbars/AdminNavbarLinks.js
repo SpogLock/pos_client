@@ -1,5 +1,5 @@
 // Chakra Icons
-import { BellIcon, SearchIcon } from "@chakra-ui/icons";
+import { BellIcon, SearchIcon, SettingsIcon, CloseIcon } from "@chakra-ui/icons";
 // Chakra Imports
 import {
   Button,
@@ -14,23 +14,40 @@ import {
   MenuList,
   Text,
   useColorModeValue,
+  Box,
+  VStack,
+  HStack,
+  Select,
+  Badge,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverHeader,
+  PopoverBody,
+  Checkbox,
+  Divider,
 } from "@chakra-ui/react";
 // Assets
 import avatar1 from "assets/img/avatars/avatar1.png";
 import avatar2 from "assets/img/avatars/avatar2.png";
 import avatar3 from "assets/img/avatars/avatar3.png";
 // Custom Icons
-import { ProfileIcon, SettingsIcon } from "components/Icons/Icons";
+import { ProfileIcon } from "components/Icons/Icons";
 // Custom Components
 import { ItemContent } from "components/Menu/ItemContent";
 import SidebarResponsive from "components/Sidebar/SidebarResponsive";
 import PropTypes from "prop-types";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import routes from "routes.js";
+import { useSearch } from "contexts/SearchContext";
 
 export default function HeaderLinks(props) {
   const { variant, children, fixed, secondary, onOpen, ...rest } = props;
+  const location = useLocation();
+  const { searchQuery, filters, updateSearchQuery, updateFilters, clearFilters, resetSearch } = useSearch();
 
   // Chakra Color Mode
   let mainTeal = useColorModeValue("#319795", "#319795");
@@ -44,6 +61,39 @@ export default function HeaderLinks(props) {
     mainText = "white";
   }
   const settingsRef = React.useRef();
+
+  // Get current page context for search
+  const getCurrentPageContext = () => {
+    const path = location.pathname;
+    if (path.includes('customer-management')) return 'customers';
+    if (path.includes('stock-management')) return 'stock';
+    if (path.includes('billing')) return 'billing';
+    return 'general';
+  };
+
+  const currentContext = getCurrentPageContext();
+
+  // Get search placeholder based on context
+  const getSearchPlaceholder = () => {
+    switch (currentContext) {
+      case 'customers':
+        return 'Search customers by name, email, or phone...';
+      case 'stock':
+        return 'Search products by name or SKU...';
+      case 'billing':
+        return 'Search invoices or transactions...';
+      default:
+        return 'Search...';
+    }
+  };
+
+  // Check if any filters are active
+  const hasActiveFilters = Object.values(filters).some(filter => filter !== '');
+
+  // Get filter count for badge
+  const getFilterCount = () => {
+    return Object.values(filters).filter(filter => filter !== '').length;
+  };
   return (
     <Flex
       pe={{ sm: "0px", md: "16px" }}
@@ -51,48 +101,185 @@ export default function HeaderLinks(props) {
       alignItems="center"
       flexDirection="row"
     >
-      <InputGroup
-        cursor="pointer"
-        bg={inputBg}
-        borderRadius="15px"
-        w={{
-          sm: "128px",
-          md: "200px",
-        }}
-        me={{ sm: "auto", md: "20px" }}
-        _focus={{
-          borderColor: { mainTeal },
-        }}
-        _active={{
-          borderColor: { mainTeal },
-        }}
-      >
-        <InputLeftElement
-          children={
-            <IconButton
-              bg="inherit"
-              borderRadius="inherit"
-              _hover="none"
-              _active={{
-                bg: "inherit",
-                transform: "none",
-                borderColor: "transparent",
-              }}
-              _focus={{
-                boxShadow: "none",
-              }}
-              icon={<SearchIcon color={searchIcon} w="15px" h="15px" />}
-            ></IconButton>
-          }
-        />
-        <Input
-          fontSize="xs"
-          py="11px"
-          color={mainText}
-          placeholder="Type here..."
-          borderRadius="inherit"
-        />
-      </InputGroup>
+      <HStack spacing={2} me={{ sm: "auto", md: "20px" }}>
+        <InputGroup
+          cursor="pointer"
+          bg={inputBg}
+          borderRadius="15px"
+          w={{
+            sm: "128px",
+            md: "250px",
+          }}
+          _focus={{
+            borderColor: { mainTeal },
+          }}
+          _active={{
+            borderColor: { mainTeal },
+          }}
+        >
+          <InputLeftElement
+            children={
+              <IconButton
+                bg="inherit"
+                borderRadius="inherit"
+                _hover="none"
+                _active={{
+                  bg: "inherit",
+                  transform: "none",
+                  borderColor: "transparent",
+                }}
+                _focus={{
+                  boxShadow: "none",
+                }}
+                icon={<SearchIcon color={searchIcon} w="15px" h="15px" />}
+              ></IconButton>
+            }
+          />
+          <Input
+            fontSize="xs"
+            py="11px"
+            color={mainText}
+            placeholder={getSearchPlaceholder()}
+            borderRadius="inherit"
+            value={searchQuery}
+            onChange={(e) => updateSearchQuery(e.target.value)}
+          />
+        </InputGroup>
+
+        {/* Filter Button */}
+        {currentContext === 'customers' && (
+          <Popover>
+            <PopoverTrigger>
+              <Button
+                size="sm"
+                variant="outline"
+                leftIcon={<SettingsIcon />}
+                bg={inputBg}
+                borderColor={hasActiveFilters ? mainTeal : "gray.200"}
+                color={hasActiveFilters ? mainTeal : mainText}
+                _hover={{
+                  borderColor: mainTeal,
+                  color: mainTeal,
+                }}
+                position="relative"
+              >
+                Filters
+                {hasActiveFilters && (
+                  <Badge
+                    position="absolute"
+                    top="-8px"
+                    right="-8px"
+                    colorScheme="red"
+                    borderRadius="full"
+                    fontSize="10px"
+                    minW="18px"
+                    h="18px"
+                  >
+                    {getFilterCount()}
+                  </Badge>
+                )}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent w="300px">
+              <PopoverArrow />
+              <PopoverCloseButton />
+              <PopoverHeader>
+                <HStack justify="space-between">
+                  <Text fontSize="sm" fontWeight="semibold">Customer Filters</Text>
+                  {hasActiveFilters && (
+                    <Button
+                      size="xs"
+                      variant="ghost"
+                      colorScheme="red"
+                      onClick={clearFilters}
+                      leftIcon={<CloseIcon />}
+                    >
+                      Clear All
+                    </Button>
+                  )}
+                </HStack>
+              </PopoverHeader>
+              <PopoverBody>
+                <VStack spacing={4} align="stretch">
+                  {/* Membership Status Filter */}
+                  <Box>
+                    <Text fontSize="sm" fontWeight="medium" mb={2}>Membership Status</Text>
+                    <Select
+                      size="sm"
+                      placeholder="All statuses"
+                      value={filters.membershipStatus}
+                      onChange={(e) => updateFilters({ membershipStatus: e.target.value })}
+                    >
+                      <option value="Active">Active</option>
+                      <option value="Inactive">Inactive</option>
+                    </Select>
+                  </Box>
+
+                  <Divider />
+
+                  {/* Customer Plan Filter */}
+                  <Box>
+                    <Text fontSize="sm" fontWeight="medium" mb={2}>Customer Plan</Text>
+                    <Select
+                      size="sm"
+                      placeholder="All plans"
+                      value={filters.customerPlan}
+                      onChange={(e) => updateFilters({ customerPlan: e.target.value })}
+                    >
+                      <option value="Premium">Premium</option>
+                      <option value="Basic">Basic</option>
+                      <option value="Standard">Standard</option>
+                    </Select>
+                  </Box>
+
+                  <Divider />
+
+                  {/* Fee Status Filter */}
+                  <Box>
+                    <Text fontSize="sm" fontWeight="medium" mb={2}>Fee Status</Text>
+                    <VStack spacing={2} align="stretch">
+                      <Checkbox
+                        size="sm"
+                        isChecked={filters.feeStatus === 'overdue'}
+                        onChange={(e) => updateFilters({ 
+                          feeStatus: e.target.checked ? 'overdue' : '' 
+                        })}
+                      >
+                        Overdue Payments
+                      </Checkbox>
+                      <Checkbox
+                        size="sm"
+                        isChecked={filters.feeStatus === 'paid'}
+                        onChange={(e) => updateFilters({ 
+                          feeStatus: e.target.checked ? 'paid' : '' 
+                        })}
+                      >
+                        Up to Date
+                      </Checkbox>
+                    </VStack>
+                  </Box>
+
+                  <Divider />
+
+                  {/* Trainer Required Filter */}
+                  <Box>
+                    <Text fontSize="sm" fontWeight="medium" mb={2}>Trainer Required</Text>
+                    <Select
+                      size="sm"
+                      placeholder="All customers"
+                      value={filters.trainerRequired}
+                      onChange={(e) => updateFilters({ trainerRequired: e.target.value })}
+                    >
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </Select>
+                  </Box>
+                </VStack>
+              </PopoverBody>
+            </PopoverContent>
+          </Popover>
+        )}
+      </HStack>
       <NavLink to="/auth/signin">
         <Button
           ms="0px"

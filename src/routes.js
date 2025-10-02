@@ -1,6 +1,6 @@
 // import
 import Dashboard from "views/Dashboard/Dashboard";
-import Tables from "views/Dashboard/Tables";
+import CustomerManagement from "views/Dashboard/CustomerManagement";
 import Billing from "views/Dashboard/Billing";
 import RTLPage from "views/Dashboard/RTL";
 import Profile from "views/Dashboard/Profile";
@@ -42,17 +42,17 @@ var dashRoutes = [
     name: "Customer Management",
     rtlName: "لوحة القيادة",
     icon: <SettingsIcon color="inherit" />,
-    component: Tables,
+    component: CustomerManagement,
     layout: "/admin",
   },
-  // {
-  //   path: "/expenses-cashflow",
-  //   name: "Expenses & Cashflow",
-  //   rtlName: "لوحة القيادة",
-  //   icon: <CreditIcon color="inherit" />,
-  //   component: Billing,
-  //   layout: "/admin",
-  // },
+  {
+    path: "/expenses-cashflow",
+    name: "Expenses & Cashflow",
+    rtlName: "لوحة القيادة",
+    icon: <CreditIcon color="inherit" />,
+    component: Billing,
+    layout: "/admin",
+  },
 
   {
     name: "ACCOUNT PAGES",

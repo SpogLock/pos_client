@@ -8,14 +8,29 @@ import {
   useColorModeValue,
   Image,
   Box,
+  HStack,
+  VStack,
+  Icon,
 } from "@chakra-ui/react";
+import {
+  EditIcon,
+  DeleteIcon,
+  PhoneIcon,
+  EmailIcon,
+  StarIcon,
+  CloseIcon,
+  CheckIcon,
+  WarningIcon,
+  TimeIcon,
+} from "@chakra-ui/icons";
 import React from "react";
 
 function StockTableRow(props) {
   const { 
     id,
     picture, 
-    memberName, 
+    memberName,
+    memberType,
     mobileNo, 
     email, 
     address, 
@@ -25,17 +40,59 @@ function StockTableRow(props) {
     customerPlan, 
     customerWeight, 
     customerAge,
+    monthlyFee,
+    nextDueDate,
     onMouseEnter,
-    onMouseLeave
+    onMouseLeave,
+    onClick
   } = props;
   const textColor = useColorModeValue("gray.700", "white");
+  const borderColor = useColorModeValue("gray.200", "gray.600");
+  const hoverBg = useColorModeValue("teal.50", "teal.900");
+
+  // Check if customer fee is overdue
+  const isFeeOverdue = (nextDueDate) => {
+    const today = new Date();
+    const dueDate = new Date(nextDueDate);
+    return dueDate < today;
+  };
+
+  // Get fee status with days
+  const getFeeStatus = (nextDueDate) => {
+    const today = new Date();
+    const dueDate = new Date(nextDueDate);
+    const diffTime = dueDate - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays < 0) {
+      return { status: 'overdue', days: Math.abs(diffDays), color: 'red', icon: WarningIcon };
+    } else if (diffDays === 0) {
+      return { status: 'due_today', days: 0, color: 'orange', icon: TimeIcon };
+    } else if (diffDays <= 7) {
+      return { status: 'due_soon', days: diffDays, color: 'yellow', icon: TimeIcon };
+    } else {
+      return { status: 'paid', days: diffDays, color: 'green', icon: CheckIcon };
+    }
+  };
+
+  const feeStatus = getFeeStatus(nextDueDate);
 
 
 
   return (
-    <Tr py="12px">
+    <Tr 
+      py="16px" 
+      cursor="pointer"
+      onClick={onClick}
+      _hover={{ 
+        bg: useColorModeValue("teal.50", "teal.900"),
+        transform: "translateX(4px)",
+        boxShadow: "0 4px 12px rgba(56, 178, 172, 0.2)",
+      }}
+      transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+    >
       {/* Picture */}
-      <Td width="8%" pl="0px">
+      <Td width="4%" pl="0px">
         <Box
           w="40px"
           h="40px"
@@ -63,42 +120,57 @@ function StockTableRow(props) {
       </Td>
 
       {/* Member Name */}
-      <Td width="12%" px="12px">
+      <Td width="8%" px="12px">
         <Text fontSize="sm" color={textColor} fontWeight="bold">
           {memberName}
         </Text>
       </Td>
 
+      {/* Member Type */}
+      <Td width="6%" px="12px">
+        <Badge
+          colorScheme={memberType === "New" ? "blue" : "purple"}
+          variant="subtle"
+          px={2}
+          py={1}
+          borderRadius="full"
+          fontSize="xs"
+          fontWeight="semibold"
+        >
+          {memberType}
+        </Badge>
+      </Td>
+
       {/* Mobile No */}
-      <Td width="10%" px="12px">
+      <Td width="7%" px="12px">
         <Text fontSize="sm" color={textColor} fontWeight="bold">
           {mobileNo}
         </Text>
       </Td>
 
       {/* Email */}
-      <Td width="12%" px="12px">
+      <Td width="9%" px="12px">
         <Text fontSize="sm" color={textColor} fontWeight="bold">
           {email}
         </Text>
       </Td>
 
       {/* Address */}
-      <Td width="15%" px="12px">
+      <Td width="10%" px="12px">
         <Text fontSize="sm" color={textColor} fontWeight="bold" noOfLines={2}>
           {address}
         </Text>
       </Td>
 
       {/* Registration Date */}
-      <Td width="10%" px="12px">
+      <Td width="7%" px="12px">
         <Text fontSize="sm" color={textColor} fontWeight="bold">
           {registrationDate}
         </Text>
       </Td>
 
       {/* Membership Status */}
-      <Td width="10%" px="12px">
+      <Td width="6%" px="12px">
         <Badge
           colorScheme={membershipStatus === "Active" ? "green" : "red"}
           variant="subtle"
@@ -112,43 +184,85 @@ function StockTableRow(props) {
       </Td>
 
       {/* Trainer Required */}
-      <Td width="8%" px="12px">
+      <Td width="6%" px="12px">
         <Text fontSize="sm" color={textColor} fontWeight="bold">
           {trainerRequired}
         </Text>
       </Td>
 
       {/* Customer Plan */}
-      <Td width="8%" px="12px">
+      <Td width="6%" px="12px">
         <Text fontSize="sm" color={textColor} fontWeight="bold">
           {customerPlan}
         </Text>
       </Td>
 
       {/* Customer Weight */}
-      <Td width="8%" px="12px">
+      <Td width="5%" px="12px">
         <Text fontSize="sm" color={textColor} fontWeight="bold">
           {customerWeight}
         </Text>
       </Td>
 
       {/* Customer Age */}
-      <Td width="6%" px="12px">
+      <Td width="5%" px="12px">
         <Text fontSize="sm" color={textColor} fontWeight="bold">
           {customerAge}
         </Text>
       </Td>
 
-      {/* Actions */}
+      {/* Monthly Fee */}
       <Td width="6%" px="12px">
-        <Button
-          size="sm"
-          colorScheme="brand"
-          variant="outline"
-          onClick={() => console.log("Edit customer:", memberName)}
-        >
-          Edit
-        </Button>
+        <Text fontSize="sm" color={textColor} fontWeight="bold">
+          {monthlyFee}
+        </Text>
+      </Td>
+
+      {/* Fee Status */}
+      <Td width="8%" px="12px">
+        <HStack spacing={2}>
+          <Icon as={feeStatus.icon} color={`${feeStatus.color}.500`} boxSize={3} />
+          <VStack align="start" spacing={0}>
+            <Text fontSize="xs" color={`${feeStatus.color}.600`} fontWeight="semibold" textTransform="uppercase">
+              {feeStatus.status.replace('_', ' ')}
+            </Text>
+            <Text fontSize="xs" color="gray.500">
+              {feeStatus.days === 0 ? 'Today' : feeStatus.days === 1 ? '1 day' : `${feeStatus.days} days`}
+            </Text>
+          </VStack>
+        </HStack>
+      </Td>
+
+      {/* Actions */}
+      <Td width="7%" px="12px">
+        <HStack spacing={2}>
+          <Button
+            size="xs"
+            colorScheme="blue"
+            variant="outline"
+            leftIcon={<EditIcon />}
+            onClick={() => console.log("Edit customer:", memberName)}
+            _hover={{
+              bg: "blue.50",
+              borderColor: "blue.300"
+            }}
+          >
+            Edit
+          </Button>
+          <Button
+            size="xs"
+            colorScheme="red"
+            variant="outline"
+            leftIcon={<DeleteIcon />}
+            onClick={() => console.log("Delete customer:", memberName)}
+            _hover={{
+              bg: "red.50",
+              borderColor: "red.300"
+            }}
+          >
+            Delete
+          </Button>
+        </HStack>
       </Td>
     </Tr>
   );
