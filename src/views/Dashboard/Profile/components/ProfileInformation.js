@@ -24,23 +24,20 @@ import {
 import Card from "components/Card/Card";
 import CardBody from "components/Card/CardBody";
 import CardHeader from "components/Card/CardHeader";
+import IconBox from "components/Icons/IconBox";
+import { 
+  PersonIcon,
+  StatsIcon,
+  CreditIcon
+} from "components/Icons/Icons";
 import React from "react";
 import { 
-  FaFacebook, 
-  FaInstagram, 
-  FaTwitter, 
-  FaUser, 
   FaPhone, 
   FaMapMarkerAlt, 
-  FaHeart, 
-  FaDumbbell, 
-  FaUserMd,
   FaEnvelope,
-  FaCalendarAlt,
-  FaShieldAlt,
-  FaStar,
   FaWeight,
-  FaHeartbeat
+  FaBirthdayCake,
+  FaShieldAlt
 } from "react-icons/fa";
 
 const ProfileInformation = ({
@@ -59,185 +56,203 @@ const ProfileInformation = ({
   medicalConditions,
   fitnessGoals,
   trainerName,
+  customerWeight,
+  customerAge,
 }) => {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
+  const bgCard = useColorModeValue("white", "gray.800");
 
   return (
-    <VStack spacing={6} align="stretch">
-      {/* Information Grid */}
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
+    <Box p={6}>
+      {/* Key Stats Row */}
+      <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }} gap={3} mb={6}>
+        <Box bg={bgCard} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
+          <HStack spacing={3}>
+            <Box color="teal.500">
+              <Icon as={FaWeight} boxSize={4} />
+            </Box>
+            <VStack align="start" spacing={0}>
+              <Text fontSize="xs" color="gray.500" fontWeight="medium">
+                Weight
+              </Text>
+              <Text fontSize="md" color={textColor} fontWeight="bold">
+                {customerWeight}
+              </Text>
+            </VStack>
+          </HStack>
+        </Box>
+
+        <Box bg={bgCard} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
+          <HStack spacing={3}>
+            <Box color="teal.500">
+              <Icon as={FaBirthdayCake} boxSize={4} />
+            </Box>
+            <VStack align="start" spacing={0}>
+              <Text fontSize="xs" color="gray.500" fontWeight="medium">
+                Age
+              </Text>
+              <Text fontSize="md" color={textColor} fontWeight="bold">
+                {customerAge} years
+              </Text>
+            </VStack>
+          </HStack>
+        </Box>
+
+        <Box bg={bgCard} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
+          <HStack spacing={3}>
+            <Box color="teal.500">
+              <Icon as={FaShieldAlt} boxSize={4} />
+            </Box>
+            <VStack align="start" spacing={0}>
+              <Text fontSize="xs" color="gray.500" fontWeight="medium">
+                Status
+              </Text>
+              <Text fontSize="md" color={textColor} fontWeight="bold">
+                {membershipStatus}
+              </Text>
+            </VStack>
+          </HStack>
+        </Box>
+
+        <Box bg={bgCard} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
+          <HStack spacing={3}>
+            <Box color="teal.500">
+              <CreditIcon />
+            </Box>
+            <VStack align="start" spacing={0}>
+              <Text fontSize="xs" color="gray.500" fontWeight="medium">
+                Plan
+              </Text>
+              <Text fontSize="md" color={textColor} fontWeight="bold">
+                {customerPlan}
+              </Text>
+            </VStack>
+          </HStack>
+        </Box>
+      </Grid>
+
+      {/* Main Content */}
+      <Grid templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }} gap={4}>
         {/* Contact Information */}
-        <Card p="20px" bg={useColorModeValue("white", "gray.800")} borderRadius="xl" boxShadow="md">
-          <VStack spacing={4} align="stretch">
-            <HStack spacing={3} align="center">
-              <Icon as={FaPhone} color="teal.500" boxSize={5} />
-              <Text fontSize="lg" color={textColor} fontWeight="bold">
+        <Box bg={bgCard} p={4} borderRadius="lg" border="1px solid" borderColor="gray.200">
+          <VStack spacing={3} align="stretch">
+            <HStack spacing={3} align="center" mb={1}>
+              <Box color="teal.500">
+                <Icon as={FaPhone} boxSize={4} />
+              </Box>
+              <Text fontSize="md" color={textColor} fontWeight="bold">
                 Contact Information
               </Text>
             </HStack>
-            <Divider />
+            
             <VStack spacing={3} align="stretch">
-              <HStack spacing={3} align="start">
-                <Icon as={FaPhone} color="teal.500" boxSize={4} mt={1} />
-                <VStack align="start" spacing={0}>
-                  <Text fontSize="sm" color="gray.500" fontWeight="medium">
+              <HStack spacing={3} align="center">
+                <Box color="teal.500">
+                  <Icon as={FaPhone} boxSize={3} />
+                </Box>
+                <VStack align="start" spacing={0} flex={1}>
+                  <Text fontSize="xs" color="gray.500" fontWeight="medium">
                     Mobile
                   </Text>
-                  <Text fontSize="md" color={textColor} fontWeight="semibold">
-              {mobile}
-            </Text>
+                  <Text fontSize="sm" color={textColor} fontWeight="semibold">
+                    {mobile}
+                  </Text>
                 </VStack>
               </HStack>
-              <HStack spacing={3} align="start">
-                <Icon as={FaEnvelope} color="teal.500" boxSize={4} mt={1} />
-                <VStack align="start" spacing={0}>
-                  <Text fontSize="sm" color="gray.500" fontWeight="medium">
+              
+              <HStack spacing={3} align="center">
+                <Box color="teal.500">
+                  <Icon as={FaEnvelope} boxSize={3} />
+                </Box>
+                <VStack align="start" spacing={0} flex={1}>
+                  <Text fontSize="xs" color="gray.500" fontWeight="medium">
                     Email
-            </Text>
-                  <Text fontSize="md" color={textColor} fontWeight="semibold">
-              {email}
-            </Text>
+                  </Text>
+                  <Text fontSize="sm" color={textColor} fontWeight="semibold">
+                    {email}
+                  </Text>
                 </VStack>
               </HStack>
-              <HStack spacing={3} align="start">
-                <Icon as={FaMapMarkerAlt} color="teal.500" boxSize={4} mt={1} />
-                <VStack align="start" spacing={0}>
-                  <Text fontSize="sm" color="gray.500" fontWeight="medium">
+              
+              <HStack spacing={3} align="center">
+                <Box color="teal.500">
+                  <Icon as={FaMapMarkerAlt} boxSize={3} />
+                </Box>
+                <VStack align="start" spacing={0} flex={1}>
+                  <Text fontSize="xs" color="gray.500" fontWeight="medium">
                     Address
-            </Text>
-                  <Text fontSize="md" color={textColor} fontWeight="semibold">
-              {location}
-            </Text>
+                  </Text>
+                  <Text fontSize="sm" color={textColor} fontWeight="semibold">
+                    {location}
+                  </Text>
                 </VStack>
               </HStack>
             </VStack>
           </VStack>
-        </Card>
+        </Box>
 
         {/* Membership Details */}
-        <Card p="20px" bg={useColorModeValue("white", "gray.800")} borderRadius="xl" boxShadow="md">
-          <VStack spacing={4} align="stretch">
-            <HStack spacing={3} align="center">
-              <Icon as={FaShieldAlt} color="blue.500" boxSize={5} />
-              <Text fontSize="lg" color={textColor} fontWeight="bold">
+        <Box bg={bgCard} p={4} borderRadius="lg" border="1px solid" borderColor="gray.200">
+          <VStack spacing={3} align="stretch">
+            <HStack spacing={3} align="center" mb={1}>
+              <Box color="teal.500">
+                <PersonIcon />
+              </Box>
+              <Text fontSize="md" color={textColor} fontWeight="bold">
                 Membership Details
               </Text>
             </HStack>
-            <Divider />
+            
             <VStack spacing={3} align="stretch">
-              <HStack justify="space-between">
-                <Text fontSize="sm" color="gray.500" fontWeight="medium">
+              <HStack justify="space-between" align="center">
+                <Text fontSize="xs" color="gray.500" fontWeight="medium">
                   Member Type
                 </Text>
                 <Badge
                   colorScheme={memberType === "New" ? "blue" : "purple"}
                   variant="subtle"
-                  px={3}
+                  px={2}
                   py={1}
                   borderRadius="full"
-                  fontSize="sm"
+                  fontSize="xs"
                   fontWeight="semibold"
                 >
                   {memberType}
                 </Badge>
               </HStack>
-              <HStack justify="space-between">
-                <Text fontSize="sm" color="gray.500" fontWeight="medium">
-                  Status
-                </Text>
-                <Badge
-                  colorScheme={membershipStatus === "Active" ? "green" : "red"}
-                  variant="subtle"
-                  px={3}
-                  py={1}
-                  borderRadius="full"
-                  fontSize="sm"
-                  fontWeight="semibold"
-                >
-                  {membershipStatus}
-                </Badge>
-              </HStack>
-              <HStack justify="space-between">
-                <Text fontSize="sm" color="gray.500" fontWeight="medium">
-                  Plan
-                </Text>
-                <Badge
-                  colorScheme={
-                    customerPlan === "Premium" ? "purple" : 
-                    customerPlan === "Basic" ? "blue" : "orange"
-                  }
-                  variant="subtle"
-                  px={3}
-                  py={1}
-                  borderRadius="full"
-                  fontSize="sm"
-                  fontWeight="semibold"
-                >
-                  {customerPlan}
-                </Badge>
-              </HStack>
-              <HStack justify="space-between">
-                <Text fontSize="sm" color="gray.500" fontWeight="medium">
+              
+              <HStack justify="space-between" align="center">
+                <Text fontSize="xs" color="gray.500" fontWeight="medium">
                   Trainer
                 </Text>
-                <Text fontSize="sm" color={textColor} fontWeight="semibold">
+                <Text fontSize="xs" color={textColor} fontWeight="semibold">
                   {trainerRequired === "Yes" ? `Yes (${trainerName})` : "No"}
                 </Text>
               </HStack>
-            </VStack>
-          </VStack>
-        </Card>
-
-        {/* Health Information */}
-        <Card p="20px" bg={useColorModeValue("white", "gray.800")} borderRadius="xl" boxShadow="md">
-          <VStack spacing={4} align="stretch">
-            <HStack spacing={3} align="center">
-              <Icon as={FaHeartbeat} color="red.500" boxSize={5} />
-              <Text fontSize="lg" color={textColor} fontWeight="bold">
-                Health Information
-              </Text>
-            </HStack>
-            <Divider />
-            <VStack spacing={3} align="stretch">
-              <HStack justify="space-between">
-                <Text fontSize="sm" color="gray.500" fontWeight="medium">
-                  Blood Group
-                </Text>
-                <Text fontSize="sm" color={textColor} fontWeight="semibold">
-                  {bloodGroup}
-                </Text>
-              </HStack>
-              <HStack justify="space-between">
-                <Text fontSize="sm" color="gray.500" fontWeight="medium">
-                  Medical Conditions
-                </Text>
-                <Text fontSize="sm" color={textColor} fontWeight="semibold">
-                  {medicalConditions}
-                </Text>
-              </HStack>
-              <HStack justify="space-between">
-                <Text fontSize="sm" color="gray.500" fontWeight="medium">
-                  Fitness Goals
-                </Text>
-                <Text fontSize="sm" color={textColor} fontWeight="semibold">
-                  {fitnessGoals}
-                </Text>
-              </HStack>
-              <HStack justify="space-between">
-                <Text fontSize="sm" color="gray.500" fontWeight="medium">
+              
+              <HStack justify="space-between" align="center">
+                <Text fontSize="xs" color="gray.500" fontWeight="medium">
                   Emergency Contact
                 </Text>
-                <Text fontSize="sm" color={textColor} fontWeight="semibold">
+                <Text fontSize="xs" color={textColor} fontWeight="semibold">
                   {emergencyContact}
                 </Text>
               </HStack>
+              
+              <HStack justify="space-between" align="center">
+                <Text fontSize="xs" color="gray.500" fontWeight="medium">
+                  Fitness Goals
+                </Text>
+                <Text fontSize="xs" color={textColor} fontWeight="semibold">
+                  {fitnessGoals}
+                </Text>
+              </HStack>
             </VStack>
           </VStack>
-        </Card>
-      </SimpleGrid>
-
-    </VStack>
+        </Box>
+      </Grid>
+    </Box>
   );
 };
 

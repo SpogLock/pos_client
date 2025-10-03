@@ -23,7 +23,15 @@ import {
   StatHelpText,
   StatArrow,
 } from "@chakra-ui/react";
-import { FaCreditCard, FaMoneyBillWave, FaCalendarAlt, FaCheckCircle, FaExclamationTriangle } from "react-icons/fa";
+import { 
+  FaCreditCard, 
+  FaMoneyBillWave, 
+  FaCalendarAlt, 
+  FaCheckCircle, 
+  FaExclamationTriangle,
+  FaWallet,
+  FaClock
+} from "react-icons/fa";
 // Custom components
 import Card from "components/Card/Card";
 import CardBody from "components/Card/CardBody";
@@ -64,242 +72,223 @@ const PaymentInfo = ({ customer }) => {
   const paymentStatus = getPaymentStatus(customer.nextDueDate);
 
   return (
-    <VStack spacing={6} align="stretch">
+    <Box p={6}>
       {/* Payment Overview Cards */}
-      <Grid templateColumns={{ sm: "1fr", md: "repeat(2, 1fr)", lg: "repeat(4, 1fr)" }} gap={4}>
-        <Card p="16px">
-          <CardBody>
-            <Stat>
-              <StatLabel fontSize="sm" color="gray.500" fontWeight="bold">
+      <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }} gap={3} mb={6}>
+        <Box bg={cardBg} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
+          <HStack spacing={3}>
+            <Box color="teal.500">
+              <Icon as={FaWallet} boxSize={4} />
+            </Box>
+            <VStack align="start" spacing={0}>
+              <Text fontSize="xs" color="gray.500" fontWeight="medium">
                 Monthly Fee
-              </StatLabel>
-              <StatNumber fontSize="xl" color={textColor} fontWeight="bold">
+              </Text>
+              <Text fontSize="md" color={textColor} fontWeight="bold">
                 {customer.monthlyFee}
-              </StatNumber>
-              <StatHelpText>
-                <StatArrow type="increase" />
-                {customer.customerPlan} Plan
-              </StatHelpText>
-            </Stat>
-          </CardBody>
-        </Card>
+              </Text>
+            </VStack>
+          </HStack>
+        </Box>
 
-        <Card p="16px">
-          <CardBody>
-            <Stat>
-              <StatLabel fontSize="sm" color="gray.500" fontWeight="bold">
-                Payment Status
-              </StatLabel>
-              <StatNumber fontSize="xl" color={textColor} fontWeight="bold">
-                <Badge
-                  colorScheme={paymentStatus.color}
-                  variant="subtle"
-                  px={3}
-                  py={1}
-                  borderRadius="full"
-                  fontSize="sm"
-                  fontWeight="semibold"
-                >
-                  {paymentStatus.status.replace('_', ' ').toUpperCase()}
-                </Badge>
-              </StatNumber>
-              <StatHelpText>
-                {paymentStatus.days === 0 ? 'Due Today' : 
-                 paymentStatus.days === 1 ? '1 day' : 
-                 `${paymentStatus.days} days`} {paymentStatus.status === 'overdue' ? 'overdue' : 'remaining'}
-              </StatHelpText>
-            </Stat>
-          </CardBody>
-        </Card>
+        <Box bg={cardBg} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
+          <HStack spacing={3}>
+            <Box color="teal.500">
+              <Icon as={FaClock} boxSize={4} />
+            </Box>
+            <VStack align="start" spacing={0}>
+              <Text fontSize="xs" color="gray.500" fontWeight="medium">
+                Status
+              </Text>
+              <Badge
+                colorScheme={paymentStatus.color}
+                variant="subtle"
+                px={2}
+                py={1}
+                borderRadius="full"
+                fontSize="xs"
+                fontWeight="semibold"
+              >
+                {paymentStatus.status.replace('_', ' ').toUpperCase()}
+              </Badge>
+            </VStack>
+          </HStack>
+        </Box>
 
-        <Card p="16px">
-          <CardBody>
-            <Stat>
-              <StatLabel fontSize="sm" color="gray.500" fontWeight="bold">
+        <Box bg={cardBg} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
+          <HStack spacing={3}>
+            <Box color="teal.500">
+              <Icon as={FaCalendarAlt} boxSize={4} />
+            </Box>
+            <VStack align="start" spacing={0}>
+              <Text fontSize="xs" color="gray.500" fontWeight="medium">
                 Last Payment
-              </StatLabel>
-              <StatNumber fontSize="xl" color={textColor} fontWeight="bold">
+              </Text>
+              <Text fontSize="md" color={textColor} fontWeight="bold">
                 {customer.feePaidDate}
-              </StatNumber>
-              <StatHelpText>
-                <StatArrow type="increase" />
-                {customer.monthlyFee}
-              </StatHelpText>
-            </Stat>
-          </CardBody>
-        </Card>
+              </Text>
+            </VStack>
+          </HStack>
+        </Box>
 
-        <Card p="16px">
-          <CardBody>
-            <Stat>
-              <StatLabel fontSize="sm" color="gray.500" fontWeight="bold">
-                Next Due Date
-              </StatLabel>
-              <StatNumber fontSize="xl" color={textColor} fontWeight="bold">
+        <Box bg={cardBg} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
+          <HStack spacing={3}>
+            <Box color="teal.500">
+              <Icon as={FaMoneyBillWave} boxSize={4} />
+            </Box>
+            <VStack align="start" spacing={0}>
+              <Text fontSize="xs" color="gray.500" fontWeight="medium">
+                Next Due
+              </Text>
+              <Text fontSize="md" color={textColor} fontWeight="bold">
                 {customer.nextDueDate}
-              </StatNumber>
-              <StatHelpText>
-                <StatArrow type="decrease" />
-                {paymentStatus.days} days {paymentStatus.status === 'overdue' ? 'overdue' : 'remaining'}
-              </StatHelpText>
-            </Stat>
-          </CardBody>
-        </Card>
+              </Text>
+            </VStack>
+          </HStack>
+        </Box>
       </Grid>
 
-      {/* Payment History Table */}
-      <Card>
-        <CardHeader p="12px 5px" mb="12px">
-          <Flex justifyContent="space-between" alignItems="center">
-            <Text fontSize="lg" color={textColor} fontWeight="bold">
+      {/* Payment Actions */}
+      <Box bg={cardBg} p={4} borderRadius="lg" border="1px solid" borderColor="gray.200" mb={4}>
+        <VStack spacing={3} align="stretch">
+          <HStack spacing={3} align="center" mb={1}>
+            <Box color="teal.500">
+              <Icon as={FaCheckCircle} boxSize={4} />
+            </Box>
+            <Text fontSize="md" color={textColor} fontWeight="bold">
+              Payment Actions
+            </Text>
+          </HStack>
+          
+          <VStack spacing={3} align="stretch" display={{ base: "flex", md: "none" }}>
+            <Button
+              colorScheme="green"
+              leftIcon={<FaCheckCircle />}
+              size="md"
+              isDisabled={!isPaymentOverdue(customer.nextDueDate)}
+            >
+              Mark as Paid
+            </Button>
+            <Button
+              colorScheme="teal"
+              leftIcon={<FaCreditCard />}
+              size="md"
+            >
+              Process Payment
+            </Button>
+            <Button
+              colorScheme="orange"
+              leftIcon={<FaExclamationTriangle />}
+              size="md"
+              variant="outline"
+            >
+              Send Reminder
+            </Button>
+          </VStack>
+          
+          <HStack spacing={3} justify="space-between" display={{ base: "none", md: "flex" }}>
+            <Button
+              colorScheme="green"
+              leftIcon={<FaCheckCircle />}
+              size="md"
+              flex={1}
+              isDisabled={!isPaymentOverdue(customer.nextDueDate)}
+            >
+              Mark as Paid
+            </Button>
+            <Button
+              colorScheme="teal"
+              leftIcon={<FaCreditCard />}
+              size="md"
+              flex={1}
+            >
+              Process Payment
+            </Button>
+            <Button
+              colorScheme="orange"
+              leftIcon={<FaExclamationTriangle />}
+              size="md"
+              variant="outline"
+              flex={1}
+            >
+              Send Reminder
+            </Button>
+          </HStack>
+        </VStack>
+      </Box>
+
+      {/* Payment History */}
+      <Box bg={cardBg} p={4} borderRadius="lg" border="1px solid" borderColor="gray.200">
+        <VStack spacing={3} align="stretch">
+          <HStack spacing={3} align="center" mb={1}>
+            <Box color="teal.500">
+              <Icon as={FaCreditCard} boxSize={4} />
+            </Box>
+            <Text fontSize="md" color={textColor} fontWeight="bold">
               Payment History
             </Text>
-            <Button
-              size="sm"
-              colorScheme="teal"
-              variant="outline"
-              leftIcon={<FaCreditCard />}
-            >
-              Add Payment
-            </Button>
-          </Flex>
-        </CardHeader>
-        <CardBody px="5px">
-          <Table variant="simple" color={textColor} size="md">
-            <Thead>
-              <Tr bg={useColorModeValue("gray.50", "gray.700")} borderBottom="2px solid" borderColor={borderColor}>
-                <Th color="gray.600" fontWeight="semibold" fontSize="sm" textTransform="none">
-                  Date
-                </Th>
-                <Th color="gray.600" fontWeight="semibold" fontSize="sm" textTransform="none">
-                  Amount
-                </Th>
-                <Th color="gray.600" fontWeight="semibold" fontSize="sm" textTransform="none">
-                  Method
-                </Th>
-                <Th color="gray.600" fontWeight="semibold" fontSize="sm" textTransform="none">
-                  Status
-                </Th>
-                <Th color="gray.600" fontWeight="semibold" fontSize="sm" textTransform="none">
-                  Actions
-                </Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {customer.paymentHistory.map((payment, index) => (
-                <Tr key={index} _hover={{ bg: useColorModeValue("gray.50", "gray.700") }}>
-                  <Td>
-                    <HStack spacing={2}>
-                      <Icon as={FaCalendarAlt} color="teal.500" boxSize={3} />
-                      <Text fontSize="sm" color={textColor} fontWeight="bold">
+          </HStack>
+          
+          <VStack spacing={3} align="stretch">
+            {customer.paymentHistory.map((payment, index) => (
+              <Box key={index} p={3} bg={useColorModeValue("gray.50", "gray.700")} borderRadius="md" border="1px solid" borderColor={borderColor}>
+                <Grid templateColumns="1fr 1fr 1fr auto" gap={4} minH="40px" alignItems="center">
+                  <HStack spacing={3} align="center">
+                    <Box color="teal.500" flexShrink={0}>
+                      <Icon as={FaCalendarAlt} boxSize={3} />
+                    </Box>
+                    <VStack align="start" spacing={0}>
+                      <Text fontSize="xs" color={useColorModeValue("gray.500", "gray.400")} fontWeight="medium">
+                        Date
+                      </Text>
+                      <Text fontSize="sm" color={textColor} fontWeight="semibold">
                         {payment.date}
                       </Text>
-                    </HStack>
-                  </Td>
-                  <Td>
-                    <HStack spacing={2}>
-                      <Icon as={FaMoneyBillWave} color="green.500" boxSize={3} />
-                      <Text fontSize="sm" color={textColor} fontWeight="bold">
+                    </VStack>
+                  </HStack>
+                  
+                  <HStack spacing={3} align="center">
+                    <Box color="teal.500" flexShrink={0}>
+                      <Icon as={FaMoneyBillWave} boxSize={3} />
+                    </Box>
+                    <VStack align="start" spacing={0}>
+                      <Text fontSize="xs" color={useColorModeValue("gray.500", "gray.400")} fontWeight="medium">
+                        Amount
+                      </Text>
+                      <Text fontSize="sm" color={textColor} fontWeight="semibold">
                         {payment.amount}
                       </Text>
-                    </HStack>
-                  </Td>
-                  <Td>
-                    <Text fontSize="sm" color="gray.500" fontWeight="400">
+                    </VStack>
+                  </HStack>
+                  
+                  <VStack align="start" spacing={0}>
+                    <Text fontSize="xs" color={useColorModeValue("gray.500", "gray.400")} fontWeight="medium">
+                      Method
+                    </Text>
+                    <Text fontSize="sm" color={textColor} fontWeight="semibold" noOfLines={1}>
                       {payment.method}
                     </Text>
-                  </Td>
-                  <Td>
-                    <Badge
-                      colorScheme={payment.status === "Paid" ? "green" : "red"}
-                      variant="subtle"
-                      px={2}
-                      py={1}
-                      borderRadius="full"
-                      fontSize="xs"
-                      fontWeight="semibold"
-                    >
-                      {payment.status}
-                    </Badge>
-                  </Td>
-                  <Td>
-                    <HStack spacing={2}>
-                      <Button size="xs" colorScheme="blue" variant="outline">
-                        View
-                      </Button>
-                      <Button size="xs" colorScheme="green" variant="outline">
-                        Receipt
-                      </Button>
-                    </HStack>
-                  </Td>
-                </Tr>
-              ))}
-            </Tbody>
-          </Table>
-        </CardBody>
-      </Card>
-
-      {/* Payment Actions */}
-      <Card>
-        <CardHeader p="12px 5px" mb="12px">
-          <Text fontSize="lg" color={textColor} fontWeight="bold">
-            Payment Actions
-          </Text>
-        </CardHeader>
-        <CardBody px="5px">
-          <Grid templateColumns={{ sm: "1fr", md: "repeat(2, 1fr)" }} gap={4}>
-            <VStack spacing={4} align="stretch">
-              <Text fontSize="md" color={textColor} fontWeight="bold">
-                Quick Actions
-              </Text>
-              <Button
-                colorScheme="green"
-                leftIcon={<FaCheckCircle />}
-                size="md"
-                isDisabled={!isPaymentOverdue(customer.nextDueDate)}
-              >
-                Mark as Paid
-              </Button>
-              <Button
-                colorScheme="blue"
-                leftIcon={<FaCreditCard />}
-                size="md"
-              >
-                Process Payment
-              </Button>
-              <Button
-                colorScheme="orange"
-                leftIcon={<FaExclamationTriangle />}
-                size="md"
-                variant="outline"
-              >
-                Send Reminder
-              </Button>
-            </VStack>
-
-            <VStack spacing={4} align="stretch">
-              <Text fontSize="md" color={textColor} fontWeight="bold">
-                Payment Methods
-              </Text>
-              <HStack spacing={2}>
-                <Button size="sm" variant="outline" colorScheme="blue">
-                  Cash
-                </Button>
-                <Button size="sm" variant="outline" colorScheme="green">
-                  Bank Transfer
-                </Button>
-                <Button size="sm" variant="outline" colorScheme="purple">
-                  Card
-                </Button>
-              </HStack>
-              <Text fontSize="sm" color="gray.500">
-                Last payment method: {customer.paymentHistory[0]?.method || "N/A"}
-              </Text>
-            </VStack>
-          </Grid>
-        </CardBody>
-      </Card>
-    </VStack>
+                  </VStack>
+                  
+                  <Badge
+                    colorScheme={payment.status === "Paid" ? "green" : "red"}
+                    variant="subtle"
+                    px={2}
+                    py={1}
+                    borderRadius="full"
+                    fontSize="xs"
+                    fontWeight="semibold"
+                    flexShrink={0}
+                  >
+                    {payment.status}
+                  </Badge>
+                </Grid>
+              </Box>
+            ))}
+          </VStack>
+        </VStack>
+      </Box>
+    </Box>
   );
 };
 

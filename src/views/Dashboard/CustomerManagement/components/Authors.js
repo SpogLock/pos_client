@@ -29,8 +29,17 @@ import {
   Image,
   Tooltip,
   Portal,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverHeader,
+  PopoverBody,
+  Select,
+  Checkbox,
 } from "@chakra-ui/react";
-import { ChevronDownIcon, PhoneIcon, EmailIcon, StarIcon, CloseIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, PhoneIcon, EmailIcon, StarIcon, CloseIcon, SettingsIcon } from "@chakra-ui/icons";
 // Custom components
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
@@ -55,7 +64,15 @@ const Authors = ({ title, captions, data }) => {
   const [hoveredCustomer, setHoveredCustomer] = useState(null);
   const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 });
   const history = useHistory();
-  const { searchQuery, filters } = useSearch();
+  const { searchQuery, filters, updateFilters, clearFilters } = useSearch();
+  
+  // Check if any filters are active
+  const hasActiveFilters = Object.values(filters).some(filter => filter !== '');
+
+  // Get filter count for badge
+  const getFilterCount = () => {
+    return Object.values(filters).filter(filter => filter !== '').length;
+  };
   
   // Customer management data
   const [stockData, setStockData] = useState([
@@ -527,6 +544,136 @@ const Authors = ({ title, captions, data }) => {
             Customer Management
           </Text>
           <Flex gap="4px" flexShrink={0}>
+            {/* Filters Button */}
+            <Popover>
+              <PopoverTrigger>
+                <Button
+                  size="xs"
+                  variant="outline"
+                  leftIcon={<SettingsIcon />}
+                  colorScheme="brand"
+                  position="relative"
+                  px={2}
+                  fontSize="xs"
+                >
+                  Filters
+                  {hasActiveFilters && (
+                    <Badge
+                      position="absolute"
+                      top="-8px"
+                      right="-8px"
+                      colorScheme="red"
+                      borderRadius="full"
+                      fontSize="8px"
+                      minW="16px"
+                      h="16px"
+                    >
+                      {getFilterCount()}
+                    </Badge>
+                  )}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent w="280px">
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverHeader>
+                  <HStack justify="space-between">
+                    <Text fontSize="sm" fontWeight="semibold">Customer Filters</Text>
+                    {hasActiveFilters && (
+                      <Button
+                        size="xs"
+                        variant="ghost"
+                        colorScheme="red"
+                        onClick={clearFilters}
+                        leftIcon={<CloseIcon />}
+                      >
+                        Clear All
+                      </Button>
+                    )}
+                  </HStack>
+                </PopoverHeader>
+                <PopoverBody>
+                  <VStack spacing={4} align="stretch">
+                    {/* Membership Status Filter */}
+                    <Box>
+                      <Text fontSize="sm" fontWeight="medium" mb={2}>Membership Status</Text>
+                      <Select
+                        size="sm"
+                        placeholder="All statuses"
+                        value={filters.membershipStatus || ''}
+                        onChange={(e) => updateFilters({ ...filters, membershipStatus: e.target.value })}
+                      >
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                      </Select>
+                    </Box>
+
+                    <Divider />
+
+                    {/* Customer Plan Filter */}
+                    <Box>
+                      <Text fontSize="sm" fontWeight="medium" mb={2}>Customer Plan</Text>
+                      <Select
+                        size="sm"
+                        placeholder="All plans"
+                        value={filters.customerPlan || ''}
+                        onChange={(e) => updateFilters({ ...filters, customerPlan: e.target.value })}
+                      >
+                        <option value="Premium">Premium</option>
+                        <option value="Basic">Basic</option>
+                        <option value="Standard">Standard</option>
+                      </Select>
+                    </Box>
+
+                    <Divider />
+
+                    {/* Fee Status Filter */}
+                    <Box>
+                      <Text fontSize="sm" fontWeight="medium" mb={2}>Fee Status</Text>
+                      <VStack spacing={2} align="stretch">
+                        <Checkbox
+                          size="sm"
+                          isChecked={filters.feeStatus === 'overdue'}
+                          onChange={(e) => updateFilters({ 
+                            ...filters,
+                            feeStatus: e.target.checked ? 'overdue' : '' 
+                          })}
+                        >
+                          Overdue Payments
+                        </Checkbox>
+                        <Checkbox
+                          size="sm"
+                          isChecked={filters.feeStatus === 'paid'}
+                          onChange={(e) => updateFilters({ 
+                            ...filters,
+                            feeStatus: e.target.checked ? 'paid' : '' 
+                          })}
+                        >
+                          Up to Date
+                        </Checkbox>
+                      </VStack>
+                    </Box>
+
+                    <Divider />
+
+                    {/* Trainer Required Filter */}
+                    <Box>
+                      <Text fontSize="sm" fontWeight="medium" mb={2}>Trainer Required</Text>
+                      <Select
+                        size="sm"
+                        placeholder="All customers"
+                        value={filters.trainerRequired || ''}
+                        onChange={(e) => updateFilters({ ...filters, trainerRequired: e.target.value })}
+                      >
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                      </Select>
+                    </Box>
+                  </VStack>
+                </PopoverBody>
+              </PopoverContent>
+            </Popover>
+            
             <Button
               variant="outline"
               colorScheme="brand"

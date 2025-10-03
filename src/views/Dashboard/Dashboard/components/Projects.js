@@ -12,6 +12,11 @@ import {
   Thead,
   Tr,
   useColorModeValue,
+  VStack,
+  Box,
+  HStack,
+  Grid,
+  Badge,
 } from "@chakra-ui/react";
 // Custom components
 import Card from "components/Card/Card.js";
@@ -47,7 +52,8 @@ const Projects = ({ title, amount, captions, data }) => {
           </Flex>
         </Flex>
       </CardHeader>
-      <Table variant='simple' color={textColor}>
+      {/* Desktop Table View */}
+      <Table variant='simple' color={textColor} display={{ base: "none", md: "table" }}>
         <Thead>
           <Tr my='.8rem' ps='0px'>
             {captions.map((caption, idx) => {
@@ -74,6 +80,44 @@ const Projects = ({ title, amount, captions, data }) => {
           })}
         </Tbody>
       </Table>
+
+      {/* Mobile List View */}
+      <VStack spacing={3} align="stretch" display={{ base: "flex", md: "none" }}>
+        {data.map((row, index) => (
+          <Box key={row.name} p={3} bg={useColorModeValue("gray.50", "gray.700")} borderRadius="md" border="1px solid" borderColor={useColorModeValue("gray.200", "gray.600")}>
+            <Grid templateColumns="auto 1fr auto" gap={3} alignItems="center">
+              <Box color="teal.500" flexShrink={0}>
+                <Text fontSize="lg" fontWeight="bold">
+                  {index + 1}
+                </Text>
+              </Box>
+              
+              <VStack align="start" spacing={1}>
+                <HStack spacing={2} align="center">
+                  <Box w="20px" h="20px" borderRadius="md" bg={useColorModeValue("gray.200", "gray.600")} display="flex" alignItems="center" justifyContent="center">
+                    <Text fontSize="xs">📦</Text>
+                  </Box>
+                  <Text fontSize="sm" color={textColor} fontWeight="bold">
+                    {row.name}
+                  </Text>
+                </HStack>
+                <Text fontSize="xs" color={useColorModeValue("gray.500", "gray.400")} fontWeight="medium">
+                  Stock: {row.members}
+                </Text>
+              </VStack>
+              
+              <VStack align="end" spacing={1}>
+                <Text fontSize="sm" color={textColor} fontWeight="bold">
+                  {row.budget}
+                </Text>
+                <Badge colorScheme='teal' fontSize="10px" px={2} py={1} borderRadius="full">
+                  {row.progression}%
+                </Badge>
+              </VStack>
+            </Grid>
+          </Box>
+        ))}
+      </VStack>
       <Flex align='center'>
               <Button
                 p='0px'

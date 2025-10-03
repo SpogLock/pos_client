@@ -3,12 +3,11 @@ import { Flex, Grid, useColorModeValue } from "@chakra-ui/react";
 import avatar4 from "assets/img/avatars/avatar4.png";
 import ProfileBgImage from "assets/img/ProfileBackground.png";
 import React, { useState, useEffect } from "react";
-import { FaUser, FaCreditCard, FaHeartbeat } from "react-icons/fa";
+import { FaUser, FaCreditCard } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import ProfileInformation from "./components/ProfileInformation";
 import PaymentInfo from "./components/PaymentInfo";
-import HealthRecords from "./components/HealthRecords";
 
 function Profile() {
   // Chakra color mode
@@ -85,10 +84,6 @@ function Profile() {
       name: "PAYMENT INFO",
       icon: <FaCreditCard w='100%' h='100%' />,
     },
-    {
-      name: "HEALTH RECORDS",
-      icon: <FaHeartbeat w='100%' h='100%' />,
-    },
   ];
 
   const renderTabContent = () => {
@@ -111,12 +106,12 @@ function Profile() {
             medicalConditions={customer.medicalConditions}
             fitnessGoals={customer.fitnessGoals}
             trainerName={customer.trainerName}
+            customerWeight={customer.customerWeight}
+            customerAge={customer.customerAge}
           />
         );
       case "PAYMENT INFO":
         return <PaymentInfo customer={customer} />;
-      case "HEALTH RECORDS":
-        return <HealthRecords customer={customer} />;
       default:
         return null;
     }

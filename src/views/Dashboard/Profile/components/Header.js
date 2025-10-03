@@ -96,14 +96,36 @@ const Header = ({
                 fontWeight='semibold'>
                 {email}
               </Text>
+              
+              {/* Mobile Action Buttons - Only visible on mobile */}
+              <HStack spacing={2} mt={3} display={{ sm: "flex", md: "none" }} justify="center">
+                <Button
+                  size="sm"
+                  colorScheme="teal"
+                  variant="outline"
+                  leftIcon={<FaEdit />}
+                  onClick={() => console.log("Edit profile")}
+                >
+                  Edit
+                </Button>
+                <Button
+                  size="sm"
+                  colorScheme="red"
+                  variant="outline"
+                  leftIcon={<FaTrash />}
+                  onClick={() => console.log("Delete customer")}
+                >
+                  Delete
+                </Button>
+              </HStack>
             </Flex>
           </Flex>
           <Flex
             direction={{ sm: "column", lg: "row" }}
             w={{ sm: "100%", md: "50%", lg: "auto" }}
             gap={4}>
-            {/* Quick Action Buttons */}
-            <HStack spacing={2} mr={4}>
+            {/* Desktop Quick Action Buttons - Hidden on mobile */}
+            <HStack spacing={2} mr={4} display={{ sm: "none", md: "flex" }}>
               <Button
                 size="sm"
                 colorScheme="teal"

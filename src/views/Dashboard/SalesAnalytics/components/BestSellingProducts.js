@@ -15,6 +15,10 @@ import {
   InputGroup,
   InputLeftElement,
   VStack,
+  Box,
+  HStack,
+  Grid,
+  Icon,
 } from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
 // Custom components
@@ -111,8 +115,9 @@ const BestSellingProducts = ({ timePeriod, customDateRange, productsData }) => {
           </InputGroup>
         </VStack>
       </CardHeader>
-      <CardBody>
-        <Table variant='simple' color={textColor}>
+      <CardBody pt={0} pb={4}>
+        {/* Desktop Table View */}
+        <Table variant='simple' color={textColor} display={{ base: "none", md: "table" }}>
           <Thead>
             <Tr>
               <Th color='gray.400' fontSize='sm' fontWeight='semibold'>#</Th>
@@ -168,6 +173,50 @@ const BestSellingProducts = ({ timePeriod, customDateRange, productsData }) => {
             )}
           </Tbody>
         </Table>
+
+        {/* Mobile List View */}
+        <VStack spacing={3} align="stretch" display={{ base: "flex", md: "none" }} mt={4}>
+          {filteredProducts.length === 0 && searchTerm.trim() ? (
+            <Flex h='100px' w='100%' align='center' justify='center'>
+              <Text fontSize='md' color='gray.400' textAlign='center'>
+                No products found matching "{searchTerm}"
+              </Text>
+            </Flex>
+          ) : (
+            filteredProducts.map((product, index) => (
+              <Box key={product.id} p={3} bg={useColorModeValue("gray.50", "gray.700")} borderRadius="md" border="1px solid" borderColor={useColorModeValue("gray.200", "gray.600")} w="100%">
+                <Grid templateColumns="40px 1fr 120px" gap={3} alignItems="center">
+                  <Box color="teal.500" flexShrink={0} textAlign="center">
+                    <Text fontSize="lg" fontWeight="bold">
+                      {product.rank || index + 1}
+                    </Text>
+                  </Box>
+                  
+                  <VStack align="start" spacing={1} minW="0">
+                    <HStack spacing={2} align="center">
+                      <Image src={product.image} w='20px' h='20px' objectFit='cover' />
+                      <Text fontSize="sm" color={textColor} fontWeight="bold" noOfLines={1}>
+                        {product.name}
+                      </Text>
+                    </HStack>
+                    <Text fontSize="xs" color={useColorModeValue("gray.500", "gray.400")} fontWeight="medium" noOfLines={1}>
+                      {product.category}
+                    </Text>
+                  </VStack>
+                  
+                  <VStack align="end" spacing={1} minW="120px">
+                    <Text fontSize="sm" color={textColor} fontWeight="bold">
+                      {product.revenue}
+                    </Text>
+                    <Badge colorScheme='teal' fontSize="10px" px={2} py={1} borderRadius="full">
+                      {product.sales} sales
+                    </Badge>
+                  </VStack>
+                </Grid>
+              </Box>
+            ))
+          )}
+        </VStack>
       </CardBody>
     </Card>
   );
