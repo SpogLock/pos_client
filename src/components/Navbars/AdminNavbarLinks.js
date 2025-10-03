@@ -77,13 +77,15 @@ export default function HeaderLinks(props) {
 
   // Get search placeholder based on context
   const getSearchPlaceholder = () => {
+    const isSmallScreen = window.innerWidth < 480; // base breakpoint
+    
     switch (currentContext) {
       case 'customers':
-        return 'Search customers by name, email, or phone...';
+        return isSmallScreen ? 'Search customers...' : 'Search customers by name, email, or phone...';
       case 'stock':
-        return 'Search products by name or SKU...';
+        return isSmallScreen ? 'Search products...' : 'Search products by name or SKU...';
       case 'billing':
-        return 'Search invoices or transactions...';
+        return isSmallScreen ? 'Search invoices...' : 'Search invoices or transactions...';
       default:
         return 'Search...';
     }
@@ -102,24 +104,29 @@ export default function HeaderLinks(props) {
       w={{ sm: "100%", md: "auto" }}
       alignItems="center"
       flexDirection="row"
-      gap="12px"
+      gap={{ base: "4px", sm: "6px", md: "12px" }}
+      minW="0"
+      overflow="hidden"
     >
-      <HStack spacing={3} me={{ sm: "auto", md: "20px" }}>
+      <HStack spacing={{ base: "2px", sm: "4px", md: "12px" }} me={{ sm: "auto", md: "20px" }} flex="1" minW="0">
         <InputGroup
           cursor="pointer"
           bg={useColorModeValue("rgba(255, 255, 255, 0.15)", "rgba(26, 32, 44, 0.15)")}
           backdropFilter="blur(30px) saturate(180%)"
-          borderRadius="16px"
+          borderRadius={{ base: "10px", sm: "12px", md: "16px" }}
           border="1px solid"
           borderColor={useColorModeValue("rgba(255, 255, 255, 0.3)", "rgba(255, 255, 255, 0.2)")}
           boxShadow={useColorModeValue(
-            "0px 8px 32px rgba(0, 0, 0, 0.06), 0px 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
-            "0px 8px 32px rgba(0, 0, 0, 0.2), 0px 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+            "0px 6px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
+            "0px 6px 24px rgba(0, 0, 0, 0.2), 0px 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
           )}
           w={{
-            sm: "200px",
+            base: "100px",
+            sm: "140px",
             md: "300px",
           }}
+          maxW="100%"
+          flex="1"
           _focus={{
             borderColor: mainTeal,
             boxShadow: `0 0 0 1px ${mainTeal}, 0px 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3)`,
@@ -144,7 +151,7 @@ export default function HeaderLinks(props) {
             left: 0,
             right: 0,
             bottom: 0,
-            borderRadius: "16px",
+            borderRadius: "inherit",
             background: useColorModeValue(
               "linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%)",
               "linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%)"
@@ -167,13 +174,14 @@ export default function HeaderLinks(props) {
                 _focus={{
                   boxShadow: "none",
                 }}
-                icon={<SearchIcon color={searchIcon} w="15px" h="15px" />}
+                icon={<SearchIcon color={searchIcon} w={{ base: "10px", sm: "12px", md: "15px" }} h={{ base: "10px", sm: "12px", md: "15px" }} />}
               ></IconButton>
             }
           />
           <Input
-            fontSize="xs"
-            py="11px"
+            fontSize={{ base: "9px", sm: "10px", md: "xs" }}
+            py={{ base: "6px", sm: "8px", md: "11px" }}
+            px={{ base: "4px", sm: "6px", md: "12px" }}
             color={mainText}
             placeholder={getSearchPlaceholder()}
             borderRadius="inherit"
@@ -186,60 +194,71 @@ export default function HeaderLinks(props) {
       <NavLink to="/auth/signin">
         <Button
           ms="0px"
-          px="0px"
+          px={{ base: "4px", sm: "6px", md: "0px" }}
           me={{ sm: "2px", md: "16px" }}
           color={navbarIcon}
           variant="transparent-with-icon"
+          size={{ base: "xs", sm: "sm", md: "md" }}
           rightIcon={
             document.documentElement.dir ? (
               ""
             ) : (
-              <ProfileIcon color={navbarIcon} w="22px" h="22px" me="0px" />
+              <ProfileIcon color={navbarIcon} w={{ base: "16px", sm: "18px", md: "22px" }} h={{ base: "16px", sm: "18px", md: "22px" }} me="0px" />
             )
           }
           leftIcon={
             document.documentElement.dir ? (
-              <ProfileIcon color={navbarIcon} w="22px" h="22px" me="0px" />
+              <ProfileIcon color={navbarIcon} w={{ base: "16px", sm: "18px", md: "22px" }} h={{ base: "16px", sm: "18px", md: "22px" }} me="0px" />
             ) : (
               ""
             )
           }
         >
-          <Text display={{ sm: "none", md: "flex" }}>Sign In</Text>
+          <Text display={{ base: "none", sm: "none", md: "flex" }} fontSize={{ base: "xs", sm: "sm", md: "md" }}>Sign In</Text>
         </Button>
       </NavLink>
-      <SidebarResponsive
-        logoText={props.logoText}
-        secondary={props.secondary}
-        routes={routes}
-        // logo={logo}
-        {...rest}
-      />
-      <IconButton
-        aria-label="Toggle color mode"
-        icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-        onClick={toggleColorMode}
-        variant="ghost"
-        color={navbarIcon}
-        size="sm"
-        borderRadius="16px"
+       {/* Icons Container - Better Mobile Alignment */}
+       <HStack spacing={{ base: "3px", sm: "4px", md: "12px" }} align="center" flexShrink={0}>
+         {/* Sidebar Toggle */}
+         <Box display={{ base: "block", sm: "block", md: "none" }}>
+           <SidebarResponsive
+             logoText={props.logoText}
+             secondary={props.secondary}
+             routes={routes}
+             // logo={logo}
+             {...rest}
+           />
+         </Box>
+         
+         {/* Color Mode Toggle */}
+         <IconButton
+           aria-label="Toggle color mode"
+           icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+           onClick={toggleColorMode}
+           variant="ghost"
+           color={navbarIcon}
+           size={{ base: "xs", sm: "sm", md: "sm" }}
+           w={{ base: "24px", sm: "28px", md: "40px" }}
+           h={{ base: "24px", sm: "28px", md: "40px" }}
+           minW={{ base: "24px", sm: "28px", md: "40px" }}
+           borderRadius={{ base: "8px", sm: "10px", md: "16px" }}
         bg={useColorModeValue("rgba(255, 255, 255, 0.2)", "rgba(26, 32, 44, 0.2)")}
         backdropFilter="blur(30px) saturate(180%)"
         border="1px solid"
         borderColor={useColorModeValue("rgba(255, 255, 255, 0.3)", "rgba(255, 255, 255, 0.2)")}
         boxShadow={useColorModeValue(
-          "0px 8px 24px rgba(0, 0, 0, 0.08), 0px 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
-          "0px 8px 24px rgba(0, 0, 0, 0.2), 0px 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+          "0px 4px 16px rgba(0, 0, 0, 0.06), 0px 1px 4px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
+          "0px 4px 16px rgba(0, 0, 0, 0.15), 0px 1px 4px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
         )}
         _hover={{ 
           bg: useColorModeValue("rgba(255, 255, 255, 0.3)", "rgba(26, 32, 44, 0.3)"),
-          transform: "scale(1.08)",
+          transform: "scale(1.05)",
           boxShadow: useColorModeValue(
-            "0px 12px 32px rgba(0, 0, 0, 0.12), 0px 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
-            "0px 12px 32px rgba(0, 0, 0, 0.3), 0px 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15)"
+            "0px 6px 20px rgba(0, 0, 0, 0.1), 0px 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
+            "0px 6px 20px rgba(0, 0, 0, 0.25), 0px 2px 8px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15)"
           )
         }}
-        transition="all 0.3s ease"
+        transition="all 0.2s ease"
         position="relative"
         _before={{
           content: '""',
@@ -248,7 +267,7 @@ export default function HeaderLinks(props) {
           left: 0,
           right: 0,
           bottom: 0,
-          borderRadius: "16px",
+          borderRadius: "inherit",
           background: useColorModeValue(
             "linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%)",
             "linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%)"
@@ -257,15 +276,20 @@ export default function HeaderLinks(props) {
           zIndex: -1
         }}
       />
-      <Menu>
-        <MenuButton>
-          <IconButton
-            aria-label="Notifications"
-            icon={<BellIcon />}
-            variant="ghost"
-            color={navbarIcon}
-            size="sm"
-            borderRadius="16px"
+        
+        {/* Notifications */}
+        <Menu>
+          <MenuButton>
+             <IconButton
+               aria-label="Notifications"
+               icon={<BellIcon />}
+               variant="ghost"
+               color={navbarIcon}
+               size={{ base: "xs", sm: "sm", md: "sm" }}
+               w={{ base: "24px", sm: "28px", md: "40px" }}
+               h={{ base: "24px", sm: "28px", md: "40px" }}
+               minW={{ base: "24px", sm: "28px", md: "40px" }}
+               borderRadius={{ base: "8px", sm: "10px", md: "16px" }}
             bg={useColorModeValue("rgba(255, 255, 255, 0.2)", "rgba(26, 32, 44, 0.2)")}
             backdropFilter="blur(30px) saturate(180%)"
             border="1px solid"
@@ -332,7 +356,8 @@ export default function HeaderLinks(props) {
             </MenuItem>
           </Flex>
         </MenuList>
-      </Menu>
+        </Menu>
+      </HStack>
     </Flex>
   );
 }

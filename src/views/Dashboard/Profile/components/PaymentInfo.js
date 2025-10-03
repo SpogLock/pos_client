@@ -72,9 +72,9 @@ const PaymentInfo = ({ customer }) => {
   const paymentStatus = getPaymentStatus(customer.nextDueDate);
 
   return (
-    <Box p={6}>
+    <Box p={{ base: 3, sm: 4, md: 6 }}>
       {/* Payment Overview Cards */}
-      <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }} gap={3} mb={6}>
+      <Grid templateColumns={{ base: "repeat(2, 1fr)", sm: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }} gap={{ base: 2, sm: 3, md: 3 }} mb={6}>
         <Box bg={cardBg} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
           <HStack spacing={3}>
             <Box color="teal.500">
@@ -232,7 +232,8 @@ const PaymentInfo = ({ customer }) => {
           <VStack spacing={3} align="stretch">
             {customer.paymentHistory.map((payment, index) => (
               <Box key={index} p={3} bg={useColorModeValue("gray.50", "gray.700")} borderRadius="md" border="1px solid" borderColor={borderColor}>
-                <Grid templateColumns="1fr 1fr 1fr auto" gap={4} minH="40px" alignItems="center">
+                {/* Desktop Layout */}
+                <Grid templateColumns="1fr 1fr 1fr auto" gap={4} minH="40px" alignItems="center" display={{ base: "none", md: "grid" }}>
                   <HStack spacing={3} align="center">
                     <Box color="teal.500" flexShrink={0}>
                       <Icon as={FaCalendarAlt} boxSize={3} />
@@ -283,6 +284,66 @@ const PaymentInfo = ({ customer }) => {
                     {payment.status}
                   </Badge>
                 </Grid>
+
+                {/* Mobile Layout - Compact Stack */}
+                <VStack spacing={2} align="stretch" display={{ base: "flex", md: "none" }}>
+                  {/* Top Row - Date and Amount */}
+                  <HStack justify="space-between" align="center">
+                    <HStack spacing={2} align="center" flex={1} minW={0}>
+                      <Box color="teal.500" flexShrink={0}>
+                        <Icon as={FaCalendarAlt} boxSize={3} />
+                      </Box>
+                      <VStack align="start" spacing={0} minW={0} flex={1}>
+                        <Text fontSize="xs" color={useColorModeValue("gray.500", "gray.400")} fontWeight="medium">
+                          Date
+                        </Text>
+                        <Text fontSize="xs" color={textColor} fontWeight="semibold" noOfLines={1}>
+                          {payment.date}
+                        </Text>
+                      </VStack>
+                    </HStack>
+                    
+                    <HStack spacing={2} align="center" flex={1} minW={0} justify="flex-end">
+                      <Box color="teal.500" flexShrink={0}>
+                        <Icon as={FaMoneyBillWave} boxSize={3} />
+                      </Box>
+                      <VStack align="end" spacing={0} minW={0} flex={1}>
+                        <Text fontSize="xs" color={useColorModeValue("gray.500", "gray.400")} fontWeight="medium">
+                          Amount
+                        </Text>
+                        <Text fontSize="xs" color={textColor} fontWeight="semibold" noOfLines={1}>
+                          {payment.amount}
+                        </Text>
+                      </VStack>
+                    </HStack>
+                  </HStack>
+
+                  {/* Bottom Row - Method and Status */}
+                  <HStack justify="space-between" align="center">
+                    <VStack align="start" spacing={0} flex={1} minW={0}>
+                      <Text fontSize="xs" color={useColorModeValue("gray.500", "gray.400")} fontWeight="medium">
+                        Method
+                      </Text>
+                      <Text fontSize="xs" color={textColor} fontWeight="semibold" noOfLines={1}>
+                        {payment.method}
+                      </Text>
+                    </VStack>
+                    
+                    <Badge
+                      colorScheme={payment.status === "Paid" ? "green" : "red"}
+                      variant="subtle"
+                      px={2}
+                      py={1}
+                      borderRadius="full"
+                      fontSize="xs"
+                      fontWeight="semibold"
+                      flexShrink={0}
+                      ml={2}
+                    >
+                      {payment.status}
+                    </Badge>
+                  </HStack>
+                </VStack>
               </Box>
             ))}
           </VStack>
