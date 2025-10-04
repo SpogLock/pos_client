@@ -116,10 +116,7 @@ export default function HeaderLinks(props) {
           borderRadius={{ base: "10px", sm: "12px", md: "16px" }}
           border="1px solid"
           borderColor={useColorModeValue("rgba(255, 255, 255, 0.3)", "rgba(255, 255, 255, 0.2)")}
-          boxShadow={useColorModeValue(
-            "0px 6px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
-            "0px 6px 24px rgba(0, 0, 0, 0.2), 0px 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
-          )}
+          boxShadow="none"
           w={{
             base: "100px",
             sm: "140px",
@@ -129,18 +126,14 @@ export default function HeaderLinks(props) {
           flex="1"
           _focus={{
             borderColor: mainTeal,
-            boxShadow: `0 0 0 1px ${mainTeal}, 0px 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3)`,
+            boxShadow: `0 0 0 1px ${mainTeal}`,
             bg: useColorModeValue("rgba(255, 255, 255, 0.2)", "rgba(26, 32, 44, 0.2)"),
           }}
           _active={{
             borderColor: mainTeal,
           }}
           _hover={{
-            bg: useColorModeValue("rgba(255, 255, 255, 0.25)", "rgba(26, 32, 44, 0.25)"),
-            boxShadow: useColorModeValue(
-              "0px 12px 40px rgba(0, 0, 0, 0.08), 0px 4px 12px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
-              "0px 12px 40px rgba(0, 0, 0, 0.25), 0px 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15)"
-            )
+            bg: useColorModeValue("rgba(255, 255, 255, 0.25)", "rgba(26, 32, 44, 0.25)")
           }}
           transition="all 0.3s ease"
           position="relative"
@@ -246,17 +239,10 @@ export default function HeaderLinks(props) {
         backdropFilter="blur(30px) saturate(180%)"
         border="1px solid"
         borderColor={useColorModeValue("rgba(255, 255, 255, 0.3)", "rgba(255, 255, 255, 0.2)")}
-        boxShadow={useColorModeValue(
-          "0px 4px 16px rgba(0, 0, 0, 0.06), 0px 1px 4px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
-          "0px 4px 16px rgba(0, 0, 0, 0.15), 0px 1px 4px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
-        )}
+        boxShadow="none"
         _hover={{ 
           bg: useColorModeValue("rgba(255, 255, 255, 0.3)", "rgba(26, 32, 44, 0.3)"),
-          transform: "scale(1.05)",
-          boxShadow: useColorModeValue(
-            "0px 6px 20px rgba(0, 0, 0, 0.1), 0px 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
-            "0px 6px 20px rgba(0, 0, 0, 0.25), 0px 2px 8px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15)"
-          )
+          transform: "scale(1.05)"
         }}
         transition="all 0.2s ease"
         position="relative"
@@ -294,17 +280,10 @@ export default function HeaderLinks(props) {
             backdropFilter="blur(30px) saturate(180%)"
             border="1px solid"
             borderColor={useColorModeValue("rgba(255, 255, 255, 0.3)", "rgba(255, 255, 255, 0.2)")}
-            boxShadow={useColorModeValue(
-              "0px 8px 24px rgba(0, 0, 0, 0.08), 0px 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
-              "0px 8px 24px rgba(0, 0, 0, 0.2), 0px 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
-            )}
+            boxShadow="none"
             _hover={{ 
               bg: useColorModeValue("rgba(255, 255, 255, 0.3)", "rgba(26, 32, 44, 0.3)"),
-              transform: "scale(1.08)",
-              boxShadow: useColorModeValue(
-                "0px 12px 32px rgba(0, 0, 0, 0.12), 0px 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
-                "0px 12px 32px rgba(0, 0, 0, 0.3), 0px 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15)"
-              )
+              transform: "scale(1.08)"
             }}
             transition="all 0.3s ease"
             position="relative"

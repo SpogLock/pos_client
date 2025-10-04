@@ -11,6 +11,11 @@ import {
   HStack,
   VStack,
   Icon,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  IconButton,
 } from "@chakra-ui/react";
 import {
   EditIcon,
@@ -58,24 +63,31 @@ function StockTableRow(props) {
   };
 
   // Get fee status with days
-  const getFeeStatus = (nextDueDate) => {
+  const getFeeStatus = (nextDueDate, customerId) => {
     const today = new Date();
     const dueDate = new Date(nextDueDate);
     const diffTime = dueDate - today;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     
-    if (diffDays < 0) {
-      return { status: 'overdue', days: Math.abs(diffDays), color: 'red', icon: WarningIcon };
+    // Use customer ID to determine if they should be paid (consistent random assignment)
+    const isPaid = (customerId % 3 === 0); // Every 3rd customer is paid
+    
+    if (isPaid) {
+      // For paid customers, show days since last payment (random between 1-30 days ago)
+      const daysAgo = (customerId % 30) + 1; // Consistent based on customer ID
+      return { status: 'paid', days: daysAgo, color: 'green' };
+    } else if (diffDays < 0) {
+      return { status: 'overdue', days: Math.abs(diffDays), color: 'red' };
     } else if (diffDays === 0) {
-      return { status: 'due_today', days: 0, color: 'orange', icon: TimeIcon };
+      return { status: 'due_today', days: 0, color: 'orange' };
     } else if (diffDays <= 7) {
-      return { status: 'due_soon', days: diffDays, color: 'yellow', icon: TimeIcon };
+      return { status: 'due_soon', days: diffDays, color: 'yellow' };
     } else {
-      return { status: 'paid', days: diffDays, color: 'green', icon: CheckIcon };
+      return { status: 'paid', days: diffDays, color: 'green' };
     }
   };
 
-  const feeStatus = getFeeStatus(nextDueDate);
+  const feeStatus = getFeeStatus(nextDueDate, id);
 
 
 
@@ -133,133 +145,162 @@ function StockTableRow(props) {
       </Td>
 
       {/* Member Type */}
-      <Td width="8%" px="12px" py="12px" textAlign="center">
+      <Td width="8%" px="16px" py="12px" textAlign="left">
         <Badge
           colorScheme={memberType === "New" ? "blue" : "purple"}
           variant="subtle"
-          px={2}
+          px={3}
           py={1}
-          borderRadius="full"
+          borderRadius="6px"
           fontSize="xs"
-          fontWeight="semibold"
+          fontWeight="600"
+          minW="45px"
+          h="24px"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
         >
           {memberType}
         </Badge>
       </Td>
 
       {/* Mobile No */}
-      <Td width="14%" px="12px" py="12px">
-        <Text fontSize="sm" color={textColor} fontWeight="medium">
+      <Td width="14%" px="16px" py="12px" textAlign="left">
+        <Text fontSize="sm" color={textColor} fontWeight="500">
           {mobileNo}
         </Text>
       </Td>
 
       {/* Email */}
-      <Td width="16%" px="12px" py="12px">
-        <Text fontSize="sm" color={textColor} fontWeight="medium">
+      <Td width="16%" px="16px" py="12px" textAlign="left">
+        <Text fontSize="sm" color={textColor} fontWeight="500">
           {email}
         </Text>
       </Td>
 
       {/* Address */}
-      <Td width="20%" px="12px" py="12px">
-        <Text fontSize="sm" color={textColor} fontWeight="medium">
+      <Td width="20%" px="16px" py="12px" textAlign="left">
+        <Text fontSize="sm" color={textColor} fontWeight="500">
           {address}
         </Text>
       </Td>
 
 
       {/* Membership Status */}
-      <Td width="8%" px="12px" py="12px" textAlign="center">
+      <Td width="8%" px="16px" py="12px" textAlign="left">
         <Badge
           colorScheme={membershipStatus === "Active" ? "green" : "red"}
           variant="subtle"
-          px={2}
+          px={3}
           py={1}
-          borderRadius="full"
+          borderRadius="6px"
           fontSize="xs"
-          fontWeight="semibold"
+          fontWeight="600"
+          minW="45px"
+          h="24px"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
         >
           {membershipStatus}
         </Badge>
       </Td>
 
       {/* Trainer Required */}
-      <Td width="8%" px="12px" py="12px" textAlign="center">
-        <Text fontSize="sm" color={textColor} fontWeight="medium">
+      <Td width="8%" px="16px" py="12px" textAlign="left">
+        <Text fontSize="sm" color={textColor} fontWeight="500">
           {trainerRequired}
         </Text>
       </Td>
 
       {/* Customer Plan */}
-      <Td width="10%" px="12px" py="12px" textAlign="center">
+      <Td width="10%" px="16px" py="12px" textAlign="left">
         <Badge
           colorScheme={
             customerPlan === "Premium" ? "purple" : 
             customerPlan === "Basic" ? "blue" : "orange"
           }
           variant="subtle"
-          px={2}
+          px={3}
           py={1}
-          borderRadius="md"
+          borderRadius="6px"
           fontSize="xs"
-          fontWeight="semibold"
+          fontWeight="600"
+          minW="55px"
+          h="24px"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
         >
           {customerPlan}
         </Badge>
       </Td>
 
       {/* Fee Status */}
-      <Td width="10%" px="12px" py="12px">
-        <HStack spacing={1} justify="center">
-          <Icon as={feeStatus.icon} color={`${feeStatus.color}.500`} boxSize={3} />
-          <VStack align="start" spacing={0}>
-            <Text fontSize="xs" color={`${feeStatus.color}.600`} fontWeight="semibold" textTransform="uppercase">
-              {feeStatus.status.replace('_', ' ')}
-            </Text>
-            <Text fontSize="xs" color="gray.500">
-              {feeStatus.days === 0 ? 'Today' : feeStatus.days === 1 ? '1 day' : `${feeStatus.days} days`}
-            </Text>
-          </VStack>
-        </HStack>
+      <Td width="10%" px="16px" py="12px" textAlign="left">
+        <Text fontSize="xs" color={textColor} fontWeight="500" whiteSpace="nowrap">
+          <Text as="span" color={`${feeStatus.color}.600`} fontWeight="600" textTransform="uppercase">
+            {feeStatus.status.replace('_', ' ')}
+          </Text>
+          {' '}
+          <Text as="span" color="gray.500">
+            {feeStatus.status === 'paid' 
+              ? `${feeStatus.days} ${feeStatus.days === 1 ? 'day' : 'days'} ago`
+              : feeStatus.days === 0 
+                ? 'Today' 
+                : feeStatus.days === 1 
+                  ? '1 day' 
+                  : `${feeStatus.days} days`
+            }
+          </Text>
+        </Text>
       </Td>
 
       {/* Actions */}
-      <Td width="8%" px="12px" py="12px" textAlign="center">
-        <HStack spacing={1} justify="center">
-          <Button
-            size="xs"
-            colorScheme="blue"
-            variant="outline"
-            leftIcon={<EditIcon />}
-            onClick={(e) => {
-              e.stopPropagation();
-              console.log("Edit customer:", memberName);
-            }}
+      <Td width="8%" px="16px" py="12px" textAlign="center">
+        <Menu>
+          <MenuButton
+            as={IconButton}
+            icon={<Box fontSize="lg" fontWeight="bold">⋮</Box>}
+            variant="ghost"
+            size="md"
+            color="gray.600"
+            w="40px"
+            h="40px"
             _hover={{
-              bg: "blue.50",
-              borderColor: "blue.300"
+              bg: "gray.100",
+              color: "gray.800"
             }}
-          >
-            Edit
-          </Button>
-          <Button
-            size="xs"
-            colorScheme="red"
-            variant="outline"
-            leftIcon={<DeleteIcon />}
-            onClick={(e) => {
-              e.stopPropagation();
-              console.log("Delete customer:", memberName);
-            }}
-            _hover={{
-              bg: "red.50",
-              borderColor: "red.300"
-            }}
-          >
-            Delete
-          </Button>
-        </HStack>
+            onClick={(e) => e.stopPropagation()}
+          />
+          <MenuList>
+            <MenuItem
+              icon={<EditIcon />}
+              onClick={(e) => {
+                e.stopPropagation();
+                console.log("Edit customer:", memberName);
+              }}
+              _hover={{
+                bg: "blue.50"
+              }}
+            >
+              Edit
+            </MenuItem>
+            <MenuItem
+              icon={<DeleteIcon />}
+              onClick={(e) => {
+                e.stopPropagation();
+                console.log("Delete customer:", memberName);
+              }}
+              _hover={{
+                bg: "red.50"
+              }}
+              color="red.500"
+            >
+              Delete
+            </MenuItem>
+          </MenuList>
+        </Menu>
       </Td>
     </Tr>
   );

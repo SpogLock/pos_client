@@ -1,6 +1,8 @@
 // import
 import Dashboard from "views/Dashboard/Dashboard";
 import CustomerManagement from "views/Dashboard/CustomerManagement";
+import InventoryManagement from "views/Dashboard/InventoryManagement";
+import ProductProfile from "views/Dashboard/ProductProfile";
 import Billing from "views/Dashboard/Billing";
 import RTLPage from "views/Dashboard/RTL";
 import Profile from "views/Dashboard/Profile";
@@ -46,6 +48,14 @@ var dashRoutes = [
     layout: "/admin",
   },
   {
+    path: "/inventory-management",
+    name: "Inventory Management",
+    rtlName: "لوحة القيادة",
+    icon: <SettingsIcon color="inherit" />,
+    component: InventoryManagement,
+    layout: "/admin",
+  },
+  {
     path: "/expenses-cashflow",
     name: "Expenses & Cashflow",
     rtlName: "لوحة القيادة",
@@ -67,6 +77,15 @@ var dashRoutes = [
         icon: <PersonIcon color="inherit" />,
         secondaryNavbar: true,
         component: Profile,
+        layout: "/admin",
+      },
+      {
+        path: "/product-profile",
+        name: "Product Profile",
+        rtlName: "لوحة القيادة",
+        icon: <PersonIcon color="inherit" />,
+        secondaryNavbar: true,
+        component: ProductProfile,
         layout: "/admin",
       },
       {

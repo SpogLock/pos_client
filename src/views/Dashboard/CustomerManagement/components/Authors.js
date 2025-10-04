@@ -198,20 +198,27 @@ const Authors = ({ title, captions, data }) => {
   };
 
   // Get days until due or days overdue
-  const getFeeStatus = (nextDueDate) => {
+  const getFeeStatus = (nextDueDate, customerId) => {
     const today = new Date();
     const dueDate = new Date(nextDueDate);
     const diffTime = dueDate - today;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     
-    if (diffDays < 0) {
-      return { status: 'overdue', days: Math.abs(diffDays) };
+    // Use customer ID to determine if they should be paid (consistent random assignment)
+    const isPaid = (customerId % 3 === 0); // Every 3rd customer is paid
+    
+    if (isPaid) {
+      // For paid customers, show days since last payment (random between 1-30 days ago)
+      const daysAgo = (customerId % 30) + 1; // Consistent based on customer ID
+      return { status: 'paid', days: daysAgo, color: 'green' };
+    } else if (diffDays < 0) {
+      return { status: 'overdue', days: Math.abs(diffDays), color: 'red' };
     } else if (diffDays === 0) {
-      return { status: 'due_today', days: 0 };
+      return { status: 'due_today', days: 0, color: 'orange' };
     } else if (diffDays <= 7) {
-      return { status: 'due_soon', days: diffDays };
+      return { status: 'due_soon', days: diffDays, color: 'yellow' };
     } else {
-      return { status: 'paid', days: diffDays };
+      return { status: 'paid', days: diffDays, color: 'green' };
     }
   };
 
@@ -247,7 +254,7 @@ const Authors = ({ title, captions, data }) => {
     // Fee status filter
     if (filters.feeStatus) {
       filteredData = filteredData.filter(customer => {
-        const feeStatus = getFeeStatus(customer.nextDueDate);
+        const feeStatus = getFeeStatus(customer.nextDueDate, customer.id);
         if (filters.feeStatus === 'overdue') {
           return feeStatus.status === 'overdue';
         } else if (filters.feeStatus === 'paid') {
@@ -533,8 +540,20 @@ const Authors = ({ title, captions, data }) => {
     </Box>
   );
 
-  // Customer management captions
-  const stockCaptions = ["Picture", "Member Name", "Member Type", "Mobile No", "Email", "Address", "Membership", "Trainer", "Customer Plan", "Fee Status", "Actions"];
+  // Customer management captions - Clean key-style headers
+  const stockCaptions = [
+    { key: "Picture", width: "8%" },
+    { key: "Customer Name", width: "18%" },
+    { key: "Type", width: "8%" },
+    { key: "Mobile No.", width: "14%" },
+    { key: "Email", width: "16%" },
+    { key: "Address", width: "20%" },
+    { key: "Status", width: "8%" },
+    { key: "Trainer", width: "8%" },
+    { key: "Plan", width: "10%" },
+    { key: "Fee Status", width: "10%" },
+    { key: "Actions", width: "8%" }
+  ];
 
   return (
     <Card overflowX={{ sm: "scroll", xl: "hidden" }}>
@@ -573,7 +592,15 @@ const Authors = ({ title, captions, data }) => {
                   )}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent w="280px">
+              <PopoverContent 
+                w={{ base: "90vw", sm: "320px" }}
+                maxW="90vw"
+                placement="bottom-start"
+                offset={[0, 8]}
+                closeOnBlur={true}
+                closeOnEsc={true}
+                returnFocusOnClose={false}
+              >
                 <PopoverArrow />
                 <PopoverCloseButton />
                 <PopoverHeader>
@@ -1015,31 +1042,30 @@ const Authors = ({ title, captions, data }) => {
              overflow="hidden"
              boxShadow="0px 4px 12px rgba(0, 0, 0, 0.1)"
            >
-            <Thead>
-               <Tr bg={useColorModeValue("gray.50", "gray.700")} borderBottom="2px solid" borderColor={borderColor}>
-                {stockCaptions.map((caption, idx) => {
-                          const widths = ["8%", "18%", "8%", "14%", "16%", "20%", "8%", "8%", "10%", "10%", "8%"];
-                  return (
-                     <Th 
-                       color='gray.600' 
-                       key={idx} 
-                       width={widths[idx]} 
-                       px="12px"
-                       py="16px"
-                       fontWeight="semibold"
-                       fontSize="sm"
-                       textTransform="none"
-                       letterSpacing="normal"
-                       textAlign={idx === 0 ? "center" : "left"}
-                       borderLeft={idx === 0 ? "none" : "1px solid"}
-                       borderLeftColor={borderColor}
-                     >
-                      {caption}
-                    </Th>
-                  );
-                })}
-              </Tr>
-            </Thead>
+             <Thead>
+                <Tr bg={useColorModeValue("gray.50", "gray.700")} borderBottom="2px solid" borderColor={borderColor}>
+                 {stockCaptions.map((caption, idx) => {
+                   return (
+                      <Th 
+                        color='gray.600' 
+                        key={idx} 
+                        width={caption.width} 
+                        px="12px"
+                        py="16px"
+                        fontWeight="semibold"
+                        fontSize="sm"
+                        textTransform="none"
+                        letterSpacing="normal"
+                        textAlign={idx === 0 ? "center" : "left"}
+                        borderLeft={idx === 0 ? "none" : "1px solid"}
+                        borderLeftColor={borderColor}
+                      >
+                       {caption.key}
+                     </Th>
+                   );
+                 })}
+               </Tr>
+             </Thead>
             <Tbody>
                {filteredCustomers.map((row, index) => {
                 return (
