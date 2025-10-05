@@ -39,7 +39,7 @@ import {
   Select,
   Checkbox,
 } from "@chakra-ui/react";
-import { ChevronDownIcon, PhoneIcon, EmailIcon, StarIcon, CloseIcon, SettingsIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, PhoneIcon, EmailIcon, StarIcon, CloseIcon, SettingsIcon, HamburgerIcon, AttachmentIcon, DownloadIcon, AddIcon } from "@chakra-ui/icons";
 // Custom components
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
@@ -558,168 +558,78 @@ const Authors = ({ title, captions, data }) => {
   return (
     <Card overflowX={{ sm: "scroll", xl: "hidden" }}>
       <CardHeader p='6px 0px 22px 0px'>
-        <Flex justifyContent="space-between" alignItems="center" width="100%" flexWrap="wrap" gap={2}>
-          <Text fontSize='md' color={textColor} fontWeight='bold' flexShrink={0}>
+        <Flex 
+          justifyContent={{ base: "flex-start", md: "space-between" }} 
+          alignItems="center" 
+          width="100%" 
+          flexWrap="wrap" 
+          gap={2}
+          flexDirection={{ base: "row", md: "row" }}
+        >
+          <Text 
+            fontSize={{ base: "sm", md: "md" }} 
+            color={textColor} 
+            fontWeight='bold' 
+            flexShrink={0}
+          >
             Customer Management
           </Text>
-          <Flex gap="4px" flexShrink={0}>
-            {/* Filters Button */}
-            <Popover>
-              <PopoverTrigger>
-                <Button
-                  size="xs"
-                  variant="outline"
-                  leftIcon={<SettingsIcon />}
-                  colorScheme="brand"
-                  position="relative"
-                  px={2}
-                  fontSize="xs"
-                >
-                  Filters
-                  {hasActiveFilters && (
-                    <Badge
-                      position="absolute"
-                      top="-8px"
-                      right="-8px"
-                      colorScheme="red"
-                      borderRadius="full"
-                      fontSize="8px"
-                      minW="16px"
-                      h="16px"
-                    >
-                      {getFilterCount()}
-                    </Badge>
-                  )}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent 
-                w={{ base: "90vw", sm: "320px" }}
-                maxW="90vw"
-                placement="bottom-start"
-                offset={[0, 8]}
-                closeOnBlur={true}
-                closeOnEsc={true}
-                returnFocusOnClose={false}
+          <Flex gap="4px" flexShrink={0} ms={{ base: "auto", md: "auto" }}>
+            <Menu>
+              <MenuButton
+                as={Button}
+                variant="outline"
+                colorScheme="brand"
+                size="xs"
+                leftIcon={<HamburgerIcon />}
+                px={2}
+                fontSize="xs"
               >
-                <PopoverArrow />
-                <PopoverCloseButton />
-                <PopoverHeader>
-                  <HStack justify="space-between">
-                    <Text fontSize="sm" fontWeight="semibold">Customer Filters</Text>
+                Actions
+              </MenuButton>
+              <MenuList>
+                <MenuItem
+                  icon={<SettingsIcon />}
+                  position="relative"
+                  onClick={() => {
+                    // Handle filters in a simpler way or open a modal
+                    console.log("Open filters");
+                  }}
+                >
+                  <HStack justify="space-between" w="full">
+                    <Text>Filters</Text>
                     {hasActiveFilters && (
-                      <Button
-                        size="xs"
-                        variant="ghost"
+                      <Badge
                         colorScheme="red"
-                        onClick={clearFilters}
-                        leftIcon={<CloseIcon />}
+                        borderRadius="full"
+                        fontSize="8px"
+                        minW="12px"
+                        h="12px"
+                        ml="auto"
                       >
-                        Clear All
-                      </Button>
+                        {getFilterCount()}
+                      </Badge>
                     )}
                   </HStack>
-                </PopoverHeader>
-                <PopoverBody>
-                  <VStack spacing={4} align="stretch">
-                    {/* Membership Status Filter */}
-                    <Box>
-                      <Text fontSize="sm" fontWeight="medium" mb={2}>Membership Status</Text>
-                      <Select
-                        size="sm"
-                        placeholder="All statuses"
-                        value={filters.membershipStatus || ''}
-                        onChange={(e) => updateFilters({ ...filters, membershipStatus: e.target.value })}
-                      >
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-                      </Select>
-                    </Box>
-
-                    <Divider />
-
-                    {/* Customer Plan Filter */}
-                    <Box>
-                      <Text fontSize="sm" fontWeight="medium" mb={2}>Customer Plan</Text>
-                      <Select
-                        size="sm"
-                        placeholder="All plans"
-                        value={filters.customerPlan || ''}
-                        onChange={(e) => updateFilters({ ...filters, customerPlan: e.target.value })}
-                      >
-                        <option value="Premium">Premium</option>
-                        <option value="Basic">Basic</option>
-                        <option value="Standard">Standard</option>
-                      </Select>
-                    </Box>
-
-                    <Divider />
-
-                    {/* Fee Status Filter */}
-                    <Box>
-                      <Text fontSize="sm" fontWeight="medium" mb={2}>Fee Status</Text>
-                      <VStack spacing={2} align="stretch">
-                        <Checkbox
-                          size="sm"
-                          isChecked={filters.feeStatus === 'overdue'}
-                          onChange={(e) => updateFilters({ 
-                            ...filters,
-                            feeStatus: e.target.checked ? 'overdue' : '' 
-                          })}
-                        >
-                          Overdue Payments
-                        </Checkbox>
-                        <Checkbox
-                          size="sm"
-                          isChecked={filters.feeStatus === 'paid'}
-                          onChange={(e) => updateFilters({ 
-                            ...filters,
-                            feeStatus: e.target.checked ? 'paid' : '' 
-                          })}
-                        >
-                          Up to Date
-                        </Checkbox>
-                      </VStack>
-                    </Box>
-
-                    <Divider />
-
-                    {/* Trainer Required Filter */}
-                    <Box>
-                      <Text fontSize="sm" fontWeight="medium" mb={2}>Trainer Required</Text>
-                      <Select
-                        size="sm"
-                        placeholder="All customers"
-                        value={filters.trainerRequired || ''}
-                        onChange={(e) => updateFilters({ ...filters, trainerRequired: e.target.value })}
-                      >
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                      </Select>
-                    </Box>
-                  </VStack>
-                </PopoverBody>
-              </PopoverContent>
-            </Popover>
-            
-            <Button
-              variant="outline"
-              colorScheme="brand"
-              size="xs"
-              onClick={() => console.log("Import CSV clicked")}
-              px={2}
-              fontSize="xs"
-            >
-              Import CSV
-            </Button>
-            <Button
-              colorScheme="brand"
-              size="xs"
-              onClick={onOpen}
-              px={2}
-              fontSize="xs"
-            >
-              Add Customer
-            </Button>
+                </MenuItem>
+                
+                <MenuItem
+                  icon={<AttachmentIcon />}
+                  onClick={() => console.log("Import CSV clicked")}
+                >
+                  Import CSV
+                </MenuItem>
+                
+                <MenuItem
+                  icon={<AddIcon />}
+                  onClick={onOpen}
+                  color="teal.600"
+                  fontWeight="semibold"
+                >
+                  Add Customer
+                </MenuItem>
+              </MenuList>
+            </Menu>
           </Flex>
         </Flex>
       </CardHeader>

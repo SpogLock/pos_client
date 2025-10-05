@@ -20,7 +20,7 @@ import {
   RocketIcon,
   SupportIcon,
 } from "components/Icons/Icons";
-import { SettingsIcon } from "@chakra-ui/icons";
+import { SettingsIcon, ViewIcon } from "@chakra-ui/icons";
 
 var dashRoutes = [
   {
@@ -51,7 +51,7 @@ var dashRoutes = [
     path: "/inventory-management",
     name: "Inventory Management",
     rtlName: "لوحة القيادة",
-    icon: <SettingsIcon color="inherit" />,
+    icon: <ViewIcon color="inherit" />,
     component: InventoryManagement,
     layout: "/admin",
   },

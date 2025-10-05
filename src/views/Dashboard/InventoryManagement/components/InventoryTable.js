@@ -38,12 +38,9 @@ import {
   PopoverBody,
   Select,
   Checkbox,
-  Input,
-  InputGroup,
-  InputLeftElement,
   useToast,
 } from "@chakra-ui/react";
-import { ChevronDownIcon, SearchIcon, SettingsIcon, CloseIcon, EditIcon, DeleteIcon, StarIcon, WarningIcon, CheckIcon, TimeIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, SettingsIcon, CloseIcon, EditIcon, DeleteIcon, StarIcon, WarningIcon, CheckIcon, TimeIcon, HamburgerIcon, DownloadIcon, AttachmentIcon, AddIcon } from "@chakra-ui/icons";
 // Custom components
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
@@ -52,6 +49,7 @@ import InventoryTableRow from "./InventoryTableRow";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSearch } from "contexts/SearchContext";
+import whey_dummy from "assets/img/whey_dummy.png";
 
 const InventoryTable = ({ title }) => {
   const textColor = useColorModeValue("gray.700", "white");
@@ -81,7 +79,7 @@ const InventoryTable = ({ title }) => {
   const [inventoryData, setInventoryData] = useState([
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=150&h=150&fit=crop&crop=center",
+      image: whey_dummy,
       productName: "Optimum Nutrition Gold Standard Whey",
       category: "Protein Powder",
       stockQuantity: 15,
@@ -97,7 +95,7 @@ const InventoryTable = ({ title }) => {
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=150&h=150&fit=crop&crop=center",
+      image: whey_dummy,
       productName: "Dymatize ISO100 Whey Protein",
       category: "Protein Powder",
       stockQuantity: 22,
@@ -113,7 +111,7 @@ const InventoryTable = ({ title }) => {
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=150&h=150&fit=crop&crop=center",
+      image: whey_dummy,
       productName: "MuscleTech Creatine Monohydrate",
       category: "Creatine",
       stockQuantity: 45,
@@ -129,7 +127,7 @@ const InventoryTable = ({ title }) => {
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=150&h=150&fit=crop&crop=center",
+      image: whey_dummy,
       productName: "BSN N.O.-XPLODE Pre-Workout",
       category: "Pre-Workout",
       stockQuantity: 8,
@@ -145,7 +143,7 @@ const InventoryTable = ({ title }) => {
     },
     {
       id: 5,
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=150&h=150&fit=crop&crop=center",
+      image: whey_dummy,
       productName: "Universal Animal Pak Multivitamin",
       category: "Multivitamin",
       stockQuantity: 35,
@@ -282,17 +280,14 @@ const InventoryTable = ({ title }) => {
               <Text fontSize="xl" fontWeight="bold" color={cardTextColor} textAlign="center">
                 {hoveredProduct.productName}
               </Text>
-              <Badge
-                colorScheme={getStockStatus(hoveredProduct.stockQuantity).color}
-                variant="subtle"
-                px={4}
-                py={2}
-                borderRadius="full"
-                fontSize="sm"
-                fontWeight="semibold"
-              >
-                {hoveredProduct.stockQuantity} in stock
-              </Badge>
+              <HStack spacing={2} align="center">
+                <Text fontSize="sm" color={cardTextColor} fontWeight="semibold">
+                  {hoveredProduct.stockQuantity} in stock
+                </Text>
+                {getStockStatus(hoveredProduct.stockQuantity).status === 'low' && (
+                  <WarningIcon color="red.500" boxSize={4} />
+                )}
+              </HStack>
               <Text fontSize="md" color={cardLabelColor} textAlign="center" fontWeight="medium">
                 {hoveredProduct.category}
               </Text>
@@ -319,175 +314,87 @@ const InventoryTable = ({ title }) => {
   return (
     <Card overflowX={{ sm: "scroll", xl: "hidden" }}>
       <CardHeader p='6px 0px 22px 0px'>
-        <Flex justifyContent="space-between" alignItems="center" width="100%" flexWrap="wrap" gap={2}>
-          <Text fontSize='md' color={textColor} fontWeight='bold' flexShrink={0}>
+        <Flex 
+          justifyContent={{ base: "flex-start", md: "space-between" }} 
+          alignItems="center" 
+          width="100%" 
+          flexWrap="wrap" 
+          gap={2}
+          flexDirection={{ base: "row", md: "row" }}
+        >
+          <Text 
+            fontSize={{ base: "sm", md: "md" }} 
+            color={textColor} 
+            fontWeight='bold' 
+            flexShrink={0}
+          >
             Inventory Management
           </Text>
-          <Flex gap="4px" flexShrink={0}>
-            {/* Filters Button */}
-            <Popover>
-              <PopoverTrigger>
-                <Button
-                  size="xs"
-                  variant="outline"
-                  leftIcon={<SettingsIcon />}
-                  colorScheme="brand"
-                  position="relative"
-                  px={2}
-                  fontSize="xs"
-                >
-                  Filters
-                  {hasActiveFilters && (
-                    <Badge
-                      position="absolute"
-                      top="-8px"
-                      right="-8px"
-                      colorScheme="red"
-                      borderRadius="full"
-                      fontSize="8px"
-                      minW="16px"
-                      h="16px"
-                    >
-                      {getFilterCount()}
-                    </Badge>
-                  )}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent 
-                w={{ base: "90vw", sm: "320px" }}
-                maxW="90vw"
-                placement="bottom-start"
-                offset={[0, 8]}
-                closeOnBlur={true}
-                closeOnEsc={true}
-                returnFocusOnClose={false}
+          <Flex gap="4px" flexShrink={0} ms={{ base: "auto", md: "auto" }}>
+            <Menu>
+              <MenuButton
+                as={Button}
+                variant="outline"
+                colorScheme="brand"
+                size="xs"
+                leftIcon={<HamburgerIcon />}
+                px={2}
+                fontSize="xs"
               >
-                <PopoverArrow />
-                <PopoverCloseButton />
-                <PopoverHeader>
-                  <HStack justify="space-between">
-                    <Text fontSize="sm" fontWeight="semibold">Product Filters</Text>
+                Actions
+              </MenuButton>
+              <MenuList>
+                <MenuItem
+                  icon={<SettingsIcon />}
+                  position="relative"
+                  onClick={() => {
+                    // Handle filters in a simpler way or open a modal
+                    console.log("Open filters");
+                  }}
+                >
+                  <HStack justify="space-between" w="full">
+                    <Text>Filters</Text>
                     {hasActiveFilters && (
-                      <Button
-                        size="xs"
-                        variant="ghost"
+                      <Badge
                         colorScheme="red"
-                        onClick={clearFilters}
-                        leftIcon={<CloseIcon />}
+                        borderRadius="full"
+                        fontSize="8px"
+                        minW="12px"
+                        h="12px"
+                        ml="auto"
                       >
-                        Clear All
-                      </Button>
+                        {getFilterCount()}
+                      </Badge>
                     )}
                   </HStack>
-                </PopoverHeader>
-                <PopoverBody>
-                  <VStack spacing={4} align="stretch">
-                    {/* Category Filter */}
-                    <Box>
-                      <Text fontSize="sm" fontWeight="medium" mb={2}>Category</Text>
-                      <Select
-                        size="sm"
-                        placeholder="All categories"
-                        value={filters.category || ''}
-                        onChange={(e) => updateFilters({ ...filters, category: e.target.value })}
-                      >
-                        <option value="Footwear">Footwear</option>
-                        <option value="Electronics">Electronics</option>
-                        <option value="Clothing">Clothing</option>
-                        <option value="Accessories">Accessories</option>
-                      </Select>
-                    </Box>
-
-                    <Divider />
-
-                    {/* Stock Status Filter */}
-                    <Box>
-                      <Text fontSize="sm" fontWeight="medium" mb={2}>Stock Status</Text>
-                      <VStack spacing={2} align="stretch">
-                        <Checkbox
-                          size="sm"
-                          isChecked={filters.stockStatus === 'low'}
-                          onChange={(e) => updateFilters({ 
-                            ...filters,
-                            stockStatus: e.target.checked ? 'low' : '' 
-                          })}
-                        >
-                          Low Stock (&lt;10)
-                        </Checkbox>
-                        <Checkbox
-                          size="sm"
-                          isChecked={filters.stockStatus === 'medium'}
-                          onChange={(e) => updateFilters({ 
-                            ...filters,
-                            stockStatus: e.target.checked ? 'medium' : '' 
-                          })}
-                        >
-                          Medium Stock (10-30)
-                        </Checkbox>
-                        <Checkbox
-                          size="sm"
-                          isChecked={filters.stockStatus === 'high'}
-                          onChange={(e) => updateFilters({ 
-                            ...filters,
-                            stockStatus: e.target.checked ? 'high' : '' 
-                          })}
-                        >
-                          High Stock (&gt;30)
-                        </Checkbox>
-                      </VStack>
-                    </Box>
-                  </VStack>
-                </PopoverBody>
-              </PopoverContent>
-            </Popover>
-            
-            <Button
-              variant="outline"
-              colorScheme="brand"
-              size="xs"
-              onClick={() => console.log("Import CSV clicked")}
-              px={2}
-              fontSize="xs"
-            >
-              Import CSV
-            </Button>
-            <Button
-              variant="outline"
-              colorScheme="brand"
-              size="xs"
-              onClick={() => console.log("Export clicked")}
-              px={2}
-              fontSize="xs"
-            >
-              Export
-            </Button>
-            <Button
-              colorScheme="brand"
-              size="xs"
-              onClick={onOpen}
-              px={2}
-              fontSize="xs"
-            >
-              + Add Product
-            </Button>
+                </MenuItem>
+                
+                <MenuItem
+                  icon={<AttachmentIcon />}
+                  onClick={() => console.log("Import CSV clicked")}
+                >
+                  Import CSV
+                </MenuItem>
+                
+                <MenuItem
+                  icon={<DownloadIcon />}
+                  onClick={() => console.log("Export clicked")}
+                >
+                  Export
+                </MenuItem>
+                
+                <MenuItem
+                  icon={<AddIcon />}
+                  onClick={onOpen}
+                  color="teal.600"
+                  fontWeight="semibold"
+                >
+                  Add Product
+                </MenuItem>
+              </MenuList>
+            </Menu>
           </Flex>
         </Flex>
-        
-        {/* Search Bar */}
-        <Box mt={4} position="relative" maxW="400px">
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <SearchIcon color="gray.400" />
-            </InputLeftElement>
-            <Input
-              placeholder="Search products..."
-              value={searchQuery}
-              onChange={(e) => updateFilters({ ...filters, searchQuery: e.target.value })}
-              size="sm"
-              borderRadius="md"
-            />
-          </InputGroup>
-        </Box>
       </CardHeader>
       
       <CardBody>
@@ -556,17 +463,14 @@ const InventoryTable = ({ title }) => {
                     </VStack>
                   </HStack>
                   <VStack align="end" spacing={1}>
-                    <Badge
-                      colorScheme={getStockStatus(product.stockQuantity).color}
-                      variant="subtle"
-                      px={2}
-                      py={1}
-                      borderRadius="full"
-                      fontSize="xs"
-                      fontWeight="semibold"
-                    >
-                      {product.stockQuantity}
-                    </Badge>
+                    <HStack spacing={1} align="center">
+                      <Text fontSize="sm" color={textColor} fontWeight="500">
+                        {product.stockQuantity}
+                      </Text>
+                      {getStockStatus(product.stockQuantity).status === 'low' && (
+                        <WarningIcon color="red.500" boxSize={3} />
+                      )}
+                    </HStack>
                     <Text fontSize="xs" color={cardLabelColor}>
                       PKR {product.sellingPrice.toLocaleString()}
                     </Text>
@@ -637,17 +541,14 @@ const InventoryTable = ({ title }) => {
                       </Text>
                     </VStack>
                   </HStack>
-                  <Badge
-                    colorScheme={getStockStatus(product.stockQuantity).color}
-                    variant="subtle"
-                    px={3}
-                    py={1}
-                    borderRadius="full"
-                    fontSize="xs"
-                    fontWeight="semibold"
-                  >
-                    {product.stockQuantity} in stock
-                  </Badge>
+                  <HStack spacing={2} align="center">
+                    <Text fontSize="sm" color={textColor} fontWeight="500">
+                      {product.stockQuantity} in stock
+                    </Text>
+                    {getStockStatus(product.stockQuantity).status === 'low' && (
+                      <WarningIcon color="red.500" boxSize={4} />
+                    )}
+                  </HStack>
                 </Flex>
 
                 <Divider mb={3} />

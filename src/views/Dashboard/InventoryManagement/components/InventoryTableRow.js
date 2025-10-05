@@ -45,7 +45,6 @@ function InventoryTableRow(props) {
   } = props;
   const textColor = useColorModeValue("gray.700", "white");
   const borderColor = useColorModeValue("gray.200", "gray.600");
-  const hoverBg = useColorModeValue("blue.50", "blue.900");
 
   // Check stock status
   const getStockStatus = (quantity) => {
@@ -68,29 +67,13 @@ function InventoryTableRow(props) {
       borderBottom="1px solid"
       borderBottomColor={borderColor}
       _hover={{ 
-        bg: useColorModeValue("blue.50", "blue.900"),
+        bg: useColorModeValue("teal.50", "teal.900"),
         transform: "translateX(2px)",
-        boxShadow: "0 2px 8px rgba(66, 153, 225, 0.15)",
+        boxShadow: "0 2px 8px rgba(56, 178, 172, 0.15)",
       }}
       transition="all 0.2s ease-in-out"
       _even={{
         bg: useColorModeValue("gray.25", "gray.750")
-      }}
-      position="relative"
-      _after={{
-        content: '""',
-        position: "absolute",
-        right: 0,
-        top: 0,
-        bottom: 0,
-        width: "4px",
-        bg: "transparent",
-        transition: "all 0.2s ease-in-out"
-      }}
-      _hover={{
-        _after: {
-          bg: "blue.400"
-        }
       }}
     >
       {/* Image */}
@@ -106,9 +89,9 @@ function InventoryTableRow(props) {
           onMouseLeave={onMouseLeave}
           cursor="pointer"
           _hover={{
-            borderColor: "blue.400",
+            borderColor: "teal.300",
             transform: "scale(1.05)",
-            boxShadow: "0 4px 12px rgba(66, 153, 225, 0.3)"
+            boxShadow: "0 4px 12px rgba(56, 178, 172, 0.3)"
           }}
           transition="all 0.2s ease-in-out"
           mx="auto"
@@ -132,42 +115,21 @@ function InventoryTableRow(props) {
 
       {/* Category */}
       <Td width="12%" px="16px" py="12px" textAlign="left">
-        <Badge
-          colorScheme="blue"
-          variant="subtle"
-          px={3}
-          py={1}
-          borderRadius="6px"
-          fontSize="xs"
-          fontWeight="600"
-          minW="60px"
-          h="24px"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
+        <Text fontSize="sm" color={textColor} fontWeight="500">
           {category}
-        </Badge>
+        </Text>
       </Td>
 
       {/* Stock Quantity */}
       <Td width="10%" px="16px" py="12px" textAlign="left">
-        <Badge
-          colorScheme={stockStatus.color}
-          variant="subtle"
-          px={3}
-          py={1}
-          borderRadius="6px"
-          fontSize="xs"
-          fontWeight="600"
-          minW="45px"
-          h="24px"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          {stockQuantity}
-        </Badge>
+        <HStack spacing={1} align="center">
+          <Text fontSize="sm" color={textColor} fontWeight="500">
+            {stockQuantity}
+          </Text>
+          {stockStatus.status === 'low' && (
+            <WarningIcon color="red.500" boxSize={3} />
+          )}
+        </HStack>
       </Td>
 
       {/* Cost Price */}
@@ -223,7 +185,7 @@ function InventoryTableRow(props) {
                 console.log("Edit product:", productName);
               }}
               _hover={{
-                bg: "blue.50"
+                bg: "teal.50"
               }}
             >
               Edit

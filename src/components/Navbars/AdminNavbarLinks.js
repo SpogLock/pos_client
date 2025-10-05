@@ -1,5 +1,5 @@
 // Chakra Icons
-import { BellIcon, SearchIcon, SettingsIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { BellIcon, SettingsIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 // Chakra Imports
 import {
   Button,
@@ -7,7 +7,6 @@ import {
   IconButton,
   Input,
   InputGroup,
-  InputLeftElement,
   Menu,
   MenuButton,
   MenuItem,
@@ -153,28 +152,10 @@ export default function HeaderLinks(props) {
             zIndex: -1
           }}
         >
-          <InputLeftElement
-            children={
-              <IconButton
-                bg="inherit"
-                borderRadius="inherit"
-                _hover="none"
-                _active={{
-                  bg: "inherit",
-                  transform: "none",
-                  borderColor: "transparent",
-                }}
-                _focus={{
-                  boxShadow: "none",
-                }}
-                icon={<SearchIcon color={searchIcon} w={{ base: "10px", sm: "12px", md: "15px" }} h={{ base: "10px", sm: "12px", md: "15px" }} />}
-              ></IconButton>
-            }
-          />
           <Input
             fontSize={{ base: "9px", sm: "10px", md: "xs" }}
             py={{ base: "6px", sm: "8px", md: "11px" }}
-            px={{ base: "4px", sm: "6px", md: "12px" }}
+            px={{ base: "8px", sm: "12px", md: "16px" }}
             color={mainText}
             placeholder={getSearchPlaceholder()}
             borderRadius="inherit"

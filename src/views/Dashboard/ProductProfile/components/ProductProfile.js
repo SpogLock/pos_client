@@ -48,6 +48,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import { EditIcon, DeleteIcon, ArrowBackIcon } from "@chakra-ui/icons";
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+import whey_dummy from "assets/img/whey_dummy.png";
 
 const ProductProfile = () => {
   const textColor = useColorModeValue("gray.700", "white");
@@ -70,7 +71,7 @@ const ProductProfile = () => {
   const sampleProducts = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=400&h=400&fit=crop&crop=center",
+      image: whey_dummy,
       productName: "Optimum Nutrition Gold Standard Whey",
       category: "Protein Powder",
       stockQuantity: 15,
@@ -98,6 +99,130 @@ const ProductProfile = () => {
         contact: "+1 (800) 705-5226",
         email: "orders@optimumnutrition.com",
         address: "575 Underhill Blvd, Syosset, NY 11791"
+      }
+    },
+    {
+      id: 2,
+      image: whey_dummy,
+      productName: "Dymatize ISO100 Whey Protein",
+      category: "Protein Powder",
+      stockQuantity: 22,
+      costPrice: 5200,
+      sellingPrice: 8500,
+      supplier: "Dymatize Nutrition",
+      lastUpdated: "2024-01-20",
+      description: "Hydrolyzed whey protein isolate with 25g of protein per serving. Fast-absorbing formula for post-workout recovery.",
+      specifications: {
+        "Brand": "Dymatize Nutrition",
+        "Flavor": "Vanilla",
+        "Size": "5 lbs",
+        "Protein": "25g per serving",
+        "Servings": "71 servings",
+        "Type": "Hydrolyzed Whey Isolate"
+      },
+      recentSales: [
+        { date: "2024-01-19", quantity: 3, total: 25500, customer: "John Smith" },
+        { date: "2024-01-18", quantity: 1, total: 8500, customer: "Lisa Wang" },
+        { date: "2024-01-16", quantity: 2, total: 17000, customer: "David Brown" }
+      ],
+      supplierInfo: {
+        name: "Dymatize Nutrition",
+        contact: "+1 (800) 934-8448",
+        email: "info@dymatize.com",
+        address: "2900 N. Dallas Pkwy, Suite 320, Plano, TX 75093"
+      }
+    },
+    {
+      id: 3,
+      image: whey_dummy,
+      productName: "MuscleTech Creatine Monohydrate",
+      category: "Creatine",
+      stockQuantity: 45,
+      costPrice: 1800,
+      sellingPrice: 3200,
+      supplier: "MuscleTech",
+      lastUpdated: "2024-01-18",
+      description: "Pure creatine monohydrate powder for increased strength, power, and muscle mass. 100% pure and unflavored.",
+      specifications: {
+        "Brand": "MuscleTech",
+        "Flavor": "Unflavored",
+        "Size": "2.2 lbs",
+        "Creatine": "5g per serving",
+        "Servings": "200 servings",
+        "Type": "Creatine Monohydrate"
+      },
+      recentSales: [
+        { date: "2024-01-17", quantity: 2, total: 6400, customer: "Maria Garcia" },
+        { date: "2024-01-16", quantity: 1, total: 3200, customer: "Tom Wilson" },
+        { date: "2024-01-14", quantity: 4, total: 12800, customer: "Jennifer Lee" }
+      ],
+      supplierInfo: {
+        name: "MuscleTech",
+        contact: "+1 (800) 663-7619",
+        email: "customerservice@muscletech.com",
+        address: "1500 Weston Rd, Weston, FL 33326"
+      }
+    },
+    {
+      id: 4,
+      image: whey_dummy,
+      productName: "BSN N.O.-XPLODE Pre-Workout",
+      category: "Pre-Workout",
+      stockQuantity: 8,
+      costPrice: 3200,
+      sellingPrice: 5500,
+      supplier: "BSN",
+      lastUpdated: "2024-01-16",
+      description: "Advanced pre-workout supplement with caffeine, creatine, and beta-alanine for explosive energy and performance.",
+      specifications: {
+        "Brand": "BSN",
+        "Flavor": "Fruit Punch",
+        "Size": "60 servings",
+        "Caffeine": "175mg per serving",
+        "Creatine": "1g per serving",
+        "Type": "Pre-Workout"
+      },
+      recentSales: [
+        { date: "2024-01-15", quantity: 4, total: 22000, customer: "Ryan Murphy" },
+        { date: "2024-01-13", quantity: 2, total: 11000, customer: "Amanda Taylor" },
+        { date: "2024-01-11", quantity: 1, total: 5500, customer: "Kevin Anderson" }
+      ],
+      supplierInfo: {
+        name: "BSN",
+        contact: "+1 (800) 542-2376",
+        email: "info@bsnsupplements.com",
+        address: "2500 Broadway St, Redwood City, CA 94063"
+      }
+    },
+    {
+      id: 5,
+      image: whey_dummy,
+      productName: "Universal Animal Pak Multivitamin",
+      category: "Multivitamin",
+      stockQuantity: 35,
+      costPrice: 2800,
+      sellingPrice: 4800,
+      supplier: "Universal Nutrition",
+      lastUpdated: "2024-01-22",
+      description: "Comprehensive multivitamin and mineral supplement with 11 tablets per pack. Complete nutritional foundation for athletes.",
+      specifications: {
+        "Brand": "Universal Nutrition",
+        "Type": "Multivitamin Pack",
+        "Size": "44 packs",
+        "Tablets": "11 per pack",
+        "Vitamins": "22+ essential vitamins",
+        "Minerals": "10+ essential minerals"
+      },
+      recentSales: [
+        { date: "2024-01-21", quantity: 1, total: 4800, customer: "Chris Johnson" },
+        { date: "2024-01-20", quantity: 3, total: 14400, customer: "Rachel Green" },
+        { date: "2024-01-18", quantity: 2, total: 9600, customer: "Mark Thompson" }
+      ],
+      supplierInfo: {
+        name: "Universal Nutrition",
+        contact: "+1 (800) 872-0101",
+        email: "info@universalnutrition.com",
+        address: "200 Connell Dr, Berkeley Heights, NJ 07922"
       }
     }
   ];
@@ -238,9 +363,9 @@ const ProductProfile = () => {
               <Badge colorScheme="blue" variant="subtle" px={3} py={1} borderRadius="full">
                 {product.category}
               </Badge>
-              <Text fontSize="md" color={cardLabelColor}>
+              {/* <Text fontSize="md" color={cardLabelColor}>
                 Product Details & Management
-              </Text>
+              </Text> */}
             </HStack>
           </VStack>
         </HStack>
@@ -252,7 +377,7 @@ const ProductProfile = () => {
             color="white"
             onClick={handleEdit}
             isDisabled={isEditing}
-            size={{ base: "sm", lg: "md" }}
+            size={{ base: "xs", md: "sm", lg: "md" }}
             borderRadius="lg"
             _hover={{ 
               bg: "teal.600",
@@ -265,9 +390,10 @@ const ProductProfile = () => {
             }}
             transition="all 0.2s ease"
             fontWeight="medium"
-            px={{ base: 4, lg: 6 }}
-            py={{ base: 2, lg: 3 }}
-            fontSize={{ base: "sm", lg: "md" }}
+            px={{ base: 3, md: 4, lg: 6 }}
+            py={{ base: 1, md: 2, lg: 3 }}
+            fontSize={{ base: "xs", md: "sm", lg: "md" }}
+            minW={{ base: "80px", md: "auto" }}
           >
             <Text display={{ base: "none", sm: "inline" }}>Edit Product</Text>
             <Text display={{ base: "inline", sm: "none" }}>Edit</Text>
@@ -279,7 +405,7 @@ const ProductProfile = () => {
             border="1px solid"
             borderColor="teal.500"
             onClick={onDeleteOpen}
-            size={{ base: "sm", lg: "md" }}
+            size={{ base: "xs", md: "sm", lg: "md" }}
             borderRadius="lg"
             _hover={{ 
               bg: "teal.50", 
@@ -294,9 +420,10 @@ const ProductProfile = () => {
             }}
             transition="all 0.2s ease"
             fontWeight="medium"
-            px={{ base: 4, lg: 6 }}
-            py={{ base: 2, lg: 3 }}
-            fontSize={{ base: "sm", lg: "md" }}
+            px={{ base: 3, md: 4, lg: 6 }}
+            py={{ base: 1, md: 2, lg: 3 }}
+            fontSize={{ base: "xs", md: "sm", lg: "md" }}
+            minW={{ base: "80px", md: "auto" }}
           >
             <Text display={{ base: "none", sm: "inline" }}>Delete Product</Text>
             <Text display={{ base: "inline", sm: "none" }}>Delete</Text>
