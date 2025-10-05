@@ -3,11 +3,12 @@ import { Flex, Grid, useColorModeValue } from "@chakra-ui/react";
 import avatar4 from "assets/img/avatars/avatar4.png";
 import ProfileBgImage from "assets/img/ProfileBackground.png";
 import React, { useState, useEffect } from "react";
-import { FaUser, FaCreditCard } from "react-icons/fa";
+import { FaUser, FaCreditCard, FaShoppingCart } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import ProfileInformation from "./components/ProfileInformation";
 import PaymentInfo from "./components/PaymentInfo";
+import TransactionHistory from "./components/TransactionHistory";
 
 function Profile() {
   // Chakra color mode
@@ -54,6 +55,54 @@ function Profile() {
         { date: "2024-01-15", weight: "75 kg", bmi: "24.2", notes: "Initial assessment" },
         { date: "2024-01-22", weight: "74.5 kg", bmi: "24.0", notes: "Good progress" },
         { date: "2024-01-29", weight: "74 kg", bmi: "23.8", notes: "Excellent progress" }
+      ],
+      transactionHistory: [
+        {
+          id: "TXN-001",
+          date: "2024-02-15",
+          type: "Purchase",
+          status: "Completed",
+          totalAmount: "₨2,500",
+          paymentMethod: "Cash",
+          items: [
+            { name: "Whey Protein (2kg)", quantity: 1, price: "₨1,800" },
+            { name: "Creatine Monohydrate", quantity: 1, price: "₨700" }
+          ]
+        },
+        {
+          id: "TXN-002", 
+          date: "2024-01-28",
+          type: "Purchase",
+          status: "Completed",
+          totalAmount: "₨1,200",
+          paymentMethod: "Card",
+          items: [
+            { name: "BCAA Powder", quantity: 2, price: "₨1,200" }
+          ]
+        },
+        {
+          id: "TXN-003",
+          date: "2024-01-15",
+          type: "Purchase", 
+          status: "Completed",
+          totalAmount: "₨3,000",
+          paymentMethod: "Bank Transfer",
+          items: [
+            { name: "Mass Gainer (5kg)", quantity: 1, price: "₨2,200" },
+            { name: "Multivitamin", quantity: 1, price: "₨800" }
+          ]
+        },
+        {
+          id: "TXN-004",
+          date: "2023-12-20",
+          type: "Purchase",
+          status: "Completed", 
+          totalAmount: "₨950",
+          paymentMethod: "Cash",
+          items: [
+            { name: "Pre-Workout", quantity: 1, price: "₨950" }
+          ]
+        }
       ]
     }
   ];
@@ -84,6 +133,10 @@ function Profile() {
       name: "PAYMENT INFO",
       icon: <FaCreditCard w='100%' h='100%' />,
     },
+    {
+      name: "TRANSACTION HISTORY",
+      icon: <FaShoppingCart w='100%' h='100%' />,
+    },
   ];
 
   const renderTabContent = () => {
@@ -112,6 +165,8 @@ function Profile() {
         );
       case "PAYMENT INFO":
         return <PaymentInfo customer={customer} />;
+      case "TRANSACTION HISTORY":
+        return <TransactionHistory customer={customer} />;
       default:
         return null;
     }
