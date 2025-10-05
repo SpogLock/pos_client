@@ -75,6 +75,7 @@ function InventoryTableRow(props) {
       _even={{
         bg: useColorModeValue("gray.25", "gray.750")
       }}
+      position="relative"
     >
       {/* Image */}
       <Td width="8%" px="16px" textAlign="center">
@@ -176,8 +177,15 @@ function InventoryTableRow(props) {
               color: "gray.800"
             }}
             onClick={(e) => e.stopPropagation()}
+            onMouseEnter={(e) => e.stopPropagation()}
+            onMouseLeave={(e) => e.stopPropagation()}
+            zIndex={1}
+            position="relative"
+            _expanded={{
+              zIndex: 1000
+            }}
           />
-          <MenuList>
+          <MenuList zIndex={99999} borderRadius="lg" overflow="hidden" data-menu="true">
             <MenuItem
               icon={<EditIcon />}
               onClick={(e) => {
@@ -186,6 +194,13 @@ function InventoryTableRow(props) {
               }}
               _hover={{
                 bg: "teal.50"
+              }}
+              borderRadius={0}
+              _first={{
+                borderTopRadius: "lg"
+              }}
+              _last={{
+                borderBottomRadius: "lg"
               }}
             >
               Edit
@@ -200,6 +215,10 @@ function InventoryTableRow(props) {
                 bg: "red.50"
               }}
               color="red.500"
+              borderRadius={0}
+              _last={{
+                borderBottomRadius: "lg"
+              }}
             >
               Delete
             </MenuItem>

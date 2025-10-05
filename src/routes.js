@@ -6,6 +6,7 @@ import ProductProfile from "views/Dashboard/ProductProfile";
 import Sales from "views/Dashboard/Sales";
 import Invoices from "views/Dashboard/Invoices";
 import InvoiceDetail from "views/Dashboard/InvoiceDetail";
+import EmailMarketing from "views/Dashboard/EmailMarketing";
 import Billing from "views/Dashboard/Billing";
 import RTLPage from "views/Dashboard/RTL";
 import Profile from "views/Dashboard/Profile";
@@ -23,7 +24,7 @@ import {
   RocketIcon,
   SupportIcon,
 } from "components/Icons/Icons";
-import { SettingsIcon, ViewIcon, AttachmentIcon, CopyIcon } from "@chakra-ui/icons";
+import { SettingsIcon, ViewIcon, AttachmentIcon, CopyIcon, EmailIcon } from "@chakra-ui/icons";
 
 var dashRoutes = [
   {
@@ -72,6 +73,14 @@ var dashRoutes = [
     rtlName: "لوحة القيادة",
     icon: <CopyIcon color="inherit" />,
     component: Invoices,
+    layout: "/admin",
+  },
+  {
+    path: "/email-marketing",
+    name: "Email Marketing",
+    rtlName: "لوحة القيادة",
+    icon: <EmailIcon color="inherit" />,
+    component: EmailMarketing,
     layout: "/admin",
   },
   {

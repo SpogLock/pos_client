@@ -460,12 +460,34 @@ const Authors = ({ title, captions, data }) => {
             variant="ghost"
             size="sm"
             color={textColor}
+            onMouseEnter={(e) => e.stopPropagation()}
+            onMouseLeave={(e) => e.stopPropagation()}
+            zIndex={1}
+            position="relative"
+            _expanded={{
+              zIndex: 1000
+            }}
           />
-          <MenuList>
-            <MenuItem onClick={() => console.log("Edit customer:", customer.name)}>
+          <MenuList zIndex={99999} borderRadius="lg" overflow="hidden" data-menu="true">
+            <MenuItem 
+              onClick={() => console.log("Edit customer:", customer.name)}
+              borderRadius={0}
+              _first={{
+                borderTopRadius: "lg"
+              }}
+              _last={{
+                borderBottomRadius: "lg"
+              }}
+            >
               Edit Customer
             </MenuItem>
-            <MenuItem onClick={() => console.log("View details:", customer.name)}>
+            <MenuItem 
+              onClick={() => console.log("View details:", customer.name)}
+              borderRadius={0}
+              _last={{
+                borderBottomRadius: "lg"
+              }}
+            >
               View Details
             </MenuItem>
           </MenuList>
