@@ -18,7 +18,7 @@ const OrdersOverview = ({ title, amount, data }) => {
             {title}
           </Text>
           {/* <Text fontSize='sm' color='gray.400' fontWeight='normal'>
-            <Text fontWeight='bold' as='span' color='#319795'>
+            <Text fontWeight='bold' as='span' color='brand.500'>
               {`${amount}%`}
             </Text>{" "}
             this month.

@@ -38,7 +38,7 @@ const ActiveUsers = ({ title, percentage, chart }) => {
             >
               <Text
                 as='span'
-                color={percentage > 0 ? "#319795" : "red.400"}
+                color={percentage > 0 ? "brand.500" : "red.400"}
                 fontWeight='bold'>
                 {percentage > 0 ? `+${percentage}%` : `-${percentage}%`}
               </Text>{" "}

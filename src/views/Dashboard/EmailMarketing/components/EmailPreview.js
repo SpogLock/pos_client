@@ -144,7 +144,7 @@ const EmailPreview = ({ isOpen, onClose, campaign, onSend, onSchedule, onEdit })
             >
               {/* Email Header */}
               <Box
-                bg="teal.500"
+                bg="brand.500"
                 p={4}
                 color="white"
               >
@@ -248,15 +248,15 @@ const EmailPreview = ({ isOpen, onClose, campaign, onSend, onSchedule, onEdit })
                     © 2024 {sampleCustomer.gymName}. All rights reserved.
                   </Text>
                   <HStack spacing={4}>
-                    <Text fontSize="xs" color={cardLabelColor} cursor="pointer" _hover={{ color: "teal.500" }}>
+                    <Text fontSize="xs" color={cardLabelColor} cursor="pointer" _hover={{ color: "brand.500" }}>
                       Unsubscribe
                     </Text>
                     <Text fontSize="xs" color={cardLabelColor}>|</Text>
-                    <Text fontSize="xs" color={cardLabelColor} cursor="pointer" _hover={{ color: "teal.500" }}>
+                    <Text fontSize="xs" color={cardLabelColor} cursor="pointer" _hover={{ color: "brand.500" }}>
                       Update Preferences
                     </Text>
                     <Text fontSize="xs" color={cardLabelColor}>|</Text>
-                    <Text fontSize="xs" color={cardLabelColor} cursor="pointer" _hover={{ color: "teal.500" }}>
+                    <Text fontSize="xs" color={cardLabelColor} cursor="pointer" _hover={{ color: "brand.500" }}>
                       Privacy Policy
                     </Text>
                   </HStack>

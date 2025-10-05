@@ -102,7 +102,7 @@ const SidebarContent = ({ logoText, routes }) => {
                   <Icon>{prop.icon}</Icon>
                 ) : (
                   <IconBox
-                    bg="#319795"
+                    bg="brand.500"
                     color="white"
                     h="30px"
                     w="30px"
@@ -153,7 +153,7 @@ const SidebarContent = ({ logoText, routes }) => {
                 ) : (
                   <IconBox
                     bg={inactiveBg}
-                    color="#319795"
+                    color="brand.500"
                     h="30px"
                     w="30px"
                     me="12px"

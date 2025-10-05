@@ -272,7 +272,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                   src={formData.picture}
                   name={formData.memberName || "Customer"}
                   border="4px solid"
-                  borderColor="teal.300"
+                  borderColor="brand.300"
                 />
                 
                 <HStack spacing={3}>
@@ -376,7 +376,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                       border="1px solid"
                       borderColor="gray.200"
                       _focus={{
-                        borderColor: "teal.500",
+                        borderColor: "brand.500",
                         boxShadow: "0 0 0 1px var(--chakra-colors-teal-500)",
                       }}
                     />
@@ -398,7 +398,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                         border="1px solid"
                         borderColor="gray.200"
                         _focus={{
-                          borderColor: "teal.500",
+                          borderColor: "brand.500",
                           boxShadow: "0 0 0 1px var(--chakra-colors-teal-500)",
                         }}
                       />
@@ -423,7 +423,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                       border="1px solid"
                       borderColor="gray.200"
                       _focus={{
-                        borderColor: "teal.500",
+                        borderColor: "brand.500",
                         boxShadow: "0 0 0 1px var(--chakra-colors-teal-500)",
                       }}
                     />
@@ -442,7 +442,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                       border="1px solid"
                       borderColor="gray.200"
                       _focus={{
-                        borderColor: "teal.500",
+                        borderColor: "brand.500",
                         boxShadow: "0 0 0 1px var(--chakra-colors-teal-500)",
                       }}
                     />
@@ -462,7 +462,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                     border="1px solid"
                     borderColor="gray.200"
                     _focus={{
-                      borderColor: "teal.500",
+                      borderColor: "brand.500",
                       boxShadow: "0 0 0 1px var(--chakra-colors-teal-500)",
                     }}
                   />
@@ -492,7 +492,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                       border="1px solid"
                       borderColor="gray.200"
                       _focus={{
-                        borderColor: "teal.500",
+                        borderColor: "brand.500",
                         boxShadow: "0 0 0 1px var(--chakra-colors-teal-500)",
                       }}
                     />
@@ -509,7 +509,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                       border="1px solid"
                       borderColor="gray.200"
                       _focus={{
-                        borderColor: "teal.500",
+                        borderColor: "brand.500",
                         boxShadow: "0 0 0 1px var(--chakra-colors-teal-500)",
                       }}
                     >
@@ -530,7 +530,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                     border="1px solid"
                     borderColor="gray.200"
                     _focus={{
-                      borderColor: "teal.500",
+                      borderColor: "brand.500",
                       boxShadow: "0 0 0 1px var(--chakra-colors-teal-500)",
                     }}
                   >
@@ -552,7 +552,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                       border="1px solid"
                       borderColor="gray.200"
                       _focus={{
-                        borderColor: "teal.500",
+                        borderColor: "brand.500",
                         boxShadow: "0 0 0 1px var(--chakra-colors-teal-500)",
                       }}
                     >
@@ -573,7 +573,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                       border="1px solid"
                       borderColor="gray.200"
                       _focus={{
-                        borderColor: "teal.500",
+                        borderColor: "brand.500",
                         boxShadow: "0 0 0 1px var(--chakra-colors-teal-500)",
                       }}
                     >
@@ -602,7 +602,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                         border="1px solid"
                         borderColor="gray.200"
                         _focus={{
-                          borderColor: "teal.500",
+                          borderColor: "brand.500",
                           boxShadow: "0 0 0 1px var(--chakra-colors-teal-500)",
                         }}
                       />
@@ -625,7 +625,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                       border="1px solid"
                       borderColor="gray.200"
                       _focus={{
-                        borderColor: "teal.500",
+                        borderColor: "brand.500",
                         boxShadow: "0 0 0 1px var(--chakra-colors-teal-500)",
                       }}
                     />
@@ -666,7 +666,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                         border="1px solid"
                         borderColor="gray.200"
                         _focus={{
-                          borderColor: "teal.500",
+                          borderColor: "brand.500",
                           boxShadow: "0 0 0 1px var(--chakra-colors-teal-500)",
                         }}
                       />
@@ -689,7 +689,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                       border="1px solid"
                       borderColor="gray.200"
                       _focus={{
-                        borderColor: "teal.500",
+                        borderColor: "brand.500",
                         boxShadow: "0 0 0 1px var(--chakra-colors-teal-500)",
                       }}
                     />
@@ -709,7 +709,7 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
                     border="1px solid"
                     borderColor="gray.200"
                     _focus={{
-                      borderColor: "teal.500",
+                      borderColor: "brand.500",
                       boxShadow: "0 0 0 1px var(--chakra-colors-teal-500)",
                     }}
                   />
@@ -746,10 +746,10 @@ const AddCustomerModal = ({ isOpen, onClose, onAddCustomer }) => {
             py={3}
             fontSize="md"
             fontWeight="medium"
-            bg="linear-gradient(81.62deg, #319795 2.25%, #2C7A7B 79.87%)"
+            bg="linear-gradient(81.62deg, brand.500 2.25%, brand.600 79.87%)"
             color="white"
             _hover={{
-              bg: "linear-gradient(81.62deg, #2C7A7B 2.25%, #234E52 79.87%)",
+              bg: "linear-gradient(81.62deg, brand.600 2.25%, #234E52 79.87%)",
               color: "white"
             }}
           >

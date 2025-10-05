@@ -8,7 +8,7 @@ import { Separator } from "components/Separator/Separator";
 import React from "react";
 
 const PaymentStatistics = ({ icon, title, description, amount }) => {
-  const iconTeal = useColorModeValue("#319795", "#319795");
+  const iconTeal = useColorModeValue("brand.500", "brand.500");
   const textColor = useColorModeValue("gray.700", "white");
 
   return (

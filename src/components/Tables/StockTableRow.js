@@ -53,7 +53,7 @@ function StockTableRow(props) {
   } = props;
   const textColor = useColorModeValue("gray.700", "white");
   const borderColor = useColorModeValue("gray.200", "gray.600");
-  const hoverBg = useColorModeValue("teal.50", "teal.900");
+  const hoverBg = useColorModeValue("brand.50", "brand.900");
 
   // Check if customer fee is overdue
   const isFeeOverdue = (nextDueDate) => {
@@ -99,7 +99,7 @@ function StockTableRow(props) {
       borderBottom="1px solid"
       borderBottomColor={borderColor}
       _hover={{ 
-        bg: useColorModeValue("teal.50", "teal.900"),
+        bg: useColorModeValue("brand.50", "brand.900"),
         transform: "translateX(4px)",
         boxShadow: "0 4px 12px rgba(56, 178, 172, 0.2)",
       }}
@@ -121,7 +121,7 @@ function StockTableRow(props) {
           onMouseLeave={onMouseLeave}
           cursor="pointer"
           _hover={{
-            borderColor: "teal.300",
+            borderColor: "brand.300",
             transform: "scale(1.1)",
           }}
           transition="all 0.2s ease-in-out"

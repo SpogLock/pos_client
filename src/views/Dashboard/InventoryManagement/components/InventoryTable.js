@@ -386,7 +386,7 @@ const InventoryTable = ({ title }) => {
                 <MenuItem
                   icon={<AddIcon />}
                   onClick={onOpen}
-                  color="teal.600"
+                  color="brand.600"
                   fontWeight="semibold"
                 >
                   Add Product
@@ -418,8 +418,8 @@ const InventoryTable = ({ title }) => {
                 _hover={{
                   boxShadow: "0px 8px 25px rgba(56, 178, 172, 0.25)",
                   transform: "translateY(-4px) scale(1.02)",
-                  borderColor: "teal.300",
-                  bg: useColorModeValue("teal.50", "teal.900"),
+                  borderColor: "brand.300",
+                  bg: useColorModeValue("brand.50", "brand.900"),
                 }}
               >
                 <Flex justifyContent="space-between" alignItems="center">
@@ -435,7 +435,7 @@ const InventoryTable = ({ title }) => {
                       onMouseLeave={handleMouseLeave}
                       cursor="pointer"
                       _hover={{
-                        borderColor: "teal.300",
+                        borderColor: "brand.300",
                         transform: "scale(1.05)",
                       }}
                       transition="all 0.2s ease-in-out"
@@ -499,8 +499,8 @@ const InventoryTable = ({ title }) => {
                 _hover={{
                   boxShadow: "0px 12px 30px rgba(56, 178, 172, 0.3)",
                   transform: "translateY(-6px) scale(1.03)",
-                  borderColor: "teal.300",
-                  bg: useColorModeValue("teal.50", "teal.900"),
+                  borderColor: "brand.300",
+                  bg: useColorModeValue("brand.50", "brand.900"),
                 }}
               >
                 {/* Header with Image, Name and Stock */}
@@ -517,7 +517,7 @@ const InventoryTable = ({ title }) => {
                       onMouseLeave={handleMouseLeave}
                       cursor="pointer"
                       _hover={{
-                        borderColor: "teal.300",
+                        borderColor: "brand.300",
                         transform: "scale(1.1)",
                       }}
                       transition="all 0.2s ease-in-out"

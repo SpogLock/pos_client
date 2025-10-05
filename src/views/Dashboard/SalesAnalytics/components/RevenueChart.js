@@ -68,17 +68,17 @@ const RevenueChart = ({ timePeriod, customDateRange, chartData }) => {
         left: 0,
         blur: 10,
         opacity: 0.1,
-        color: "#319795"
+        color: "#FFD75E"
       }
     },
-    colors: ["#319795"],
+    colors: ["#FFD75E"],
     fill: {
       type: "gradient",
       gradient: {
         shade: "light",
         type: "vertical",
         shadeIntensity: 0.1,
-        gradientToColors: ["#319795"],
+        gradientToColors: ["#E0B93B"],
         inverseColors: false,
         opacityFrom: 0.8,
         opacityTo: 0.1,

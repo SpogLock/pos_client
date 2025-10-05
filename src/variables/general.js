@@ -87,31 +87,31 @@ export const timelineData = [
     logo: FaBell,
     title: "PKR. 2400, Pending Amount by Customer A",
     date: "21 DEC 11:21 PM",
-    color: "teal.300",
+    color: "brand.300",
   },
   {
     logo: FaBell,
     title: "PKR. 2400, Pending Amount by Customer B",
     date: "21 DEC 9:28 PM",
-    color: "teal.300",
+    color: "brand.300",
   },
   {
     logo: FaBell,
     title: "PKR. 2400, Pending Amount by Customer C",
     date: "20 DEC 3:52 PM",
-    color: "teal.300",
+    color: "brand.300",
   },
   {
     logo: FaBell,
     title: "PKR. 2400, Pending Amount by Customer D",
     date: "19 DEC 11:35 PM",
-    color: "teal.300",
+    color: "brand.300",
   },
   {
     logo: FaBell,
     title: "PKR. 2400, Pending Amount by Customer E",
     date: "18 DEC 4:41 PM",
-    color: "teal.300",
+    color: "brand.300",
   },
 ];
 export const rtlDashboardTableData = [
@@ -164,7 +164,7 @@ export const rtlTimelineData = [
     logo: FaBell,
     title: "$2400, تغييرات في التصميم",
     date: "22 DEC 7:20 PM",
-    color: "teal.300",
+    color: "brand.300",
   },
   {
     logo: FaHtml5,

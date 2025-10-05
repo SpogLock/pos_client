@@ -356,7 +356,7 @@ const Authors = ({ title, captions, data }) => {
               borderRadius="full"
               overflow="hidden"
               border="4px solid"
-              borderColor="teal.300"
+              borderColor="brand.300"
               boxShadow="0 8px 20px rgba(0, 0, 0, 0.2)"
             >
               <Image
@@ -423,7 +423,7 @@ const Authors = ({ title, captions, data }) => {
             onMouseLeave={handleMouseLeave}
             cursor="pointer"
             _hover={{
-              borderColor: "teal.300",
+              borderColor: "brand.300",
               transform: "scale(1.1)",
             }}
             transition="all 0.2s ease-in-out"
@@ -645,7 +645,7 @@ const Authors = ({ title, captions, data }) => {
                 <MenuItem
                   icon={<AddIcon />}
                   onClick={onOpen}
-                  color="teal.600"
+                  color="brand.600"
                   fontWeight="semibold"
                 >
                   Add Customer
@@ -689,8 +689,8 @@ const Authors = ({ title, captions, data }) => {
                  _hover={{
                    boxShadow: "0px 8px 25px rgba(56, 178, 172, 0.25)",
                    transform: "translateY(-4px) scale(1.02)",
-                   borderColor: "teal.300",
-                   bg: useColorModeValue("teal.50", "teal.900"),
+                   borderColor: "brand.300",
+                   bg: useColorModeValue("brand.50", "brand.900"),
                    _before: {
                      opacity: 1,
                    }
@@ -715,7 +715,7 @@ const Authors = ({ title, captions, data }) => {
                        onMouseLeave={handleMouseLeave}
                        cursor="pointer"
                        _hover={{
-                         borderColor: "teal.300",
+                         borderColor: "brand.300",
                          transform: "scale(1.05)",
                        }}
                        transition="all 0.2s ease-in-out"
@@ -798,8 +798,8 @@ const Authors = ({ title, captions, data }) => {
                  _hover={{
                    boxShadow: "0px 12px 30px rgba(56, 178, 172, 0.3)",
                    transform: "translateY(-6px) scale(1.03)",
-                   borderColor: "teal.300",
-                   bg: useColorModeValue("teal.50", "teal.900"),
+                   borderColor: "brand.300",
+                   bg: useColorModeValue("brand.50", "brand.900"),
                    _before: {
                      opacity: 1,
                    }
@@ -825,7 +825,7 @@ const Authors = ({ title, captions, data }) => {
                        onMouseLeave={handleMouseLeave}
                        cursor="pointer"
                        _hover={{
-                         borderColor: "teal.300",
+                         borderColor: "brand.300",
                          transform: "scale(1.1)",
                        }}
                        transition="all 0.2s ease-in-out"

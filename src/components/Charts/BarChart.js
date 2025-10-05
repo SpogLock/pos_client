@@ -25,7 +25,7 @@ class BarChart extends Component {
         py="1rem"
         height={{ sm: "200px" }}
         width="100%"
-        bg="linear-gradient(90deg, #319795 0%, #2C7A7B 100%)"
+        bg="linear-gradient(135deg, #FFD75E 0%, #B2891A 100%)"
         position="relative"
       >
         <Chart

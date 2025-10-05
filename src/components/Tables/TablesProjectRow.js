@@ -43,7 +43,7 @@ function DashboardTableRow(props) {
         <Flex direction="column">
           <Text
             fontSize="md"
-            color="teal.300"
+            color="brand.300"
             fontWeight="bold"
             pb=".2rem"
           >{`${progression}%`}</Text>
@@ -57,7 +57,7 @@ function DashboardTableRow(props) {
       </Td>
       <Td>
         <Button p="0px" bg="transparent">
-          <Icon as={FaEllipsisV} color="#319795" cursor="pointer" />
+          <Icon as={FaEllipsisV} color="brand.500" cursor="pointer" />
         </Button>
       </Td>
     </Tr>

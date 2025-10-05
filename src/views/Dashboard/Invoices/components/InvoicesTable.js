@@ -281,8 +281,8 @@ const InvoicesTable = () => {
                   _hover={{
                     boxShadow: "0px 8px 25px rgba(56, 178, 172, 0.25)",
                     transform: "translateY(-4px) scale(1.02)",
-                    borderColor: "teal.300",
-                    bg: useColorModeValue("teal.50", "teal.900"),
+                    borderColor: "brand.300",
+                    bg: useColorModeValue("brand.50", "brand.900"),
                   }}
                   _groupHover={{
                     boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.1)",
@@ -341,8 +341,8 @@ const InvoicesTable = () => {
                 _hover={{
                   boxShadow: "0px 12px 30px rgba(56, 178, 172, 0.3)",
                   transform: "translateY(-6px) scale(1.03)",
-                  borderColor: "teal.300",
-                  bg: useColorModeValue("teal.50", "teal.900"),
+                  borderColor: "brand.300",
+                  bg: useColorModeValue("brand.50", "brand.900"),
                 }}
                 _groupHover={{
                   boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",

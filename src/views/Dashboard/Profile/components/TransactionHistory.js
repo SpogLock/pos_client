@@ -85,7 +85,7 @@ const TransactionHistory = ({ customer }) => {
       <Grid templateColumns={{ base: "repeat(2, 1fr)", sm: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }} gap={{ base: 2, sm: 3, md: 3 }} mb={6}>
         <Box bg={cardBg} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
           <HStack spacing={3}>
-            <Box color="teal.500">
+            <Box color="brand.500">
               <Icon as={FaMoneyBillWave} boxSize={4} />
             </Box>
             <VStack align="start" spacing={0}>
@@ -101,7 +101,7 @@ const TransactionHistory = ({ customer }) => {
 
         <Box bg={cardBg} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
           <HStack spacing={3}>
-            <Box color="teal.500">
+            <Box color="brand.500">
               <Icon as={FaShoppingCart} boxSize={4} />
             </Box>
             <VStack align="start" spacing={0}>
@@ -117,7 +117,7 @@ const TransactionHistory = ({ customer }) => {
 
         <Box bg={cardBg} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
           <HStack spacing={3}>
-            <Box color="teal.500">
+            <Box color="brand.500">
               <Icon as={FaBox} boxSize={4} />
             </Box>
             <VStack align="start" spacing={0}>
@@ -133,7 +133,7 @@ const TransactionHistory = ({ customer }) => {
 
         <Box bg={cardBg} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
           <HStack spacing={3}>
-            <Box color="teal.500">
+            <Box color="brand.500">
               <Icon as={FaCalendarAlt} boxSize={4} />
             </Box>
             <VStack align="start" spacing={0}>
@@ -152,7 +152,7 @@ const TransactionHistory = ({ customer }) => {
       <Box bg={cardBg} p={4} borderRadius="lg" border="1px solid" borderColor="gray.200">
         <VStack spacing={4} align="stretch">
           <HStack spacing={3} align="center" mb={2}>
-            <Box color="teal.500">
+            <Box color="brand.500">
               <Icon as={FaReceipt} boxSize={4} />
             </Box>
             <Text fontSize="lg" color={textColor} fontWeight="bold">
@@ -185,7 +185,7 @@ const TransactionHistory = ({ customer }) => {
                   </HStack>
                   
                   <VStack align="end" spacing={1}>
-                    <Text fontSize="lg" color="teal.500" fontWeight="bold">
+                    <Text fontSize="lg" color="brand.500" fontWeight="bold">
                       {transaction.totalAmount}
                     </Text>
                     <Badge
@@ -222,7 +222,7 @@ const TransactionHistory = ({ customer }) => {
                               Qty: {item.quantity}
                             </Text>
                           </VStack>
-                          <Text fontSize="sm" color="teal.500" fontWeight="bold">
+                          <Text fontSize="sm" color="brand.500" fontWeight="bold">
                             {item.price}
                           </Text>
                         </HStack>
@@ -236,7 +236,7 @@ const TransactionHistory = ({ customer }) => {
                       Payment Details
                     </Text>
                     <HStack spacing={3} p={3} bg={useColorModeValue("white", "gray.600")} borderRadius="md" w="full">
-                      <Box color="teal.500">
+                      <Box color="brand.500">
                         <Icon as={getPaymentIcon(transaction.paymentMethod)} boxSize={4} />
                       </Box>
                       <VStack align="start" spacing={0} flex={1}>

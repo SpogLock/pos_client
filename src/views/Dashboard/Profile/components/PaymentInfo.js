@@ -77,7 +77,7 @@ const PaymentInfo = ({ customer }) => {
       <Grid templateColumns={{ base: "repeat(2, 1fr)", sm: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }} gap={{ base: 2, sm: 3, md: 3 }} mb={6}>
         <Box bg={cardBg} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
           <HStack spacing={3}>
-            <Box color="teal.500">
+            <Box color="brand.500">
               <Icon as={FaWallet} boxSize={4} />
             </Box>
             <VStack align="start" spacing={0}>
@@ -93,7 +93,7 @@ const PaymentInfo = ({ customer }) => {
 
         <Box bg={cardBg} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
           <HStack spacing={3}>
-            <Box color="teal.500">
+            <Box color="brand.500">
               <Icon as={FaClock} boxSize={4} />
             </Box>
             <VStack align="start" spacing={0}>
@@ -117,7 +117,7 @@ const PaymentInfo = ({ customer }) => {
 
         <Box bg={cardBg} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
           <HStack spacing={3}>
-            <Box color="teal.500">
+            <Box color="brand.500">
               <Icon as={FaCalendarAlt} boxSize={4} />
             </Box>
             <VStack align="start" spacing={0}>
@@ -133,7 +133,7 @@ const PaymentInfo = ({ customer }) => {
 
         <Box bg={cardBg} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
           <HStack spacing={3}>
-            <Box color="teal.500">
+            <Box color="brand.500">
               <Icon as={FaMoneyBillWave} boxSize={4} />
             </Box>
             <VStack align="start" spacing={0}>
@@ -152,7 +152,7 @@ const PaymentInfo = ({ customer }) => {
       <Box bg={cardBg} p={4} borderRadius="lg" border="1px solid" borderColor="gray.200" mb={4}>
         <VStack spacing={3} align="stretch">
           <HStack spacing={3} align="center" mb={1}>
-            <Box color="teal.500">
+            <Box color="brand.500">
               <Icon as={FaCheckCircle} boxSize={4} />
             </Box>
             <Text fontSize="md" color={textColor} fontWeight="bold">
@@ -221,7 +221,7 @@ const PaymentInfo = ({ customer }) => {
       <Box bg={cardBg} p={4} borderRadius="lg" border="1px solid" borderColor="gray.200">
         <VStack spacing={3} align="stretch">
           <HStack spacing={3} align="center" mb={1}>
-            <Box color="teal.500">
+            <Box color="brand.500">
               <Icon as={FaCreditCard} boxSize={4} />
             </Box>
             <Text fontSize="md" color={textColor} fontWeight="bold">
@@ -235,7 +235,7 @@ const PaymentInfo = ({ customer }) => {
                 {/* Desktop Layout */}
                 <Grid templateColumns="1fr 1fr 1fr auto" gap={4} minH="40px" alignItems="center" display={{ base: "none", md: "grid" }}>
                   <HStack spacing={3} align="center">
-                    <Box color="teal.500" flexShrink={0}>
+                    <Box color="brand.500" flexShrink={0}>
                       <Icon as={FaCalendarAlt} boxSize={3} />
                     </Box>
                     <VStack align="start" spacing={0}>
@@ -249,7 +249,7 @@ const PaymentInfo = ({ customer }) => {
                   </HStack>
                   
                   <HStack spacing={3} align="center">
-                    <Box color="teal.500" flexShrink={0}>
+                    <Box color="brand.500" flexShrink={0}>
                       <Icon as={FaMoneyBillWave} boxSize={3} />
                     </Box>
                     <VStack align="start" spacing={0}>
@@ -290,7 +290,7 @@ const PaymentInfo = ({ customer }) => {
                   {/* Top Row - Date and Amount */}
                   <HStack justify="space-between" align="center">
                     <HStack spacing={2} align="center" flex={1} minW={0}>
-                      <Box color="teal.500" flexShrink={0}>
+                      <Box color="brand.500" flexShrink={0}>
                         <Icon as={FaCalendarAlt} boxSize={3} />
                       </Box>
                       <VStack align="start" spacing={0} minW={0} flex={1}>
@@ -304,7 +304,7 @@ const PaymentInfo = ({ customer }) => {
                     </HStack>
                     
                     <HStack spacing={2} align="center" flex={1} minW={0} justify="flex-end">
-                      <Box color="teal.500" flexShrink={0}>
+                      <Box color="brand.500" flexShrink={0}>
                         <Icon as={FaMoneyBillWave} boxSize={3} />
                       </Box>
                       <VStack align="end" spacing={0} minW={0} flex={1}>

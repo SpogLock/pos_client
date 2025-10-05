@@ -69,7 +69,7 @@ const ProfileInformation = ({
       <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }} gap={3} mb={6}>
         <Box bg={bgCard} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
           <HStack spacing={3}>
-            <Box color="teal.500">
+            <Box color="brand.500">
               <Icon as={FaWeight} boxSize={4} />
             </Box>
             <VStack align="start" spacing={0}>
@@ -85,7 +85,7 @@ const ProfileInformation = ({
 
         <Box bg={bgCard} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
           <HStack spacing={3}>
-            <Box color="teal.500">
+            <Box color="brand.500">
               <Icon as={FaBirthdayCake} boxSize={4} />
             </Box>
             <VStack align="start" spacing={0}>
@@ -101,7 +101,7 @@ const ProfileInformation = ({
 
         <Box bg={bgCard} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
           <HStack spacing={3}>
-            <Box color="teal.500">
+            <Box color="brand.500">
               <Icon as={FaShieldAlt} boxSize={4} />
             </Box>
             <VStack align="start" spacing={0}>
@@ -117,7 +117,7 @@ const ProfileInformation = ({
 
         <Box bg={bgCard} p={3} borderRadius="lg" border="1px solid" borderColor="gray.200">
           <HStack spacing={3}>
-            <Box color="teal.500">
+            <Box color="brand.500">
               <CreditIcon />
             </Box>
             <VStack align="start" spacing={0}>
@@ -138,7 +138,7 @@ const ProfileInformation = ({
         <Box bg={bgCard} p={4} borderRadius="lg" border="1px solid" borderColor="gray.200">
           <VStack spacing={3} align="stretch">
             <HStack spacing={3} align="center" mb={1}>
-              <Box color="teal.500">
+              <Box color="brand.500">
                 <Icon as={FaPhone} boxSize={4} />
               </Box>
               <Text fontSize="md" color={textColor} fontWeight="bold">
@@ -148,7 +148,7 @@ const ProfileInformation = ({
             
             <VStack spacing={3} align="stretch">
               <HStack spacing={3} align="center">
-                <Box color="teal.500">
+                <Box color="brand.500">
                   <Icon as={FaPhone} boxSize={3} />
                 </Box>
                 <VStack align="start" spacing={0} flex={1}>
@@ -162,7 +162,7 @@ const ProfileInformation = ({
               </HStack>
               
               <HStack spacing={3} align="center">
-                <Box color="teal.500">
+                <Box color="brand.500">
                   <Icon as={FaEnvelope} boxSize={3} />
                 </Box>
                 <VStack align="start" spacing={0} flex={1}>
@@ -176,7 +176,7 @@ const ProfileInformation = ({
               </HStack>
               
               <HStack spacing={3} align="center">
-                <Box color="teal.500">
+                <Box color="brand.500">
                   <Icon as={FaMapMarkerAlt} boxSize={3} />
                 </Box>
                 <VStack align="start" spacing={0} flex={1}>
@@ -196,7 +196,7 @@ const ProfileInformation = ({
         <Box bg={bgCard} p={4} borderRadius="lg" border="1px solid" borderColor="gray.200">
           <VStack spacing={3} align="stretch">
             <HStack spacing={3} align="center" mb={1}>
-              <Box color="teal.500">
+              <Box color="brand.500">
                 <PersonIcon />
               </Box>
               <Text fontSize="md" color={textColor} fontWeight="bold">

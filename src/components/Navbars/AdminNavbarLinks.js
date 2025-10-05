@@ -51,7 +51,7 @@ export default function HeaderLinks(props) {
   const { colorMode, toggleColorMode } = useColorMode();
 
   // Chakra Color Mode
-  let mainTeal = useColorModeValue("#319795", "#319795");
+  let mainTeal = useColorModeValue("brand.500", "brand.500");
   let inputBg = useColorModeValue("white", "gray.800");
   let mainText = useColorModeValue("gray.700", "gray.200");
   let navbarIcon = useColorModeValue("gray.500", "gray.200");

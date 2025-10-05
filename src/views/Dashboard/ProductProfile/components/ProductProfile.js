@@ -373,20 +373,20 @@ const ProductProfile = () => {
         <HStack spacing={{ base: 2, lg: 3 }} flexWrap="wrap" justify={{ base: "center", lg: "flex-end" }}>
           <Button
             leftIcon={<EditIcon />}
-            bg="teal.500"
+            bg="brand.500"
             color="white"
             onClick={handleEdit}
             isDisabled={isEditing}
             size={{ base: "xs", md: "sm", lg: "md" }}
             borderRadius="lg"
             _hover={{ 
-              bg: "teal.600",
+              bg: "brand.600",
               transform: "translateY(-1px)",
               boxShadow: "0 4px 12px rgba(0, 128, 128, 0.2)"
             }}
             _active={{
               transform: "translateY(0px)",
-              bg: "teal.700"
+              bg: "brand.700"
             }}
             transition="all 0.2s ease"
             fontWeight="medium"
@@ -401,22 +401,22 @@ const ProductProfile = () => {
           <Button
             leftIcon={<DeleteIcon />}
             bg="white"
-            color="teal.500"
+            color="brand.500"
             border="1px solid"
-            borderColor="teal.500"
+            borderColor="brand.500"
             onClick={onDeleteOpen}
             size={{ base: "xs", md: "sm", lg: "md" }}
             borderRadius="lg"
             _hover={{ 
-              bg: "teal.50", 
-              borderColor: "teal.600",
-              color: "teal.600",
+              bg: "brand.50", 
+              borderColor: "brand.600",
+              color: "brand.600",
               transform: "translateY(-1px)",
               boxShadow: "0 4px 12px rgba(0, 128, 128, 0.1)"
             }}
             _active={{
               transform: "translateY(0px)",
-              bg: "teal.100"
+              bg: "brand.100"
             }}
             transition="all 0.2s ease"
             fontWeight="medium"
@@ -507,19 +507,19 @@ const ProductProfile = () => {
                 </HStack>
                 
                 <Button
-                  bg="teal.500"
+                  bg="brand.500"
                   color="white"
                   onClick={onOpen}
                   size="sm"
                   borderRadius="lg"
                   _hover={{ 
-                    bg: "teal.600",
+                    bg: "brand.600",
                     transform: "translateY(-1px)",
                     boxShadow: "0 4px 12px rgba(0, 128, 128, 0.2)"
                   }}
                   _active={{
                     transform: "translateY(0px)",
-                    bg: "teal.700"
+                    bg: "brand.700"
                   }}
                   transition="all 0.2s ease"
                   fontWeight="medium"
@@ -849,33 +849,33 @@ const ProductProfile = () => {
           <ModalFooter>
             <Button 
               bg="white"
-              color="teal.500"
+              color="brand.500"
               border="1px solid"
-              borderColor="teal.500"
+              borderColor="brand.500"
               mr={3} 
               onClick={onClose}
               _hover={{ 
-                bg: "teal.50", 
-                borderColor: "teal.600",
-                color: "teal.600"
+                bg: "brand.50", 
+                borderColor: "brand.600",
+                color: "brand.600"
               }}
               transition="all 0.2s ease"
             >
               Cancel
             </Button>
             <Button
-              bg="teal.500"
+              bg="brand.500"
               color="white"
               onClick={handleRestock}
               isDisabled={restockQuantity <= 0}
               _hover={{ 
-                bg: "teal.600",
+                bg: "brand.600",
                 transform: "translateY(-1px)",
                 boxShadow: "0 4px 12px rgba(0, 128, 128, 0.2)"
               }}
               _active={{
                 transform: "translateY(0px)",
-                bg: "teal.700"
+                bg: "brand.700"
               }}
               transition="all 0.2s ease"
             >
@@ -898,14 +898,14 @@ const ProductProfile = () => {
             <AlertDialogFooter>
               <Button 
                 bg="white"
-                color="teal.500"
+                color="brand.500"
                 border="1px solid"
-                borderColor="teal.500"
+                borderColor="brand.500"
                 onClick={onDeleteClose}
                 _hover={{ 
-                  bg: "teal.50", 
-                  borderColor: "teal.600",
-                  color: "teal.600"
+                  bg: "brand.50", 
+                  borderColor: "brand.600",
+                  color: "brand.600"
                 }}
                 transition="all 0.2s ease"
               >

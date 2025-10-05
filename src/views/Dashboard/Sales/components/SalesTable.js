@@ -380,7 +380,7 @@ const SalesTable = () => {
                     _hover={{
                       transform: "translateY(-2px)",
                       boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                      borderColor: "teal.300"
+                      borderColor: "brand.300"
                     }}
                   >
                     <VStack spacing={3} align="stretch">
@@ -408,7 +408,7 @@ const SalesTable = () => {
                         </Text>
                         
                         <VStack spacing={1} align="stretch">
-                          <Text fontSize={{ base: "md", md: "lg" }} fontWeight="bold" color="teal.500">
+                          <Text fontSize={{ base: "md", md: "lg" }} fontWeight="bold" color="brand.500">
                             PKR {product.sellingPrice.toLocaleString()}
                           </Text>
                           <Badge
@@ -510,7 +510,7 @@ const SalesTable = () => {
                                 />
                               </HStack>
                               
-                              <Text fontSize="sm" fontWeight="bold" color="teal.500">
+                              <Text fontSize="sm" fontWeight="bold" color="brand.500">
                                 PKR {(item.sellingPrice * item.quantity).toLocaleString()}
                               </Text>
                             </HStack>
@@ -656,7 +656,7 @@ const SalesTable = () => {
                     <Divider />
                     <HStack justify="space-between">
                       <Text fontSize="lg" fontWeight="bold" color={textColor}>Total:</Text>
-                      <Text fontSize="lg" fontWeight="bold" color="teal.500">
+                      <Text fontSize="lg" fontWeight="bold" color="brand.500">
                         PKR {total.toLocaleString()}
                       </Text>
                     </HStack>

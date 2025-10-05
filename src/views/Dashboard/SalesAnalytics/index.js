@@ -319,9 +319,9 @@ function SalesAnalytics() {
                     size='md'
                     variant={timePeriod === period ? 'solid' : 'outline'}
                     colorScheme='teal'
-                    bg={timePeriod === period ? '#319795' : 'transparent'}
-                    color={timePeriod === period ? 'white' : '#319795'}
-                    borderColor='#319795'
+                    bg={timePeriod === period ? 'brand.500' : 'transparent'}
+                    color={timePeriod === period ? 'white' : 'brand.500'}
+                    borderColor='brand.500'
                     fontWeight='semibold'
                     px='20px'
                     _hover={{
@@ -344,8 +344,8 @@ function SalesAnalytics() {
                 onChange={(e) => handleTimePeriodChange(e.target.value)}
                 size="md"
                 bg={cardBg}
-                borderColor='#319795'
-                color='#319795'
+                borderColor='brand.500'
+                color='brand.500'
                 fontWeight='semibold'
                 icon={<FaChevronDown />}
                 _hover={{ borderColor: '#2C7A7B' }}
@@ -413,7 +413,7 @@ function SalesAnalytics() {
                     </Button>
                     <Button
                       colorScheme="teal"
-                      bg="#319795"
+                      bg="brand.500"
                       color="white"
                       _hover={{ bg: "#2C7A7B" }}
                       onClick={handleCustomDateSelect}
@@ -460,15 +460,15 @@ function SalesAnalytics() {
                 leftIcon={<FaDownload />}
                 colorScheme='teal'
                 variant='outline'
-                borderColor='#319795'
-                color='#319795'
+                borderColor='brand.500'
+                color='brand.500'
                 size='sm'
                 fontWeight='semibold'
                 px='24px'
                 _hover={{
-                  bg: '#319795',
+                  bg: 'brand.500',
                   color: 'white',
-                  borderColor: '#319795'
+                  borderColor: 'brand.500'
                 }}
                 transition='all 0.2s'
                 onClick={exportAnalytics}>
@@ -487,7 +487,7 @@ function SalesAnalytics() {
           </Text>
           <Badge
             colorScheme='teal'
-            bg='#319795'
+            bg='brand.500'
             color='white'
             px='12px'
             py='4px'

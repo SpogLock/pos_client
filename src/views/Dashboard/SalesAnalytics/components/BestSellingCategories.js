@@ -107,8 +107,8 @@ const BestSellingCategories = ({ timePeriod, customDateRange, categoryData }) =>
               border='1px solid'
               borderColor={useColorModeValue("gray.200", "gray.600")}
               _focus={{
-                borderColor: "teal.500",
-                boxShadow: "0 0 0 1px teal.500"
+                borderColor: "brand.500",
+                boxShadow: "0 0 0 1px brand.500"
               }}
             />
           </InputGroup>
@@ -185,7 +185,7 @@ const BestSellingCategories = ({ timePeriod, customDateRange, categoryData }) =>
             filteredCategories.map((category, index) => (
               <Box key={category.id} p={3} bg={useColorModeValue("gray.50", "gray.700")} borderRadius="md" border="1px solid" borderColor={useColorModeValue("gray.200", "gray.600")} w="100%">
                 <Grid templateColumns="40px 1fr 120px" gap={3} alignItems="center">
-                  <Box color="teal.500" flexShrink={0} textAlign="center">
+                  <Box color="brand.500" flexShrink={0} textAlign="center">
                     <Text fontSize="lg" fontWeight="bold">
                       {index + 1}
                     </Text>

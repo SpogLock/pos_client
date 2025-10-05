@@ -67,7 +67,7 @@ function InventoryTableRow(props) {
       borderBottom="1px solid"
       borderBottomColor={borderColor}
       _hover={{ 
-        bg: useColorModeValue("teal.50", "teal.900"),
+        bg: useColorModeValue("brand.50", "brand.900"),
         transform: "translateX(2px)",
         boxShadow: "0 2px 8px rgba(56, 178, 172, 0.15)",
       }}
@@ -90,7 +90,7 @@ function InventoryTableRow(props) {
           onMouseLeave={onMouseLeave}
           cursor="pointer"
           _hover={{
-            borderColor: "teal.300",
+            borderColor: "brand.300",
             transform: "scale(1.05)",
             boxShadow: "0 4px 12px rgba(56, 178, 172, 0.3)"
           }}
@@ -193,7 +193,7 @@ function InventoryTableRow(props) {
                 console.log("Edit product:", productName);
               }}
               _hover={{
-                bg: "teal.50"
+                bg: "brand.50"
               }}
               borderRadius={0}
               _first={{

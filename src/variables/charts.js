@@ -32,7 +32,7 @@ export const barChartOptions = {
     labels: {
       show: false,
       style: {
-        colors: "#fff",
+        colors: ["#FFD75E"],
         fontSize: "12px",
       },
     },
@@ -45,11 +45,11 @@ export const barChartOptions = {
   },
   yaxis: {
     show: true,
-    color: "#fff",
+      color: "#ffffff",
     labels: {
       show: true,
       style: {
-        colors: "#fff",
+        colors: "#ffffff",
         fontSize: "14px",
       },
     },
@@ -58,7 +58,18 @@ export const barChartOptions = {
     show: false,
   },
   fill: {
-    colors: "#fff",
+    type: "gradient",
+    gradient: {
+      shade: "light",
+      type: "vertical",
+      shadeIntensity: 0.5,
+      gradientToColors: ["#ffffff"],
+      inverseColors: false,
+      opacityFrom: 1,
+      opacityTo: 0.8,
+      stops: [0, 100],
+    },
+    colors: ["#ffffff"],
   },
   dataLabels: {
     enabled: false,
@@ -158,7 +169,7 @@ export const lineChartOptions = {
       opacityTo: 0,
       stops: [],
     },
-    colors: ["#319795", "#A0AEC0"],
+    colors: ["#FFD75E", "#FFE199"],
   },
-  colors: ["#319795", "#A0AEC0"],
+  colors: ["#FFD75E", "#A0AEC0"],
 };

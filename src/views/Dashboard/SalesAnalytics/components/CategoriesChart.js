@@ -50,13 +50,13 @@ const CategoriesChart = ({ categoryData }) => {
         opacity: 0.2
       }
     },
-    colors: ["#319795"],
+    colors: ["#FFD75E"],
     fill: {
       opacity: 0.6
     },
     stroke: {
       width: 2,
-      colors: ["#319795"]
+      colors: ["#FFD75E"]
     },
     markers: {
       show: false

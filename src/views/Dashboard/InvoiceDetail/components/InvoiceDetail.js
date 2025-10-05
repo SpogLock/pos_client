@@ -508,7 +508,7 @@ const InvoiceDetailComponent = () => {
                   
                   <HStack justify="space-between">
                     <Text fontSize="lg" fontWeight="bold" color={textColor}>Total:</Text>
-                    <Text fontSize="lg" fontWeight="bold" color="teal.500">
+                    <Text fontSize="lg" fontWeight="bold" color="brand.500">
                       PKR {invoice.total.toLocaleString()}
                     </Text>
                   </HStack>

@@ -38,7 +38,7 @@ const Projects = ({ title, amount, captions, data }) => {
           <Flex align='center'>
             <Icon
               as={IoCheckmarkDoneCircleSharp}
-              color='teal.300'
+              color='brand.300'
               w={4}
               h={4}
               pe='3px'
@@ -86,7 +86,7 @@ const Projects = ({ title, amount, captions, data }) => {
         {data.map((row, index) => (
           <Box key={row.name} p={3} bg={useColorModeValue("gray.50", "gray.700")} borderRadius="md" border="1px solid" borderColor={useColorModeValue("gray.200", "gray.600")}>
             <Grid templateColumns="auto 1fr auto" gap={3} alignItems="center">
-              <Box color="teal.500" flexShrink={0}>
+              <Box color="brand.500" flexShrink={0}>
                 <Text fontSize="lg" fontWeight="bold">
                   {index + 1}
                 </Text>
