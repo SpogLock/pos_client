@@ -96,7 +96,7 @@ const Authors = ({ title, captions, data }) => {
     },
     {
       id: 2,
-      picture: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+      picture: "https://images.unsplash.com/photo-1552699611-e2c208d5d9cf?q=80&w=1616&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       memberName: "Fatima Ali",
       memberType: "Old",
       mobileNo: "+92 300 1234567",

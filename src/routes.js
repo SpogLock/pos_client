@@ -3,6 +3,9 @@ import Dashboard from "views/Dashboard/Dashboard";
 import CustomerManagement from "views/Dashboard/CustomerManagement";
 import InventoryManagement from "views/Dashboard/InventoryManagement";
 import ProductProfile from "views/Dashboard/ProductProfile";
+import Sales from "views/Dashboard/Sales";
+import Invoices from "views/Dashboard/Invoices";
+import InvoiceDetail from "views/Dashboard/InvoiceDetail";
 import Billing from "views/Dashboard/Billing";
 import RTLPage from "views/Dashboard/RTL";
 import Profile from "views/Dashboard/Profile";
@@ -20,7 +23,7 @@ import {
   RocketIcon,
   SupportIcon,
 } from "components/Icons/Icons";
-import { SettingsIcon, ViewIcon } from "@chakra-ui/icons";
+import { SettingsIcon, ViewIcon, AttachmentIcon, CopyIcon } from "@chakra-ui/icons";
 
 var dashRoutes = [
   {
@@ -53,6 +56,22 @@ var dashRoutes = [
     rtlName: "لوحة القيادة",
     icon: <ViewIcon color="inherit" />,
     component: InventoryManagement,
+    layout: "/admin",
+  },
+  {
+    path: "/sales",
+    name: "Point of Sale",
+    rtlName: "لوحة القيادة",
+    icon: <AttachmentIcon color="inherit" />,
+    component: Sales,
+    layout: "/admin",
+  },
+  {
+    path: "/invoices",
+    name: "Invoices & Orders",
+    rtlName: "لوحة القيادة",
+    icon: <CopyIcon color="inherit" />,
+    component: Invoices,
     layout: "/admin",
   },
   {
@@ -89,10 +108,19 @@ var dashRoutes = [
         layout: "/admin",
       },
       {
+        path: "/invoice-detail",
+        name: "Invoice Detail",
+        rtlName: "لوحة القيادة",
+        icon: <CopyIcon color="inherit" />,
+        secondaryNavbar: true,
+        component: InvoiceDetail,
+        layout: "/admin",
+      },
+      {
         path: "/signin",
         name: "Sign In",
         rtlName: "لوحة القيادة",
-        icon: <DocumentIcon color="inherit" />,
+        icon: <CopyIcon color="inherit" />,
         component: SignIn,
         layout: "/auth",
       },
